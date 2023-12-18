@@ -26,18 +26,6 @@ struct StockItem {
     var quote: Quote?
 }
 
-struct Quote {
-    var id: UUID
-    var date: Date
-    var bidPrice: Double
-    var askPrice: Double
-    var lastPrice: Double
-}
-
-struct ChartData {
-    // todo: not sure what should be here - but it's mentioned that we can use some 3rd party tool for getting this data and showing them - so let's use as much of 3rd party code as possible as there's not as much time for plotting beautiful graphs
-}
-
 // + for sure some request structs
 
 // Providers:
