@@ -14,8 +14,35 @@ class QuoteViewController: UIViewController {
     private var viewModel: QuoteViewModel
     
     private lazy var chartView: CandleStickChartView = {
+        class XAxisValueFormatter: AxisValueFormatter {
+            lazy private var dateFormatter: DateFormatter = {
+                let dateFormatter = DateFormatter()
+                dateFormatter.locale = Locale.current
+                dateFormatter.dateFormat = "dd/MM"
+                return dateFormatter
+            }()
+            
+            func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+                let daysToDate = value
+                let date = getDate(outFrom: daysToDate)
+                return dateFormatter.string(from: date)
+            }
+            
+            // this method is thightly combined with func getDaysFromNow(to date: Date) -> Double - don't change one without the second one
+            private func getDate(outFrom daysToDate: Double) -> Date {
+                let secondsToDate = 3600 * 24 * daysToDate
+                let date = Date().addingTimeInterval(secondsToDate)
+                return date
+                // as we mapped $0.date.timeIntervalSince1970 into daysToDate - now it is time to revert this process and then get Date out of timeIntervalSince1970
+            }
+        }
+        
         let chartView = CandleStickChartView()
-        chartView.backgroundColor = .purple
+        chartView.xAxis.labelPosition = XAxis.LabelPosition.bottom
+        chartView.xAxis.avoidFirstLastClippingEnabled = true
+        chartView.xAxis.valueFormatter = XAxisValueFormatter()
+        chartView.legend.enabled = false
+        chartView.setScaleEnabled(false)
         return chartView
     }()
     
@@ -63,7 +90,7 @@ private extension QuoteViewController {
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).inset(20.0)
             make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).inset(20.0)
-            make.height.equalTo(100.0)
+            make.height.equalTo(self.view.frame.size.height / 2)
         }
         
         bidPriceLabel.snp.makeConstraints { (make) -> Void in
@@ -112,15 +139,24 @@ private extension QuoteViewController {
     
     func setChartView(basedOn chartData: ChartData) {
         let entries = chartData.values.map {
-            CandleChartDataEntry(
-                x: $0.date.timeIntervalSince1970,
+            return CandleChartDataEntry(
+                x: getDaysFromNow(to: $0.date),
                 shadowH: $0.high,
                 shadowL: $0.low,
                 open: $0.open,
                 close: $0.close)
         }
-        let set = CandleChartDataSet(entries: entries, label: "Chart chart chart")
+        let set = CandleChartDataSet(entries: entries, label: "")
+        set.barSpace = 0.1
+        set.drawValuesEnabled = false
         let data = CandleChartData(dataSet: set)
         chartView.data = data
+    }
+    
+    // this method is thighlty combined with func getDate(outFrom daysToDate: Double) -> Date - don't change one without the second one
+    func getDaysFromNow(to date: Date) -> Double {
+        let daysToDate = Date().distance(to: date) / (3600 * 24)
+        return daysToDate
+        // we need to use daysToDate mapping because when passing $0.date.timeIntervalSince1970 it is too big and the candle sticks are too small - it's a known bug in DGCharts
     }
 }

@@ -66,20 +66,37 @@ private extension QuoteViewModel {
     func fetchData() async throws {
         try? await Task.sleep(nanoseconds: 1 * 1_000_000_000) // 1 second
         
-        let chartData = ChartData(
-            values: [
-                ChartItem(close: 90.0, high: 100.0, low: 70.0, open: 80.0, date: Date(timeIntervalSince1970: 1702911600)),
-                ChartItem(close: 100.0, high: 110.0, low: 50.0, open: 80.0, date: Date(timeIntervalSince1970: 1702915200)),
-                ChartItem(close: 90.0, high: 150.0, low: 20.0, open: 80.0, date: Date(timeIntervalSince1970: 1702918800)),
-                ChartItem(close: 90.0, high: 90.0, low: 10.0, open: 10.0, date: Date(timeIntervalSince1970: 1702922400)),
-                ChartItem(close: 90.0, high: 140.0, low: 70.0, open: 80.0, date: Date(timeIntervalSince1970: 1702926000))
-            ]
-        )
-        chartDataSubject.send(chartData)
+        let dates = Date.last30Days()
+//        let dates = Date.daysInCurrentMonth()
+//        let dates = Date.daysBetween(
+//            startDate: Date(timeIntervalSince1970: 1698796800), // 1st of November
+//            andEndDate: Date(timeIntervalSince1970: 1701388800) // 1st of December
+//        )
+//        let dates = Date.daysBetween(
+//            startDate: Date(timeIntervalSince1970: 1698796800), // 1st of November
+//            andEndDate: Date(timeIntervalSince1970: 1699142400) // 5th of November
+//        )
         
+        let items = generateRandomChartItems(for: dates)
+        let chartData = ChartData(values: items)
+        chartDataSubject.send(chartData)
+
         let quote = Quote(date: .now, bidPrice: 171.12, askPrice: 171.33, lastPrice: 171.12)
         bidPriceSubject.send(quote.bidPrice)
         askPriceSubject.send(quote.askPrice)
         lastPriceSubject.send(quote.lastPrice)
+    }
+    
+    func generateRandomChartItems(for dates: [Date]) -> [ChartItem] {
+        var chartData: [ChartItem] = []
+        for date in dates {
+            let close = Double.random(in: 80.0...100.0)
+            let high = Double.random(in: close...110.0)
+            let low = Double.random(in: 70.0...close)
+            let open = Double.random(in: low...high)
+            let chartItem = ChartItem(close: close, high: high, low: low, open: open, date: date)
+            chartData.append(chartItem)
+        }
+        return chartData
     }
 }
