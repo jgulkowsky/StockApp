@@ -41,12 +41,6 @@ protocol StockItemsProviding {
     func getStockItems(startingWith text: String) async throws -> [StockItem]
 }
 
-protocol QuoteProviding {
-    func getQuote(forSymbol symbol: String) async throws -> Quote
-}
-
-// + sth for chart data
-
 protocol APIFetching {}
 
 protocol PersistentStorageProviding {

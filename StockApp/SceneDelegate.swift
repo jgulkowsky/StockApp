@@ -19,7 +19,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: windowScene)
         window.rootViewController = QuoteViewController(
-            viewModel: QuoteViewModel()
+            viewModel: QuoteViewModel(
+                quotesProvider: QuotesProvider(),
+                chartDataProvider: ChartDataProvider(),
+                symbol: "AAPL"
+            )
         )
         self.window = window
         window.makeKeyAndVisible()

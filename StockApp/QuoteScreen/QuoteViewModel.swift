@@ -55,48 +55,60 @@ class QuoteViewModel {
     private var askPriceSubject = CurrentValueSubject<Double?, Never>(nil)
     private var lastPriceSubject = CurrentValueSubject<Double?, Never>(nil)
     
-    init() {
-        Task {
-            try await fetchData()
-        }
+    private let timer = Timer.publish(every: 5, on: .main, in: .common)
+        .autoconnect()
+    private var store = Set<AnyCancellable>()
+    
+    private let quotesProvider: QuotesProviding
+    private let chartDataProvider: ChartDataProviding
+    private let symbol: String
+    
+    init(quotesProvider: QuotesProviding,
+         chartDataProvider: ChartDataProviding,
+         symbol: String
+    ) {
+        self.quotesProvider = quotesProvider
+        self.chartDataProvider = chartDataProvider
+        self.symbol = symbol
+        
+        fetchData()
+        setupTimerBinding()
     }
 }
 
 private extension QuoteViewModel {
-    func fetchData() async throws {
-        try? await Task.sleep(nanoseconds: 1 * 1_000_000_000) // 1 second
-        
-        let dates = Date.last30Days()
-//        let dates = Date.daysInCurrentMonth()
-//        let dates = Date.daysBetween(
-//            startDate: Date(timeIntervalSince1970: 1698796800), // 1st of November
-//            andEndDate: Date(timeIntervalSince1970: 1701388800) // 1st of December
-//        )
-//        let dates = Date.daysBetween(
-//            startDate: Date(timeIntervalSince1970: 1698796800), // 1st of November
-//            andEndDate: Date(timeIntervalSince1970: 1699142400) // 5th of November
-//        )
-        
-        let items = generateRandomChartItems(for: dates)
-        let chartData = ChartData(values: items)
-        chartDataSubject.send(chartData)
-
-        let quote = Quote(date: .now, bidPrice: 171.12, askPrice: 171.33, lastPrice: 171.12)
-        bidPriceSubject.send(quote.bidPrice)
-        askPriceSubject.send(quote.askPrice)
-        lastPriceSubject.send(quote.lastPrice)
+    func fetchData() {
+        Task {
+            do {
+                async let getQuote = self.quotesProvider.getQuote(forSymbol: symbol)
+                async let getChartData = self.chartDataProvider.getChartData()
+                let (quote, chartData) = try await (getQuote, getChartData)
+                bidPriceSubject.send(quote.bidPrice)
+                askPriceSubject.send(quote.askPrice)
+                lastPriceSubject.send(quote.lastPrice)
+                chartDataSubject.send(chartData)
+            } catch {
+                print("Error")
+                // todo: we need to show error or just show nil and try again? (up to N times)
+            }
+        }
     }
     
-    func generateRandomChartItems(for dates: [Date]) -> [ChartItem] {
-        var chartData: [ChartItem] = []
-        for date in dates {
-            let close = Double.random(in: 80.0...100.0)
-            let high = Double.random(in: close...110.0)
-            let low = Double.random(in: 70.0...close)
-            let open = Double.random(in: low...high)
-            let chartItem = ChartItem(close: close, high: high, low: low, open: open, date: date)
-            chartData.append(chartItem)
-        }
-        return chartData
+    func setupTimerBinding() {
+        timer
+            .sink { _ in
+                Task {
+                    do {
+                        let quote = try await self.quotesProvider.getQuote(forSymbol: self.symbol)
+                        self.bidPriceSubject.send(quote.bidPrice)
+                        self.askPriceSubject.send(quote.askPrice)
+                        self.lastPriceSubject.send(quote.lastPrice)
+                    } catch {
+                        print("Error")
+                        // todo: we need to show error or just show nil and try again? (up to N times)
+                    }
+                }
+            }
+            .store(in: &store)
     }
 }
