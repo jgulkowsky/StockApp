@@ -35,7 +35,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         )
         
         let watchlist = Watchlist(
-            id: UUID(),
+            id: UUID(uuidString: "E358D0AA-1DDC-4551-81CD-1AF209CA2D9E")!, // todo: just for now so WatchlistsProvider has watchlist with the same id
             name: "My First List",
             symbols: ["AAPL", "MSFT", "GOOG"]
         )

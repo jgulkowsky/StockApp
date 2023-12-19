@@ -57,7 +57,8 @@ class WatchlistViewModel {
         self.watchlist = watchlist
         self.refreshRate = refreshRate
         
-        fetchData()
+        setupBindings()
+        fetchStockItems() // todo: it would be nice to call it when we have our watchlist obtained from the provider - but calling it there produces more problems - such as multiple timers starting / updating state of the view - generally things related to fetchStockItems
     }
     
     func getStockItemFor(index: Int) -> StockItem? {
@@ -73,6 +74,12 @@ class WatchlistViewModel {
     
     func onAddButtonTapped() {
         // todo: inform coordinator
+        
+        // todo: and from the other VC we should do sth like this - need to add button to check
+        let exampleSymbol = "GCV"
+        watchlist.symbols.append(exampleSymbol)
+        watchlistsProvider.onUpdate(watchlist: watchlist)
+        // todo: generally we should put the item with symbol only and empty slots for bid / ask / last and timer will put values there - or we can get them right away and put everything without waiting for timer - maybe let's check it out when we actually have the viewController for adding symbols
     }
     
     func onItemSwipedOut(at index: Int) {
@@ -82,12 +89,24 @@ class WatchlistViewModel {
         
         watchlist.symbols.removeAll { $0 == removedItem.symbol }
         
-        // todo: we need to remove given symbol for this watchlist - this information needs to go to the WatchlistsProvider
+        watchlistsProvider.onUpdate(watchlist: watchlist)
     }
 }
 
 private extension WatchlistViewModel {
-    func fetchData() {
+    func setupBindings() {
+        self.watchlistsProvider.watchlists
+            .sink { watchlists in
+                if let watchlistFromProvider = watchlists.first(
+                    where: { $0.id == self.watchlist.id }
+                ) {
+                    self.watchlist = watchlistFromProvider
+                }
+            }
+            .store(in: &store)
+    }
+    
+    func fetchStockItems() {
         Task {
             do {
                 let stockItems = try await getStockItemsSimultaneously()

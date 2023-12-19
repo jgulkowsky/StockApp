@@ -20,13 +20,18 @@ class WatchlistsProvider: WatchlistsProviding {
     
     func onRemove(watchlist: Watchlist) {}
 
-    func onUpdate(watchlist: Watchlist) {}
+    func onUpdate(watchlist: Watchlist) {
+        var watchlists = watchlistsSubject.value
+        guard let index = watchlists.firstIndex(where: { $0.id == watchlist.id } ) else { return }
+        watchlists[Int(index)] = watchlist
+        watchlistsSubject.send(watchlists)
+    }
     
     init() {
         // todo: normally we would get it from CoreData
         let watchlists = [
             Watchlist(
-                id: UUID(),
+                id: UUID(uuidString: "E358D0AA-1DDC-4551-81CD-1AF209CA2D9E")!, // todo: just for now so WatchlistsViewModel has watchlist with the same id
                 name: "My First List",
                 symbols: ["AAPL", "MSFT", "GOOG"]
             ),
