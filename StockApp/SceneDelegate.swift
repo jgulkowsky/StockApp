@@ -19,11 +19,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: windowScene)
         let apiFetcher = ApiFetcher()
-        window.rootViewController = QuoteViewController(
+        let quotesProvider = QuotesProvider(
+            apiFetcher: apiFetcher
+        )
+        
+        let quoteViewController = QuoteViewController(
             viewModel: QuoteViewModel(
-                quotesProvider: QuotesProvider(
-                    apiFetcher: apiFetcher
-                ),
+                quotesProvider: quotesProvider,
                 chartDataProvider: ChartDataProvider(
                     apiFetcher: apiFetcher
                 ),
@@ -31,6 +33,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 refreshRate: 5
             )
         )
+        
+        let watchlistViewController = WatchlistViewController(
+            viewModel: WatchlistViewModel(
+                quotesProvider: quotesProvider,
+                refreshRate: 5
+            )
+        )
+        
+        window.rootViewController = watchlistViewController
         self.window = window
         window.makeKeyAndVisible()
         

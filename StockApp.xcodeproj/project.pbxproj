@@ -28,9 +28,10 @@
 		E32621E72B311F8E00105455 /* ApiDecoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32621E62B311F8E00105455 /* ApiDecoding.swift */; };
 		E32621E92B31210400105455 /* ChartDataDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32621E82B31210400105455 /* ChartDataDecoder.swift */; };
 		E32621EB2B31227500105455 /* ChartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32621EA2B31227500105455 /* ChartItem.swift */; };
+		E32621EE2B32029800105455 /* WatchlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32621ED2B32029800105455 /* WatchlistViewController.swift */; };
+		E32621F02B3202A200105455 /* WatchlistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32621EF2B3202A200105455 /* WatchlistViewModel.swift */; };
 		E37BC0872B2C7F590065F61A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC0862B2C7F590065F61A /* AppDelegate.swift */; };
 		E37BC0892B2C7F590065F61A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC0882B2C7F590065F61A /* SceneDelegate.swift */; };
-		E37BC08B2B2C7F590065F61A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC08A2B2C7F590065F61A /* ViewController.swift */; };
 		E37BC0902B2C7F5A0065F61A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E37BC08F2B2C7F5A0065F61A /* Assets.xcassets */; };
 		E37BC0932B2C7F5A0065F61A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E37BC0912B2C7F5A0065F61A /* LaunchScreen.storyboard */; };
 		E37BC09E2B2C7F5A0065F61A /* StockAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC09D2B2C7F5A0065F61A /* StockAppTests.swift */; };
@@ -76,10 +77,11 @@
 		E32621E62B311F8E00105455 /* ApiDecoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiDecoding.swift; sourceTree = "<group>"; };
 		E32621E82B31210400105455 /* ChartDataDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartDataDecoder.swift; sourceTree = "<group>"; };
 		E32621EA2B31227500105455 /* ChartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartItem.swift; sourceTree = "<group>"; };
+		E32621ED2B32029800105455 /* WatchlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistViewController.swift; sourceTree = "<group>"; };
+		E32621EF2B3202A200105455 /* WatchlistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistViewModel.swift; sourceTree = "<group>"; };
 		E37BC0832B2C7F590065F61A /* StockApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E37BC0862B2C7F590065F61A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E37BC0882B2C7F590065F61A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E37BC08A2B2C7F590065F61A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E37BC08F2B2C7F5A0065F61A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E37BC0922B2C7F5A0065F61A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E37BC0942B2C7F5A0065F61A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -204,6 +206,15 @@
 			path = Decoders;
 			sourceTree = "<group>";
 		};
+		E32621EC2B32028000105455 /* WatchlistScreen */ = {
+			isa = PBXGroup;
+			children = (
+				E32621ED2B32029800105455 /* WatchlistViewController.swift */,
+				E32621EF2B3202A200105455 /* WatchlistViewModel.swift */,
+			);
+			path = WatchlistScreen;
+			sourceTree = "<group>";
+		};
 		E37BC07A2B2C7F590065F61A = {
 			isa = PBXGroup;
 			children = (
@@ -231,10 +242,10 @@
 				E32621CE2B310F3A00105455 /* ApiFetcher */,
 				E32621C32B31067600105455 /* Providers */,
 				E32621C02B30F17E00105455 /* Extensions */,
+				E32621EC2B32028000105455 /* WatchlistScreen */,
 				E31F6E162B30BB9C00CB0C3B /* QuoteScreen */,
 				E37BC0862B2C7F590065F61A /* AppDelegate.swift */,
 				E37BC0882B2C7F590065F61A /* SceneDelegate.swift */,
-				E37BC08A2B2C7F590065F61A /* ViewController.swift */,
 				E37BC08F2B2C7F5A0065F61A /* Assets.xcassets */,
 				E37BC0912B2C7F5A0065F61A /* LaunchScreen.storyboard */,
 				E37BC0942B2C7F5A0065F61A /* Info.plist */,
@@ -404,7 +415,6 @@
 				E37BC0B72B2C82620065F61A /* Plan.swift in Sources */,
 				E32621E72B311F8E00105455 /* ApiDecoding.swift in Sources */,
 				E32621CC2B31092F00105455 /* ChartDataProvider.swift in Sources */,
-				E37BC08B2B2C7F590065F61A /* ViewController.swift in Sources */,
 				E37BC0872B2C7F590065F61A /* AppDelegate.swift in Sources */,
 				E32621EB2B31227500105455 /* ChartItem.swift in Sources */,
 				E31F6E262B30C81800CB0C3B /* Quote.swift in Sources */,
@@ -416,9 +426,11 @@
 				E32621D72B31122300105455 /* QuoteRequest.swift in Sources */,
 				E32621D22B310F5B00105455 /* ApiFetcher.swift in Sources */,
 				E32621E22B311DFD00105455 /* MockChartDataProvider.swift in Sources */,
+				E32621EE2B32029800105455 /* WatchlistViewController.swift in Sources */,
 				E32621D02B310F4D00105455 /* ApiFetching.swift in Sources */,
 				E31F6E242B30C7F000CB0C3B /* ChartData.swift in Sources */,
 				E32621E02B311CCE00105455 /* ChartDataRequest.swift in Sources */,
+				E32621F02B3202A200105455 /* WatchlistViewModel.swift in Sources */,
 				E32621D92B3113BD00105455 /* ApiRequest.swift in Sources */,
 				E32621E92B31210400105455 /* ChartDataDecoder.swift in Sources */,
 			);

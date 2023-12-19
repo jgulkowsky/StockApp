@@ -67,10 +67,6 @@ protocol Coordinator {
 
 class WatchlistsViewModel {}
 
-class WatchlistViewModel {}
-
-class QuoteDetailsViewModel {}
-
 class AddNewWatchlistViewModel {}
 
 class AddNewStockItemViewModel {}
