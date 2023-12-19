@@ -55,24 +55,25 @@ class QuoteViewModel {
     private var askPriceSubject = CurrentValueSubject<Double?, Never>(nil)
     private var lastPriceSubject = CurrentValueSubject<Double?, Never>(nil)
     
-    private let timer = Timer.publish(every: 5, on: .main, in: .common)
-        .autoconnect() // todo: make this timer start when we get initial data - so we won't have situation where we don't get yet data because waiting for chartData any this timer triggers new request and it's faster than the initial data
+    private var timer: Publishers.Autoconnect<Timer.TimerPublisher>?
     private var store = Set<AnyCancellable>()
     
     private let quotesProvider: QuotesProviding
     private let chartDataProvider: ChartDataProviding
     private let symbol: String
+    private let refreshRate: Double
     
     init(quotesProvider: QuotesProviding,
          chartDataProvider: ChartDataProviding,
-         symbol: String
+         symbol: String,
+         refreshRate: Double
     ) {
         self.quotesProvider = quotesProvider
         self.chartDataProvider = chartDataProvider
         self.symbol = symbol
+        self.refreshRate = refreshRate
         
         fetchData()
-        setupTimerBinding()
     }
 }
 
@@ -87,6 +88,8 @@ private extension QuoteViewModel {
                 askPriceSubject.send(quote.askPrice)
                 lastPriceSubject.send(quote.lastPrice)
                 chartDataSubject.send(chartData)
+                
+                self.setupTimer()
             } catch {
                 print("Error")
                 // todo: we need to show error or just show nil and try again? (up to N times)
@@ -94,8 +97,10 @@ private extension QuoteViewModel {
         }
     }
     
-    func setupTimerBinding() {
-        timer
+    func setupTimer() {
+        self.timer = Timer.publish(every: self.refreshRate, on: .main, in: .common)
+           .autoconnect()
+        self.timer?
             .sink { _ in
                 Task {
                     do {

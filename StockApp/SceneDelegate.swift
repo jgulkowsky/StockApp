@@ -27,7 +27,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 chartDataProvider: ChartDataProvider(
                     apiFetcher: apiFetcher
                 ),
-                symbol: "AAPL"
+                symbol: "AAPL",
+                refreshRate: 5
             )
         )
         self.window = window

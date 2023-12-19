@@ -18,6 +18,7 @@ extension ApiRequest {
             return apiToken
         } else {
             fatalError("Add API_TOKEN into scheme/run/arguments/environment variables")
+            // todo: add info to README.md what are the steps to follow to make this project working
         }
     }
 }
