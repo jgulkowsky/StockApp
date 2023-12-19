@@ -56,7 +56,7 @@ class QuoteViewModel {
     private var lastPriceSubject = CurrentValueSubject<Double?, Never>(nil)
     
     private let timer = Timer.publish(every: 5, on: .main, in: .common)
-        .autoconnect()
+        .autoconnect() // todo: make this timer start when we get initial data - so we won't have situation where we don't get yet data because waiting for chartData any this timer triggers new request and it's faster than the initial data
     private var store = Set<AnyCancellable>()
     
     private let quotesProvider: QuotesProviding
@@ -81,7 +81,7 @@ private extension QuoteViewModel {
         Task {
             do {
                 async let getQuote = self.quotesProvider.getQuote(forSymbol: symbol)
-                async let getChartData = self.chartDataProvider.getChartData()
+                async let getChartData = self.chartDataProvider.getChartData(forSymbol: symbol)
                 let (quote, chartData) = try await (getQuote, getChartData)
                 bidPriceSubject.send(quote.bidPrice)
                 askPriceSubject.send(quote.askPrice)

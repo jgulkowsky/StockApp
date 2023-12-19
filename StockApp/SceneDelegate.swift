@@ -18,10 +18,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: windowScene)
+        let apiFetcher = ApiFetcher()
         window.rootViewController = QuoteViewController(
             viewModel: QuoteViewModel(
-                quotesProvider: QuotesProvider(),
-                chartDataProvider: ChartDataProvider(),
+                quotesProvider: QuotesProvider(
+                    apiFetcher: apiFetcher
+                ),
+                chartDataProvider: ChartDataProvider(
+                    apiFetcher: apiFetcher
+                ),
                 symbol: "AAPL"
             )
         )

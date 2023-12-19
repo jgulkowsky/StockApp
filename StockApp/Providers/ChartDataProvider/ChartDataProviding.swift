@@ -8,5 +8,5 @@
 import Foundation
 
 protocol ChartDataProviding {
-    func getChartData() async throws -> ChartData
+    func getChartData(forSymbol symbol: String) async throws -> ChartData
 }

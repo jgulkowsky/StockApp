@@ -41,8 +41,6 @@ protocol StockItemsProviding {
     func getStockItems(startingWith text: String) async throws -> [StockItem]
 }
 
-protocol APIFetching {}
-
 protocol PersistentStorageProviding {
     func getData<T>() async throws -> T
 }
