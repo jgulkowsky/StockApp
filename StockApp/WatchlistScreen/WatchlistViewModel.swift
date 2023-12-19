@@ -70,7 +70,8 @@ private extension WatchlistViewModel {
     func fetchData() {
         Task {
             do {
-                let stockItems = try await getStockItemsSimultaneously() // todo: if there's any misspelling in any of the symbols (which should rather not happen but these are 2 APIs - one you get symbol from the second you send it to) then this will throw and error will be shown - think how you should respond - maybe symbol with empty values or just ommit the symbol as it wasn't there
+                let stockItems = try await getStockItemsSimultaneously()
+                    .sorted()// todo: if there's any misspelling in any of the symbols (which should rather not happen but these are 2 APIs - one you get symbol from the second you send it to) then this will throw and error will be shown - think how you should respond - maybe symbol with empty values or just ommit the symbol as it wasn't there
                 stockItemsSubject.send(stockItems)
                 stateSubject.send(.dataObtained)
                 self.setupTimer()
@@ -89,7 +90,8 @@ private extension WatchlistViewModel {
             .sink { _ in
                 Task {
                     // todo: we could check if stock market is closed - if so then we should't make calls - this logic should be put into quotesProvider that would just return last quote and not send request until the stock is open once again
-                    if let stockItems = try? await self.getStockItemsSimultaneously() {
+                    if let stockItems = try? await self.getStockItemsSimultaneously()
+                        .sorted() {
                         self.stockItemsSubject.send(stockItems)
                         self.errorSubject.send(nil)
                         self.stateSubject.send(.dataObtained)
