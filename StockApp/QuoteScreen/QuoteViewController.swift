@@ -96,37 +96,37 @@ private extension QuoteViewController {
     }
     
     func setupConstraints() {
-        loadingView.snp.makeConstraints { (make) -> Void in
+        loadingView.snp.makeConstraints { make in
             make.center.equalToSuperview()
             make.height.width.equalTo(30)
         }
         
-        errorLabel.snp.makeConstraints { (make) -> Void in
+        errorLabel.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).inset(20.0)
             make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).inset(20.0)
         }
         
-        chartView.snp.makeConstraints { (make) -> Void in
+        chartView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).inset(20.0)
             make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).inset(20.0)
             make.height.equalTo(self.view.frame.size.height / 2)
         }
         
-        bidPriceLabel.snp.makeConstraints { (make) -> Void in
+        bidPriceLabel.snp.makeConstraints { make in
             make.top.equalTo(chartView.snp.bottom)
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).inset(20.0)
             make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).inset(20.0)
         }
         
-        askPriceLabel.snp.makeConstraints { (make) -> Void in
+        askPriceLabel.snp.makeConstraints { make in
             make.top.equalTo(bidPriceLabel.snp.bottom)
             make.leading.equalTo(bidPriceLabel.snp.leading)
             make.trailing.equalTo(bidPriceLabel.snp.trailing)
         }
         
-        lastPriceLabel.snp.makeConstraints { (make) -> Void in
+        lastPriceLabel.snp.makeConstraints { make in
             make.top.equalTo(askPriceLabel.snp.bottom)
             make.leading.equalTo(bidPriceLabel.snp.leading)
             make.trailing.equalTo(bidPriceLabel.snp.trailing)

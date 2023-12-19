@@ -26,7 +26,10 @@ class WatchlistViewController: UIViewController {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell") // todo: use here static var from custom ViewCell class later on
+        tableView.register(
+            WatchlistTableViewCell.self,
+            forCellReuseIdentifier: WatchlistTableViewCell.id
+        )
         return tableView
     }()
     
@@ -57,9 +60,14 @@ extension WatchlistViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        // todo: use here static var from custom ViewCell class later on
-        cell.textLabel?.text = viewModel.getStockItemFor(index: indexPath.row)
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: WatchlistTableViewCell.id,
+            for: indexPath
+        )
+        
+        (cell as? WatchlistTableViewCell)?
+            .stockItem = viewModel.getStockItemFor(index: indexPath.row)
+        
         return cell
     }
     
@@ -77,18 +85,18 @@ private extension WatchlistViewController {
     }
     
     func setupConstraints() {
-        loadingView.snp.makeConstraints { (make) -> Void in
+        loadingView.snp.makeConstraints { make in
             make.center.equalToSuperview()
             make.height.width.equalTo(30)
         }
         
-        errorLabel.snp.makeConstraints { (make) -> Void in
+        errorLabel.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).inset(20.0)
             make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).inset(20.0)
         }
         
-        tableView.snp.makeConstraints { (make) -> Void in
+        tableView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)

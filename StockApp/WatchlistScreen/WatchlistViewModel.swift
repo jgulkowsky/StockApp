@@ -29,6 +29,7 @@ class WatchlistViewModel {
     
     var stockItemsPublisher: AnyPublisher<[StockItem], Never> {
         stockItemsSubject
+            .removeDuplicates()
             .eraseToAnyPublisher()
     }
     
@@ -59,10 +60,9 @@ class WatchlistViewModel {
         fetchData()
     }
     
-    func getStockItemFor(index: Int) -> String? {
+    func getStockItemFor(index: Int) -> StockItem? {
         guard index < stockItemsSubject.value.count else { return nil }
-        let stockItem = stockItemsSubject.value[index]
-        return "\(stockItem.symbol) \(stockItem.quote.bidPrice) \(stockItem.quote.askPrice) \(stockItem.quote.lastPrice)"
+        return stockItemsSubject.value[index]
     }
 }
 
