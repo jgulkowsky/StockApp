@@ -22,6 +22,14 @@ class WatchlistViewController: UIViewController {
         return label
     }()
     
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell") // todo: use here static var from custom ViewCell class later on
+        return tableView
+    }()
+    
     private var store = Set<AnyCancellable>()
     
     init(viewModel: WatchlistViewModel) {
@@ -43,10 +51,29 @@ class WatchlistViewController: UIViewController {
     }
 }
 
+extension WatchlistViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.stockItemsCount
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        // todo: use here static var from custom ViewCell class later on
+        cell.textLabel?.text = viewModel.getStockItemFor(index: indexPath.row)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Handle row selection
+        print("Selected row \(indexPath.row + 1)")
+    }
+}
+
 private extension WatchlistViewController {
     func addViews() {
         view.addSubview(loadingView)
         view.addSubview(errorLabel)
+        view.addSubview(tableView)
     }
     
     func setupConstraints() {
@@ -60,6 +87,13 @@ private extension WatchlistViewController {
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).inset(20.0)
             make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).inset(20.0)
         }
+        
+        tableView.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
+            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
+        }
     }
     
     func setupBindings() {
@@ -68,6 +102,7 @@ private extension WatchlistViewController {
             .sink { state in
                 self.loadingView.isHidden = state != .loading
                 self.errorLabel.isHidden = state != .error
+                self.tableView.isHidden = state != .dataObtained
                 
                 if state == .loading {
                     self.loadingView.startAnimating()
@@ -80,6 +115,11 @@ private extension WatchlistViewController {
         viewModel.errorPublisher
             .receive(on: RunLoop.main)
             .sink { self.errorLabel.text = $0 }
+            .store(in: &store)
+        
+        viewModel.stockItemsPublisher
+            .receive(on: RunLoop.main)
+            .sink { _ in self.tableView.reloadData() }
             .store(in: &store)
     }
 }

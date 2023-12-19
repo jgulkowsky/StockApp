@@ -34,9 +34,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             )
         )
         
+        let watchlist = Watchlist(
+            id: UUID(),
+            name: "My First List",
+            symbols: ["AAPL", "MSFT", "GOOG"]
+        )
+        
         let watchlistViewController = WatchlistViewController(
             viewModel: WatchlistViewModel(
+                watchlistsProvider: WatchlistsProvider(),
                 quotesProvider: quotesProvider,
+                watchlist: watchlist,
                 refreshRate: 5
             )
         )
