@@ -7,6 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E31F6E182B30BBAE00CB0C3B /* QuoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31F6E172B30BBAE00CB0C3B /* QuoteViewController.swift */; };
+		E31F6E1A2B30BBBA00CB0C3B /* QuoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31F6E192B30BBBA00CB0C3B /* QuoteViewModel.swift */; };
+		E31F6E222B30BD9900CB0C3B /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = E31F6E212B30BD9900CB0C3B /* SnapKit-Dynamic */; };
+		E31F6E242B30C7F000CB0C3B /* ChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31F6E232B30C7F000CB0C3B /* ChartData.swift */; };
+		E31F6E262B30C81800CB0C3B /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31F6E252B30C81800CB0C3B /* Quote.swift */; };
+		E31F6E2B2B30CD1900CB0C3B /* DGChartsDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = E31F6E2A2B30CD1900CB0C3B /* DGChartsDynamic */; };
+		E32621C22B30F19000105455 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32621C12B30F19000105455 /* DateExtensions.swift */; };
+		E32621C52B31069200105455 /* QuotesProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32621C42B31069200105455 /* QuotesProviding.swift */; };
+		E32621C72B31071100105455 /* QuotesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32621C62B31071100105455 /* QuotesProvider.swift */; };
+		E32621CA2B31092500105455 /* ChartDataProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32621C92B31092500105455 /* ChartDataProviding.swift */; };
+		E32621CC2B31092F00105455 /* ChartDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32621CB2B31092F00105455 /* ChartDataProvider.swift */; };
+		E32621D02B310F4D00105455 /* ApiFetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32621CF2B310F4D00105455 /* ApiFetching.swift */; };
+		E32621D22B310F5B00105455 /* ApiFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32621D12B310F5B00105455 /* ApiFetcher.swift */; };
+		E32621D72B31122300105455 /* QuoteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32621D62B31122300105455 /* QuoteRequest.swift */; };
+		E32621D92B3113BD00105455 /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32621D82B3113BD00105455 /* ApiRequest.swift */; };
+		E32621E02B311CCE00105455 /* ChartDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32621DF2B311CCE00105455 /* ChartDataRequest.swift */; };
+		E32621E22B311DFD00105455 /* MockChartDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32621E12B311DFD00105455 /* MockChartDataProvider.swift */; };
+		E32621E42B311F7500105455 /* QuoteDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32621E32B311F7500105455 /* QuoteDecoder.swift */; };
+		E32621E72B311F8E00105455 /* ApiDecoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32621E62B311F8E00105455 /* ApiDecoding.swift */; };
+		E32621E92B31210400105455 /* ChartDataDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32621E82B31210400105455 /* ChartDataDecoder.swift */; };
+		E32621EB2B31227500105455 /* ChartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32621EA2B31227500105455 /* ChartItem.swift */; };
 		E37BC0872B2C7F590065F61A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC0862B2C7F590065F61A /* AppDelegate.swift */; };
 		E37BC0892B2C7F590065F61A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC0882B2C7F590065F61A /* SceneDelegate.swift */; };
 		E37BC08B2B2C7F590065F61A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC08A2B2C7F590065F61A /* ViewController.swift */; };
@@ -36,6 +57,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E31F6E172B30BBAE00CB0C3B /* QuoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteViewController.swift; sourceTree = "<group>"; };
+		E31F6E192B30BBBA00CB0C3B /* QuoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteViewModel.swift; sourceTree = "<group>"; };
+		E31F6E232B30C7F000CB0C3B /* ChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartData.swift; sourceTree = "<group>"; };
+		E31F6E252B30C81800CB0C3B /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
+		E32621C12B30F19000105455 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		E32621C42B31069200105455 /* QuotesProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesProviding.swift; sourceTree = "<group>"; };
+		E32621C62B31071100105455 /* QuotesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesProvider.swift; sourceTree = "<group>"; };
+		E32621C92B31092500105455 /* ChartDataProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartDataProviding.swift; sourceTree = "<group>"; };
+		E32621CB2B31092F00105455 /* ChartDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartDataProvider.swift; sourceTree = "<group>"; };
+		E32621CF2B310F4D00105455 /* ApiFetching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiFetching.swift; sourceTree = "<group>"; };
+		E32621D12B310F5B00105455 /* ApiFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiFetcher.swift; sourceTree = "<group>"; };
+		E32621D62B31122300105455 /* QuoteRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteRequest.swift; sourceTree = "<group>"; };
+		E32621D82B3113BD00105455 /* ApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
+		E32621DF2B311CCE00105455 /* ChartDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartDataRequest.swift; sourceTree = "<group>"; };
+		E32621E12B311DFD00105455 /* MockChartDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockChartDataProvider.swift; sourceTree = "<group>"; };
+		E32621E32B311F7500105455 /* QuoteDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteDecoder.swift; sourceTree = "<group>"; };
+		E32621E62B311F8E00105455 /* ApiDecoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiDecoding.swift; sourceTree = "<group>"; };
+		E32621E82B31210400105455 /* ChartDataDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartDataDecoder.swift; sourceTree = "<group>"; };
+		E32621EA2B31227500105455 /* ChartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartItem.swift; sourceTree = "<group>"; };
 		E37BC0832B2C7F590065F61A /* StockApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E37BC0862B2C7F590065F61A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E37BC0882B2C7F590065F61A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +96,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E31F6E2B2B30CD1900CB0C3B /* DGChartsDynamic in Frameworks */,
+				E31F6E222B30BD9900CB0C3B /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +118,92 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E31F6E162B30BB9C00CB0C3B /* QuoteScreen */ = {
+			isa = PBXGroup;
+			children = (
+				E31F6E172B30BBAE00CB0C3B /* QuoteViewController.swift */,
+				E31F6E192B30BBBA00CB0C3B /* QuoteViewModel.swift */,
+				E31F6E232B30C7F000CB0C3B /* ChartData.swift */,
+				E32621EA2B31227500105455 /* ChartItem.swift */,
+			);
+			path = QuoteScreen;
+			sourceTree = "<group>";
+		};
+		E32621C02B30F17E00105455 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E32621C12B30F19000105455 /* DateExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E32621C32B31067600105455 /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				E32621CD2B31093300105455 /* ChartDataProvider */,
+				E32621C82B31090E00105455 /* QuotesProvider */,
+			);
+			path = Providers;
+			sourceTree = "<group>";
+		};
+		E32621C82B31090E00105455 /* QuotesProvider */ = {
+			isa = PBXGroup;
+			children = (
+				E32621C42B31069200105455 /* QuotesProviding.swift */,
+				E32621C62B31071100105455 /* QuotesProvider.swift */,
+			);
+			path = QuotesProvider;
+			sourceTree = "<group>";
+		};
+		E32621CD2B31093300105455 /* ChartDataProvider */ = {
+			isa = PBXGroup;
+			children = (
+				E32621C92B31092500105455 /* ChartDataProviding.swift */,
+				E32621CB2B31092F00105455 /* ChartDataProvider.swift */,
+				E32621E12B311DFD00105455 /* MockChartDataProvider.swift */,
+			);
+			path = ChartDataProvider;
+			sourceTree = "<group>";
+		};
+		E32621CE2B310F3A00105455 /* ApiFetcher */ = {
+			isa = PBXGroup;
+			children = (
+				E32621E52B311F7B00105455 /* Decoders */,
+				E32621D52B31120F00105455 /* Requests */,
+				E32621CF2B310F4D00105455 /* ApiFetching.swift */,
+				E32621D12B310F5B00105455 /* ApiFetcher.swift */,
+			);
+			path = ApiFetcher;
+			sourceTree = "<group>";
+		};
+		E32621D52B31120F00105455 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				E32621D62B31122300105455 /* QuoteRequest.swift */,
+				E32621D82B3113BD00105455 /* ApiRequest.swift */,
+				E32621DF2B311CCE00105455 /* ChartDataRequest.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		E32621DE2B311BC500105455 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				E31F6E252B30C81800CB0C3B /* Quote.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		E32621E52B311F7B00105455 /* Decoders */ = {
+			isa = PBXGroup;
+			children = (
+				E32621E32B311F7500105455 /* QuoteDecoder.swift */,
+				E32621E62B311F8E00105455 /* ApiDecoding.swift */,
+				E32621E82B31210400105455 /* ChartDataDecoder.swift */,
+			);
+			path = Decoders;
+			sourceTree = "<group>";
+		};
 		E37BC07A2B2C7F590065F61A = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +227,11 @@
 		E37BC0852B2C7F590065F61A /* StockApp */ = {
 			isa = PBXGroup;
 			children = (
+				E32621DE2B311BC500105455 /* Common */,
+				E32621CE2B310F3A00105455 /* ApiFetcher */,
+				E32621C32B31067600105455 /* Providers */,
+				E32621C02B30F17E00105455 /* Extensions */,
+				E31F6E162B30BB9C00CB0C3B /* QuoteScreen */,
 				E37BC0862B2C7F590065F61A /* AppDelegate.swift */,
 				E37BC0882B2C7F590065F61A /* SceneDelegate.swift */,
 				E37BC08A2B2C7F590065F61A /* ViewController.swift */,
@@ -143,6 +276,10 @@
 			dependencies = (
 			);
 			name = StockApp;
+			packageProductDependencies = (
+				E31F6E212B30BD9900CB0C3B /* SnapKit-Dynamic */,
+				E31F6E2A2B30CD1900CB0C3B /* DGChartsDynamic */,
+			);
 			productName = StockApp;
 			productReference = E37BC0832B2C7F590065F61A /* StockApp.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +352,10 @@
 				Base,
 			);
 			mainGroup = E37BC07A2B2C7F590065F61A;
+			packageReferences = (
+				E31F6E1E2B30BD9900CB0C3B /* XCRemoteSwiftPackageReference "SnapKit" */,
+				E31F6E272B30CD1900CB0C3B /* XCRemoteSwiftPackageReference "Charts" */,
+			);
 			productRefGroup = E37BC0842B2C7F590065F61A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -257,10 +398,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E32621C72B31071100105455 /* QuotesProvider.swift in Sources */,
+				E32621E42B311F7500105455 /* QuoteDecoder.swift in Sources */,
+				E32621CA2B31092500105455 /* ChartDataProviding.swift in Sources */,
 				E37BC0B72B2C82620065F61A /* Plan.swift in Sources */,
+				E32621E72B311F8E00105455 /* ApiDecoding.swift in Sources */,
+				E32621CC2B31092F00105455 /* ChartDataProvider.swift in Sources */,
 				E37BC08B2B2C7F590065F61A /* ViewController.swift in Sources */,
 				E37BC0872B2C7F590065F61A /* AppDelegate.swift in Sources */,
+				E32621EB2B31227500105455 /* ChartItem.swift in Sources */,
+				E31F6E262B30C81800CB0C3B /* Quote.swift in Sources */,
+				E31F6E1A2B30BBBA00CB0C3B /* QuoteViewModel.swift in Sources */,
+				E32621C52B31069200105455 /* QuotesProviding.swift in Sources */,
+				E32621C22B30F19000105455 /* DateExtensions.swift in Sources */,
 				E37BC0892B2C7F590065F61A /* SceneDelegate.swift in Sources */,
+				E31F6E182B30BBAE00CB0C3B /* QuoteViewController.swift in Sources */,
+				E32621D72B31122300105455 /* QuoteRequest.swift in Sources */,
+				E32621D22B310F5B00105455 /* ApiFetcher.swift in Sources */,
+				E32621E22B311DFD00105455 /* MockChartDataProvider.swift in Sources */,
+				E32621D02B310F4D00105455 /* ApiFetching.swift in Sources */,
+				E31F6E242B30C7F000CB0C3B /* ChartData.swift in Sources */,
+				E32621E02B311CCE00105455 /* ChartDataRequest.swift in Sources */,
+				E32621D92B3113BD00105455 /* ApiRequest.swift in Sources */,
+				E32621E92B31210400105455 /* ChartDataDecoder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,6 +596,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -463,6 +624,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -592,6 +754,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E31F6E1E2B30BD9900CB0C3B /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+		E31F6E272B30CD1900CB0C3B /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E31F6E212B30BD9900CB0C3B /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E31F6E1E2B30BD9900CB0C3B /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+		E31F6E2A2B30CD1900CB0C3B /* DGChartsDynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E31F6E272B30CD1900CB0C3B /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = DGChartsDynamic;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E37BC07B2B2C7F590065F61A /* Project object */;
 }
