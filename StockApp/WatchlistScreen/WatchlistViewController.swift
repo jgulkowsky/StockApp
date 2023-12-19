@@ -75,8 +75,7 @@ extension WatchlistViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // Handle row selection
-        print("Selected row \(indexPath.row + 1)")
+        viewModel.onItemTapped(at: indexPath.row)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -89,6 +88,13 @@ extension WatchlistViewController: UITableViewDataSource, UITableViewDelegate {
         ) as! WatchlistTableViewHeader
         view.items = ["name", "bid price", "ask price", "last price"]
         return view
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            viewModel.onItemSwipedOut(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
 }
 

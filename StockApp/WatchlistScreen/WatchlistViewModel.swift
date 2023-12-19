@@ -44,7 +44,7 @@ class WatchlistViewModel {
     
     private let watchlistsProvider: WatchlistsProviding
     private let quotesProvider: QuotesProviding
-    private let watchlist: Watchlist
+    private var watchlist: Watchlist
     private let refreshRate: Double
     
     init(watchlistsProvider: WatchlistsProviding,
@@ -63,6 +63,26 @@ class WatchlistViewModel {
     func getStockItemFor(index: Int) -> StockItem? {
         guard index < stockItemsSubject.value.count else { return nil }
         return stockItemsSubject.value[index]
+    }
+    
+    func onItemTapped(at index: Int) {
+        let stockItem = stockItemsSubject.value[index]
+        let symbol = stockItem.symbol
+        // todo: inform coordinator -> send there symbol as data (or consider sending whole stockItem so next VC don't have to load data for itself or even can but at least have sth to show without loading indicator)
+    }
+    
+    func onAddButtonTapped() {
+        // todo: inform coordinator
+    }
+    
+    func onItemSwipedOut(at index: Int) {
+        var stockItems = stockItemsSubject.value
+        let removedItem = stockItems.remove(at: index)
+        stockItemsSubject.send(stockItems)
+        
+        watchlist.symbols.removeAll { $0 == removedItem.symbol }
+        
+        // todo: we need to remove given symbol for this watchlist - this information needs to go to the WatchlistsProvider
     }
 }
 
