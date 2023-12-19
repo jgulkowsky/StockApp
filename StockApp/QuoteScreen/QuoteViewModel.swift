@@ -9,6 +9,18 @@ import Foundation
 import Combine
 
 class QuoteViewModel {
+    enum State {
+        case loading
+        case error
+        case dataObtained
+    }
+    
+    var statePublisher: AnyPublisher<State, Never> {
+        stateSubject
+            .removeDuplicates()
+            .eraseToAnyPublisher()
+    }
+    
     var chartDataPublisher: AnyPublisher<ChartData, Never> {
         chartDataSubject
             .eraseToAnyPublisher()
@@ -50,10 +62,19 @@ class QuoteViewModel {
             .eraseToAnyPublisher()
     }
     
+    var errorPublisher: AnyPublisher<String?, Never> {
+        errorSubject
+            .eraseToAnyPublisher()
+    }
+    
+    private var stateSubject = CurrentValueSubject<State, Never>(.loading)
+    
     private var chartDataSubject = CurrentValueSubject<ChartData, Never>(ChartData(values: []))
     private var bidPriceSubject = CurrentValueSubject<Double?, Never>(nil)
     private var askPriceSubject = CurrentValueSubject<Double?, Never>(nil)
     private var lastPriceSubject = CurrentValueSubject<Double?, Never>(nil)
+    
+    private var errorSubject = CurrentValueSubject<String?, Never>(nil)
     
     private var timer: Publishers.Autoconnect<Timer.TimerPublisher>?
     private var store = Set<AnyCancellable>()
@@ -88,11 +109,11 @@ private extension QuoteViewModel {
                 askPriceSubject.send(quote.askPrice)
                 lastPriceSubject.send(quote.lastPrice)
                 chartDataSubject.send(chartData)
-                
+                stateSubject.send(.dataObtained)
                 self.setupTimer()
             } catch {
-                print("Error")
-                // todo: we need to show error or just show nil and try again? (up to N times)
+                errorSubject.send("Unfortunatelly cannot fetch data in current moment.\n\nCheck your connection and try again.")
+                stateSubject.send(.error)
             }
         }
     }
@@ -103,14 +124,13 @@ private extension QuoteViewModel {
         self.timer?
             .sink { _ in
                 Task {
-                    do {
-                        let quote = try await self.quotesProvider.getQuote(forSymbol: self.symbol)
+                    // todo: we could check if stock market is closed - if so then we should't make calls - this logic should be put into quotesProvider that would just return last quote and not send request until the stock is open once again
+                    if let quote = try? await self.quotesProvider.getQuote(forSymbol: self.symbol) {
                         self.bidPriceSubject.send(quote.bidPrice)
                         self.askPriceSubject.send(quote.askPrice)
                         self.lastPriceSubject.send(quote.lastPrice)
-                    } catch {
-                        print("Error")
-                        // todo: we need to show error or just show nil and try again? (up to N times)
+                        self.errorSubject.send(nil)
+                        self.stateSubject.send(.dataObtained)
                     }
                 }
             }
