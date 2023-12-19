@@ -16,29 +16,15 @@ import Combine
 struct Watchlist {
     var id: UUID // or Date or String
     var name: String // e.g. My first list or Big Tech Companies
-    var items: [StockItem] // e.g. AAPL, MSFT, GOOG
-}
-
-struct StockItem {
-    var id: UUID
-    var symbol: String // e.g. AAPL, MSFT, GOOG
-    var name: String // e.g. Alphabet Inc. - Class A Common Stock
-    var quote: Quote?
+    var symbols: [String] // e.g. AAPL, MSFT, GOOG
 }
 
 // + for sure some request structs
 
 // Providers:
 
-protocol WatchlistsProviding {
-    var watchlists: AnyPublisher<[Watchlist], Never> { get }
-    func onAdd(watchlist: Watchlist)
-    func onRemove(watchlist: Watchlist)
-    func onUpdate(watchlist: Watchlist)
-}
-
 protocol StockItemsProviding {
-    func getStockItems(startingWith text: String) async throws -> [StockItem]
+    func getStockItems(startingWith text: String) async throws -> [String]
 }
 
 protocol PersistentStorageProviding {
@@ -66,10 +52,6 @@ protocol Coordinator {
 // ViewModels:
 
 class WatchlistsViewModel {}
-
-class WatchlistViewModel {}
-
-class QuoteDetailsViewModel {}
 
 class AddNewWatchlistViewModel {}
 

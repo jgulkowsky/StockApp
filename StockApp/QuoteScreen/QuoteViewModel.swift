@@ -9,6 +9,7 @@ import Foundation
 import Combine
 
 class QuoteViewModel {
+    // todo: consider putting into one place as this is same (at least for now) as in WatchlistViewModel
     enum State {
         case loading
         case error

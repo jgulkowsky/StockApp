@@ -19,11 +19,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: windowScene)
         let apiFetcher = ApiFetcher()
-        window.rootViewController = QuoteViewController(
+        let quotesProvider = QuotesProvider(
+            apiFetcher: apiFetcher
+        )
+        
+        let quoteViewController = QuoteViewController(
             viewModel: QuoteViewModel(
-                quotesProvider: QuotesProvider(
-                    apiFetcher: apiFetcher
-                ),
+                quotesProvider: quotesProvider,
                 chartDataProvider: ChartDataProvider(
                     apiFetcher: apiFetcher
                 ),
@@ -31,9 +33,29 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 refreshRate: 5
             )
         )
+        
+        let watchlist = Watchlist(
+            id: UUID(uuidString: "E358D0AA-1DDC-4551-81CD-1AF209CA2D9E")!, // todo: just for now so WatchlistsProvider has watchlist with the same id
+            name: "My First List",
+            symbols: ["AAPL", "MSFT", "GOOG"]
+        )
+        
+        let watchlistViewController = WatchlistViewController(
+            viewModel: WatchlistViewModel(
+                watchlistsProvider: WatchlistsProvider(),
+                quotesProvider: quotesProvider,
+                watchlist: watchlist,
+                refreshRate: 5
+            )
+        )
+        
+        let navigationViewController = UINavigationController(
+            rootViewController: watchlistViewController
+        )
+        
+        window.rootViewController = navigationViewController
         self.window = window
         window.makeKeyAndVisible()
-        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
