@@ -19,7 +19,6 @@ class ChartDataProvider: ChartDataProviding {
             forRequest: ChartDataRequest(symbol),
             andDecoder: ChartDataDecoder()
         )
-        print("@jgu: chartData: \(chartData)")
         return chartData
     }
 }

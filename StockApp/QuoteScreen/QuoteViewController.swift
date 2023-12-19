@@ -82,9 +82,7 @@ class QuoteViewController: UIViewController {
 }
 
 extension QuoteViewController: ChartViewDelegate {
-    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-        print("@jgu: chartValueSelected: \(entry)")
-    }
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {}
 }
 
 private extension QuoteViewController {
