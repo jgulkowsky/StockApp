@@ -52,6 +52,12 @@ class WatchlistViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .add,
+            target: self,
+            action: #selector(addButtonTapped)
+        )
+        
         addViews()
         setupConstraints()
         setupBindings()
@@ -126,6 +132,11 @@ private extension WatchlistViewController {
     }
     
     func setupBindings() {
+        viewModel.titlePublisher
+            .receive(on: RunLoop.main)
+            .sink { self.title = $0 }
+            .store(in: &store)
+        
         viewModel.statePublisher
             .receive(on: RunLoop.main)
             .sink { state in
@@ -150,5 +161,9 @@ private extension WatchlistViewController {
             .receive(on: RunLoop.main)
             .sink { _ in self.tableView.reloadData() }
             .store(in: &store)
+    }
+    
+    @objc func addButtonTapped() {
+        viewModel.onAddButtonTapped()
     }
 }

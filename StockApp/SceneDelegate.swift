@@ -49,10 +49,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             )
         )
         
-        window.rootViewController = watchlistViewController
+        let navigationViewController = UINavigationController(
+            rootViewController: watchlistViewController
+        )
+        
+        window.rootViewController = navigationViewController
         self.window = window
         window.makeKeyAndVisible()
-        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -27,6 +27,12 @@ class WatchlistViewModel {
             .eraseToAnyPublisher()
     }
     
+    var titlePublisher: AnyPublisher<String, Never> {
+        titleSubject
+            .removeDuplicates()
+            .eraseToAnyPublisher()
+    }
+    
     var stockItemsPublisher: AnyPublisher<[StockItem], Never> {
         stockItemsSubject
             .removeDuplicates()
@@ -37,6 +43,7 @@ class WatchlistViewModel {
     
     private var stateSubject = CurrentValueSubject<State, Never>(.loading)
     private var errorSubject = CurrentValueSubject<String?, Never>(nil)
+    private var titleSubject = CurrentValueSubject<String, Never>("")
     private var stockItemsSubject = CurrentValueSubject<[StockItem], Never>([])
     
     private var timer: Publishers.Autoconnect<Timer.TimerPublisher>?
@@ -101,6 +108,7 @@ private extension WatchlistViewModel {
                     where: { $0.id == self.watchlist.id }
                 ) {
                     self.watchlist = watchlistFromProvider
+                    self.titleSubject.send(self.watchlist.name)
                 }
             }
             .store(in: &store)
