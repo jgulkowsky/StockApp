@@ -34,6 +34,7 @@
 		E32621F52B320B9700105455 /* WatchlistsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32621F42B320B9700105455 /* WatchlistsProvider.swift */; };
 		E32621F72B3239CC00105455 /* StockItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32621F62B3239CC00105455 /* StockItem.swift */; };
 		E32621F92B323FB800105455 /* WatchlistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32621F82B323FB800105455 /* WatchlistTableViewCell.swift */; };
+		E32621FB2B32499E00105455 /* WatchlistTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32621FA2B32499E00105455 /* WatchlistTableViewHeader.swift */; };
 		E37BC0872B2C7F590065F61A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC0862B2C7F590065F61A /* AppDelegate.swift */; };
 		E37BC0892B2C7F590065F61A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC0882B2C7F590065F61A /* SceneDelegate.swift */; };
 		E37BC0902B2C7F5A0065F61A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E37BC08F2B2C7F5A0065F61A /* Assets.xcassets */; };
@@ -87,6 +88,7 @@
 		E32621F42B320B9700105455 /* WatchlistsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistsProvider.swift; sourceTree = "<group>"; };
 		E32621F62B3239CC00105455 /* StockItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockItem.swift; sourceTree = "<group>"; };
 		E32621F82B323FB800105455 /* WatchlistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistTableViewCell.swift; sourceTree = "<group>"; };
+		E32621FA2B32499E00105455 /* WatchlistTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistTableViewHeader.swift; sourceTree = "<group>"; };
 		E37BC0832B2C7F590065F61A /* StockApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E37BC0862B2C7F590065F61A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E37BC0882B2C7F590065F61A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				E32621EF2B3202A200105455 /* WatchlistViewModel.swift */,
 				E32621F62B3239CC00105455 /* StockItem.swift */,
 				E32621F82B323FB800105455 /* WatchlistTableViewCell.swift */,
+				E32621FA2B32499E00105455 /* WatchlistTableViewHeader.swift */,
 			);
 			path = WatchlistScreen;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				E32621F92B323FB800105455 /* WatchlistTableViewCell.swift in Sources */,
 				E32621D72B31122300105455 /* QuoteRequest.swift in Sources */,
 				E32621D22B310F5B00105455 /* ApiFetcher.swift in Sources */,
+				E32621FB2B32499E00105455 /* WatchlistTableViewHeader.swift in Sources */,
 				E32621E22B311DFD00105455 /* MockChartDataProvider.swift in Sources */,
 				E32621EE2B32029800105455 /* WatchlistViewController.swift in Sources */,
 				E32621D02B310F4D00105455 /* ApiFetching.swift in Sources */,

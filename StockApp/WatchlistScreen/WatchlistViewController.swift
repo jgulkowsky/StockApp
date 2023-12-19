@@ -30,6 +30,10 @@ class WatchlistViewController: UIViewController {
             WatchlistTableViewCell.self,
             forCellReuseIdentifier: WatchlistTableViewCell.id
         )
+        tableView.register(
+            WatchlistTableViewHeader.self,
+            forHeaderFooterViewReuseIdentifier: WatchlistTableViewHeader.id
+        )
         return tableView
     }()
     
@@ -63,10 +67,9 @@ extension WatchlistViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: WatchlistTableViewCell.id,
             for: indexPath
-        )
+        ) as! WatchlistTableViewCell
         
-        (cell as? WatchlistTableViewCell)?
-            .stockItem = viewModel.getStockItemFor(index: indexPath.row)
+        cell.stockItem = viewModel.getStockItemFor(index: indexPath.row)
         
         return cell
     }
@@ -78,6 +81,14 @@ extension WatchlistViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 40.0
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = tableView.dequeueReusableHeaderFooterView(
+            withIdentifier: WatchlistTableViewHeader.id
+        ) as! WatchlistTableViewHeader
+        view.items = ["name", "bid price", "ask price", "last price"]
+        return view
     }
 }
 
