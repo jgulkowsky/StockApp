@@ -75,6 +75,10 @@ extension WatchlistViewController: UITableViewDataSource, UITableViewDelegate {
         // Handle row selection
         print("Selected row \(indexPath.row + 1)")
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 40.0
+    }
 }
 
 private extension WatchlistViewController {

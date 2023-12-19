@@ -10,6 +10,7 @@ import SnapKit
 
 class WatchlistTableViewCell: UITableViewCell {
     static let id = "WatchlistTableViewCell"
+    private static let fontSize = 16.0
     
     var stockItem: StockItem? {
         didSet {
@@ -22,14 +23,34 @@ class WatchlistTableViewCell: UITableViewCell {
         }
     }
     
-    private lazy var symbolLabel: UILabel = UILabel(frame: .zero)
-    private lazy var bidPriceLabel: UILabel = UILabel(frame: .zero)
-    private lazy var askPriceLabel: UILabel = UILabel(frame: .zero)
-    private lazy var lastPriceLabel: UILabel = UILabel(frame: .zero)
+    private lazy var symbolLabel: UILabel = {
+        let label = UILabel(frame: .zero)
+        label.font = UIFont.boldSystemFont(ofSize: Self.fontSize)
+        return label
+    }()
+    
+    private lazy var bidPriceLabel: UILabel = {
+        let label = UILabel(frame: .zero)
+        label.font = UIFont.systemFont(ofSize: Self.fontSize)
+        return label
+    }()
+    
+    private lazy var askPriceLabel: UILabel = {
+        let label = UILabel(frame: .zero)
+        label.font = UIFont.systemFont(ofSize: Self.fontSize)
+        return label
+    }()
+    
+    private lazy var lastPriceLabel: UILabel = {
+        let label = UILabel(frame: .zero)
+        label.font = UIFont.systemFont(ofSize: Self.fontSize)
+        return label
+    }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
+        accessoryType = .disclosureIndicator
         self.addViews()
         self.setupConstraints()
     }
@@ -48,12 +69,13 @@ private extension WatchlistTableViewCell {
     }
     
     func setupConstraints() {
-        let horizontalPadding = 20.0
-        let labelWidth = (UIScreen.main.bounds.width - 2 * horizontalPadding) / 4
+        let horizontalPaddingLeft = 20.0
+        let horizontalPaddingRight = 40.0
+        let labelWidth = (UIScreen.main.bounds.width - horizontalPaddingLeft - horizontalPaddingRight) / 4
         
         symbolLabel.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()
-            make.leading.equalToSuperview().inset(horizontalPadding)
+            make.leading.equalToSuperview().inset(horizontalPaddingLeft)
             make.width.equalTo(labelWidth)
         }
         
@@ -72,7 +94,7 @@ private extension WatchlistTableViewCell {
         lastPriceLabel.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()
             make.leading.equalTo(askPriceLabel.snp.trailing)
-            make.trailing.equalToSuperview().inset(horizontalPadding)
+            make.trailing.equalToSuperview().inset(horizontalPaddingRight)
         }
     }
 }
