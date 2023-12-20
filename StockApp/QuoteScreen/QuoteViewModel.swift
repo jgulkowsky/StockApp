@@ -8,20 +8,7 @@
 import Foundation
 import Combine
 
-class QuoteViewModel {
-    // todo: consider putting into one place as this is same (at least for now) as in WatchlistViewModel
-    enum State {
-        case loading
-        case error
-        case dataObtained
-    }
-    
-    var statePublisher: AnyPublisher<State, Never> {
-        stateSubject
-            .removeDuplicates()
-            .eraseToAnyPublisher()
-    }
-    
+class QuoteViewModel: StatefulViewModel {
     var chartDataPublisher: AnyPublisher<ChartData, Never> {
         chartDataSubject
             .eraseToAnyPublisher()
@@ -63,19 +50,13 @@ class QuoteViewModel {
             .eraseToAnyPublisher()
     }
     
-    var errorPublisher: AnyPublisher<String?, Never> {
-        errorSubject
-            .eraseToAnyPublisher()
-    }
-    
     private var stateSubject = CurrentValueSubject<State, Never>(.loading)
+    private var errorSubject = CurrentValueSubject<String?, Never>(nil)
     
     private var chartDataSubject = CurrentValueSubject<ChartData, Never>(ChartData(values: []))
     private var bidPriceSubject = CurrentValueSubject<Double?, Never>(nil)
     private var askPriceSubject = CurrentValueSubject<Double?, Never>(nil)
     private var lastPriceSubject = CurrentValueSubject<Double?, Never>(nil)
-    
-    private var errorSubject = CurrentValueSubject<String?, Never>(nil)
     
     private var timerCancellable: AnyCancellable?
     
@@ -99,6 +80,11 @@ class QuoteViewModel {
         self.chartDataProvider = chartDataProvider
         self.symbol = symbol
         self.refreshRate = refreshRate
+        
+        super.init(
+            stateSubject: stateSubject,
+            errorSubject: errorSubject
+        )
     }
     
 #if DEBUG

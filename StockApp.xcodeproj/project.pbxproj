@@ -54,6 +54,7 @@
 		E32622262B335BA500105455 /* SymbolsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32622252B335BA500105455 /* SymbolsData.swift */; };
 		E32622282B335BB800105455 /* SymbolItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32622272B335BB800105455 /* SymbolItem.swift */; };
 		E326222A2B335EAE00105455 /* SymbolsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32622292B335EAE00105455 /* SymbolsResponse.swift */; };
+		E326222C2B336CC800105455 /* StatefulViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E326222B2B336CC800105455 /* StatefulViewModel.swift */; };
 		E37BC0872B2C7F590065F61A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC0862B2C7F590065F61A /* AppDelegate.swift */; };
 		E37BC0892B2C7F590065F61A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC0882B2C7F590065F61A /* SceneDelegate.swift */; };
 		E37BC0902B2C7F5A0065F61A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E37BC08F2B2C7F5A0065F61A /* Assets.xcassets */; };
@@ -127,6 +128,7 @@
 		E32622252B335BA500105455 /* SymbolsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsData.swift; sourceTree = "<group>"; };
 		E32622272B335BB800105455 /* SymbolItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolItem.swift; sourceTree = "<group>"; };
 		E32622292B335EAE00105455 /* SymbolsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsResponse.swift; sourceTree = "<group>"; };
+		E326222B2B336CC800105455 /* StatefulViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulViewModel.swift; sourceTree = "<group>"; };
 		E37BC0832B2C7F590065F61A /* StockApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E37BC0862B2C7F590065F61A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E37BC0882B2C7F590065F61A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 			children = (
 				E326221F2B334A8000105455 /* NoNavigationBackButtonTextViewController.swift */,
 				E31F6E252B30C81800CB0C3B /* Quote.swift */,
+				E326222B2B336CC800105455 /* StatefulViewModel.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -537,6 +540,7 @@
 				E32621FD2B3265DF00105455 /* Coordinator.swift in Sources */,
 				E32621E42B311F7500105455 /* QuoteDecoder.swift in Sources */,
 				E32622172B33401300105455 /* AddNewSymbolTableViewCell.swift in Sources */,
+				E326222C2B336CC800105455 /* StatefulViewModel.swift in Sources */,
 				E32621CA2B31092500105455 /* ChartDataProviding.swift in Sources */,
 				E37BC0B72B2C82620065F61A /* Plan.swift in Sources */,
 				E32622112B32712E00105455 /* AddNewSymbolViewController.swift in Sources */,

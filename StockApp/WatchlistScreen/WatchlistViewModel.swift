@@ -8,25 +8,7 @@
 import Foundation
 import Combine
 
-class WatchlistViewModel {
-    // todo: consider putting into one place as this is same (at least for now) as in QuoteViewModel
-    enum State {
-        case loading
-        case error
-        case dataObtained
-    }
-    
-    var statePublisher: AnyPublisher<State, Never> {
-        stateSubject
-            .removeDuplicates()
-            .eraseToAnyPublisher()
-    }
-    
-    var errorPublisher: AnyPublisher<String?, Never> {
-        errorSubject
-            .eraseToAnyPublisher()
-    }
-    
+class WatchlistViewModel: StatefulViewModel {
     var titlePublisher: AnyPublisher<String, Never> {
         titleSubject
             .removeDuplicates()
@@ -43,6 +25,7 @@ class WatchlistViewModel {
     
     private var stateSubject = CurrentValueSubject<State, Never>(.loading)
     private var errorSubject = CurrentValueSubject<String?, Never>(nil)
+    
     private var titleSubject = CurrentValueSubject<String, Never>("")
     private var stockItemsSubject = CurrentValueSubject<[StockItem], Never>([])
     
@@ -69,6 +52,11 @@ class WatchlistViewModel {
         self.quotesProvider = quotesProvider
         self.watchlist = watchlist
         self.refreshRate = refreshRate
+        
+        super.init(
+            stateSubject: stateSubject,
+            errorSubject: errorSubject
+        )
         
         setupBindings()
     }
