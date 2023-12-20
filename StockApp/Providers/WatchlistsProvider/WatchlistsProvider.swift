@@ -11,6 +11,7 @@ import Combine
 class WatchlistsProvider: WatchlistsProviding {
     var watchlists: AnyPublisher<[Watchlist], Never> {
         watchlistsSubject
+            .debounce(for: 0.8, scheduler: RunLoop.main) // todo: just to mimic the async action - remove later on
             .eraseToAnyPublisher()
     }
     
@@ -18,7 +19,12 @@ class WatchlistsProvider: WatchlistsProviding {
     
     func onAdd(watchlist: Watchlist) {}
     
-    func onRemove(watchlist: Watchlist) {}
+    func onRemove(watchlist: Watchlist) {
+        var watchlists = watchlistsSubject.value
+        guard let index = watchlists.firstIndex(where: { $0.id == watchlist.id } ) else { return }
+        watchlists.remove(at: index)
+        watchlistsSubject.send(watchlists)
+    }
 
     func onUpdate(watchlist: Watchlist) {
         var watchlists = watchlistsSubject.value
@@ -31,7 +37,7 @@ class WatchlistsProvider: WatchlistsProviding {
         // todo: normally we would get it from CoreData
         let watchlists = [
             Watchlist(
-                id: UUID(uuidString: "E358D0AA-1DDC-4551-81CD-1AF209CA2D9E")!, // todo: just for now so WatchlistsViewModel has watchlist with the same id
+                id: UUID(),
                 name: "My First List",
                 symbols: ["AAPL", "MSFT", "GOOG"]
             ),
