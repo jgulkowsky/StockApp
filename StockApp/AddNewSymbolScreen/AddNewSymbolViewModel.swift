@@ -18,6 +18,9 @@ class AddNewSymbolViewModel {
     var symbolsCount: Int { symbolsSubject.value.count }
     
     private var symbolsSubject = CurrentValueSubject<[String], Never>([])
+    private var searchTextSubject = CurrentValueSubject<String?, Never>(nil)
+    
+    private var store = Set<AnyCancellable>()
     
     private unowned let coordinator: Coordinator
     private let symbolsProvider: SymbolsProviding
@@ -30,6 +33,7 @@ class AddNewSymbolViewModel {
 #endif
         self.coordinator = coordinator
         self.symbolsProvider = symbolsProvider
+        setupBindings()
     }
     
 #if DEBUG
@@ -44,7 +48,7 @@ class AddNewSymbolViewModel {
     }
     
     func onSearchTextChanged(to newText: String) {
-        fetchData(for: newText)
+        searchTextSubject.send(newText)
     }
     
     func onItemTapped(at index: Int) {
@@ -54,6 +58,17 @@ class AddNewSymbolViewModel {
 }
 
 private extension AddNewSymbolViewModel {
+    func setupBindings() {
+        self.searchTextSubject
+            .debounce(for: .milliseconds(500), scheduler: DispatchQueue.main)
+            .removeDuplicates()
+            .compactMap { $0 }
+            .sink { [weak self] searchText in
+                self?.fetchData(for: searchText)
+            }
+            .store(in: &store)
+    }
+    
     func fetchData(for text: String) {
         Task {
             do {
