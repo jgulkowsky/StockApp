@@ -6,8 +6,7 @@
 //
 
 import UIKit
-
-// todo: generally it's very similar (the same in fact in UI part) to WatchlistTableViewCell - we should have them into one place
+import SnapKit
 
 class WatchlistTableViewHeader: UITableViewHeaderFooterView {
     static let id = "WatchlistTableViewHeader"

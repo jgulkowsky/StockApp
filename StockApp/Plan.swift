@@ -19,13 +19,7 @@ struct Watchlist {
     var symbols: [String] // e.g. AAPL, MSFT, GOOG
 }
 
-// + for sure some request structs
-
 // Providers:
-
-protocol StockItemsProviding {
-    func getStockItems(startingWith text: String) async throws -> [String]
-}
 
 protocol PersistentStorageProviding {
     func getData<T>() async throws -> T

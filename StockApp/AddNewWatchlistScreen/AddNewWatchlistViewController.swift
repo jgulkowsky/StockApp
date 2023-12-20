@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddNewWatchlistViewController: UIViewController {
+class AddNewWatchlistViewController: NoNavigationBackButtonTextViewController {
     private var viewModel: AddNewWatchlistViewModel
     
     init(viewModel: AddNewWatchlistViewModel) {

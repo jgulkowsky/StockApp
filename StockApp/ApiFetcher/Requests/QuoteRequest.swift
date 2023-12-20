@@ -15,9 +15,12 @@ struct QuoteRequest: ApiRequest {
         urlComponents.scheme = "https"
         urlComponents.host = "cloud.iexapis.com"
         urlComponents.path = "/stable/stock/\(symbol.lowercased())/quote"
-        urlComponents.queryItems = [
-            URLQueryItem(name: "token", value: self.apiToken)
-        ]
+        
+        if let apiToken = self.apiToken {
+            urlComponents.queryItems = [
+                URLQueryItem(name: "token", value: apiToken)
+            ]
+        }
         
         let url = urlComponents.url!
         self.request = URLRequest(url: url)

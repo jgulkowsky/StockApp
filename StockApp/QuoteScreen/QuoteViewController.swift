@@ -10,7 +10,7 @@ import SnapKit
 import Combine
 import DGCharts
 
-class QuoteViewController: UIViewController {
+class QuoteViewController: NoNavigationBackButtonTextViewController {
     private var viewModel: QuoteViewModel
     
     private lazy var loadingView = UIActivityIndicatorView(style: .large)
@@ -79,6 +79,17 @@ class QuoteViewController: UIViewController {
         setupConstraints()
         setupBindings()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.onViewWillAppear()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        viewModel.onViewWillDisappear()
+    }
+
 }
 
 extension QuoteViewController: ChartViewDelegate {
@@ -134,6 +145,13 @@ private extension QuoteViewController {
     }
     
     func setupBindings() {
+        viewModel.titlePublisher
+            .receive(on: RunLoop.main)
+            .sink { [weak self] title in
+                self?.title = title
+            }
+            .store(in: &store)
+        
         viewModel.statePublisher
             .receive(on: RunLoop.main)
             .sink { [weak self] state in

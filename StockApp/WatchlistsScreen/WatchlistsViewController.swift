@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WatchlistsViewController: UIViewController {
+class WatchlistsViewController: NoNavigationBackButtonTextViewController {
     private var viewModel: WatchlistsViewModel
     
     init(viewModel: WatchlistsViewModel) {

@@ -45,6 +45,17 @@
 		E32622112B32712E00105455 /* AddNewSymbolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32622102B32712E00105455 /* AddNewSymbolViewController.swift */; };
 		E32622132B32717200105455 /* AddNewSymbolViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32622122B32717200105455 /* AddNewSymbolViewModel.swift */; };
 		E32622152B332A8C00105455 /* TestRetainCyclesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32622142B332A8C00105455 /* TestRetainCyclesViewController.swift */; };
+		E32622172B33401300105455 /* AddNewSymbolTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32622162B33401300105455 /* AddNewSymbolTableViewCell.swift */; };
+		E326221A2B3343A500105455 /* SymbolsProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32622192B3343A500105455 /* SymbolsProviding.swift */; };
+		E326221C2B3343AF00105455 /* SymbolsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E326221B2B3343AF00105455 /* SymbolsProvider.swift */; };
+		E32622202B334A8000105455 /* NoNavigationBackButtonTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E326221F2B334A8000105455 /* NoNavigationBackButtonTextViewController.swift */; };
+		E32622222B33580900105455 /* SymbolsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32622212B33580900105455 /* SymbolsRequest.swift */; };
+		E32622242B335A5300105455 /* SymbolsDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32622232B335A5300105455 /* SymbolsDecoder.swift */; };
+		E32622262B335BA500105455 /* SymbolsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32622252B335BA500105455 /* SymbolsData.swift */; };
+		E32622282B335BB800105455 /* SymbolItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32622272B335BB800105455 /* SymbolItem.swift */; };
+		E326222A2B335EAE00105455 /* SymbolsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32622292B335EAE00105455 /* SymbolsResponse.swift */; };
+		E326222C2B336CC800105455 /* StatefulViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E326222B2B336CC800105455 /* StatefulViewModel.swift */; };
+		E326222E2B33749200105455 /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E326222D2B33749200105455 /* UITableViewExtensions.swift */; };
 		E37BC0872B2C7F590065F61A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC0862B2C7F590065F61A /* AppDelegate.swift */; };
 		E37BC0892B2C7F590065F61A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC0882B2C7F590065F61A /* SceneDelegate.swift */; };
 		E37BC0902B2C7F5A0065F61A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E37BC08F2B2C7F5A0065F61A /* Assets.xcassets */; };
@@ -109,6 +120,17 @@
 		E32622102B32712E00105455 /* AddNewSymbolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewSymbolViewController.swift; sourceTree = "<group>"; };
 		E32622122B32717200105455 /* AddNewSymbolViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewSymbolViewModel.swift; sourceTree = "<group>"; };
 		E32622142B332A8C00105455 /* TestRetainCyclesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRetainCyclesViewController.swift; sourceTree = "<group>"; };
+		E32622162B33401300105455 /* AddNewSymbolTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewSymbolTableViewCell.swift; sourceTree = "<group>"; };
+		E32622192B3343A500105455 /* SymbolsProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsProviding.swift; sourceTree = "<group>"; };
+		E326221B2B3343AF00105455 /* SymbolsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsProvider.swift; sourceTree = "<group>"; };
+		E326221F2B334A8000105455 /* NoNavigationBackButtonTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoNavigationBackButtonTextViewController.swift; sourceTree = "<group>"; };
+		E32622212B33580900105455 /* SymbolsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsRequest.swift; sourceTree = "<group>"; };
+		E32622232B335A5300105455 /* SymbolsDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsDecoder.swift; sourceTree = "<group>"; };
+		E32622252B335BA500105455 /* SymbolsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsData.swift; sourceTree = "<group>"; };
+		E32622272B335BB800105455 /* SymbolItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolItem.swift; sourceTree = "<group>"; };
+		E32622292B335EAE00105455 /* SymbolsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsResponse.swift; sourceTree = "<group>"; };
+		E326222B2B336CC800105455 /* StatefulViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulViewModel.swift; sourceTree = "<group>"; };
+		E326222D2B33749200105455 /* UITableViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
 		E37BC0832B2C7F590065F61A /* StockApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E37BC0862B2C7F590065F61A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E37BC0882B2C7F590065F61A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -165,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				E32621C12B30F19000105455 /* DateExtensions.swift */,
+				E326222D2B33749200105455 /* UITableViewExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -172,6 +195,7 @@
 		E32621C32B31067600105455 /* Providers */ = {
 			isa = PBXGroup;
 			children = (
+				E32622182B33438300105455 /* SymbolsProvider */,
 				E32621F12B320B8200105455 /* WatchlistsProvider */,
 				E32621CD2B31093300105455 /* ChartDataProvider */,
 				E32621C82B31090E00105455 /* QuotesProvider */,
@@ -215,6 +239,7 @@
 				E32621D62B31122300105455 /* QuoteRequest.swift */,
 				E32621D82B3113BD00105455 /* ApiRequest.swift */,
 				E32621DF2B311CCE00105455 /* ChartDataRequest.swift */,
+				E32622212B33580900105455 /* SymbolsRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -222,7 +247,9 @@
 		E32621DE2B311BC500105455 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				E326221F2B334A8000105455 /* NoNavigationBackButtonTextViewController.swift */,
 				E31F6E252B30C81800CB0C3B /* Quote.swift */,
+				E326222B2B336CC800105455 /* StatefulViewModel.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -233,6 +260,7 @@
 				E32621E32B311F7500105455 /* QuoteDecoder.swift */,
 				E32621E62B311F8E00105455 /* ApiDecoding.swift */,
 				E32621E82B31210400105455 /* ChartDataDecoder.swift */,
+				E32622232B335A5300105455 /* SymbolsDecoder.swift */,
 			);
 			path = Decoders;
 			sourceTree = "<group>";
@@ -291,8 +319,21 @@
 			children = (
 				E32622102B32712E00105455 /* AddNewSymbolViewController.swift */,
 				E32622122B32717200105455 /* AddNewSymbolViewModel.swift */,
+				E32622162B33401300105455 /* AddNewSymbolTableViewCell.swift */,
+				E32622292B335EAE00105455 /* SymbolsResponse.swift */,
+				E32622252B335BA500105455 /* SymbolsData.swift */,
+				E32622272B335BB800105455 /* SymbolItem.swift */,
 			);
 			path = AddNewSymbolScreen;
+			sourceTree = "<group>";
+		};
+		E32622182B33438300105455 /* SymbolsProvider */ = {
+			isa = PBXGroup;
+			children = (
+				E32622192B3343A500105455 /* SymbolsProviding.swift */,
+				E326221B2B3343AF00105455 /* SymbolsProvider.swift */,
+			);
+			path = SymbolsProvider;
 			sourceTree = "<group>";
 		};
 		E37BC07A2B2C7F590065F61A = {
@@ -495,28 +536,38 @@
 			buildActionMask = 2147483647;
 			files = (
 				E32621F32B320B8E00105455 /* WatchlistsProviding.swift in Sources */,
+				E32622222B33580900105455 /* SymbolsRequest.swift in Sources */,
 				E32622152B332A8C00105455 /* TestRetainCyclesViewController.swift in Sources */,
 				E32622042B326A8B00105455 /* Action.swift in Sources */,
 				E32621C72B31071100105455 /* QuotesProvider.swift in Sources */,
 				E32621FD2B3265DF00105455 /* Coordinator.swift in Sources */,
 				E32621E42B311F7500105455 /* QuoteDecoder.swift in Sources */,
+				E32622172B33401300105455 /* AddNewSymbolTableViewCell.swift in Sources */,
+				E326222C2B336CC800105455 /* StatefulViewModel.swift in Sources */,
 				E32621CA2B31092500105455 /* ChartDataProviding.swift in Sources */,
 				E37BC0B72B2C82620065F61A /* Plan.swift in Sources */,
 				E32622112B32712E00105455 /* AddNewSymbolViewController.swift in Sources */,
 				E32621E72B311F8E00105455 /* ApiDecoding.swift in Sources */,
 				E326220D2B3270D700105455 /* AddNewWatchlistViewController.swift in Sources */,
 				E32621CC2B31092F00105455 /* ChartDataProvider.swift in Sources */,
+				E32622242B335A5300105455 /* SymbolsDecoder.swift in Sources */,
 				E37BC0872B2C7F590065F61A /* AppDelegate.swift in Sources */,
 				E32621F52B320B9700105455 /* WatchlistsProvider.swift in Sources */,
+				E32622262B335BA500105455 /* SymbolsData.swift in Sources */,
 				E32621EB2B31227500105455 /* ChartItem.swift in Sources */,
 				E32622092B32702200105455 /* WatchlistsViewController.swift in Sources */,
+				E326221A2B3343A500105455 /* SymbolsProviding.swift in Sources */,
 				E31F6E262B30C81800CB0C3B /* Quote.swift in Sources */,
 				E32622132B32717200105455 /* AddNewSymbolViewModel.swift in Sources */,
 				E31F6E1A2B30BBBA00CB0C3B /* QuoteViewModel.swift in Sources */,
+				E326222E2B33749200105455 /* UITableViewExtensions.swift in Sources */,
+				E326222A2B335EAE00105455 /* SymbolsResponse.swift in Sources */,
 				E32621C52B31069200105455 /* QuotesProviding.swift in Sources */,
 				E32621C22B30F19000105455 /* DateExtensions.swift in Sources */,
 				E32621F72B3239CC00105455 /* StockItem.swift in Sources */,
+				E32622282B335BB800105455 /* SymbolItem.swift in Sources */,
 				E37BC0892B2C7F590065F61A /* SceneDelegate.swift in Sources */,
+				E32622202B334A8000105455 /* NoNavigationBackButtonTextViewController.swift in Sources */,
 				E31F6E182B30BBAE00CB0C3B /* QuoteViewController.swift in Sources */,
 				E32621F92B323FB800105455 /* WatchlistTableViewCell.swift in Sources */,
 				E32621D72B31122300105455 /* QuoteRequest.swift in Sources */,
@@ -528,6 +579,7 @@
 				E32622002B326A4D00105455 /* CoordinatorObject.swift in Sources */,
 				E32621EE2B32029800105455 /* WatchlistViewController.swift in Sources */,
 				E32621D02B310F4D00105455 /* ApiFetching.swift in Sources */,
+				E326221C2B3343AF00105455 /* SymbolsProvider.swift in Sources */,
 				E31F6E242B30C7F000CB0C3B /* ChartData.swift in Sources */,
 				E32621E02B311CCE00105455 /* ChartDataRequest.swift in Sources */,
 				E32621F02B3202A200105455 /* WatchlistViewModel.swift in Sources */,

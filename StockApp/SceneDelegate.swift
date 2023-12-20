@@ -26,6 +26,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let quotesProvider = QuotesProvider(
             apiFetcher: apiFetcher
         )
+        let symbolsProvider = SymbolsProvider(
+            apiFetcher: apiFetcher
+        )
         let chartDataProvider = ChartDataProvider(
             apiFetcher: apiFetcher
         )
@@ -34,6 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             navigationController: navigationController,
             watchlistsProvider: watchlistsProvider,
             quotesProvider: quotesProvider,
+            symbolsProvider: symbolsProvider,
             chartDataProvider: chartDataProvider
         )
         self.coordinator?.onAppStart()

@@ -8,25 +8,7 @@
 import Foundation
 import Combine
 
-class WatchlistViewModel {
-    // todo: consider putting into one place as this is same (at least for now) as in QuoteViewModel
-    enum State {
-        case loading
-        case error
-        case dataObtained
-    }
-    
-    var statePublisher: AnyPublisher<State, Never> {
-        stateSubject
-            .removeDuplicates()
-            .eraseToAnyPublisher()
-    }
-    
-    var errorPublisher: AnyPublisher<String?, Never> {
-        errorSubject
-            .eraseToAnyPublisher()
-    }
-    
+class WatchlistViewModel: StatefulViewModel {
     var titlePublisher: AnyPublisher<String, Never> {
         titleSubject
             .removeDuplicates()
@@ -43,10 +25,12 @@ class WatchlistViewModel {
     
     private var stateSubject = CurrentValueSubject<State, Never>(.loading)
     private var errorSubject = CurrentValueSubject<String?, Never>(nil)
+    
     private var titleSubject = CurrentValueSubject<String, Never>("")
     private var stockItemsSubject = CurrentValueSubject<[StockItem], Never>([])
     
     private var store = Set<AnyCancellable>()
+    private var timerCancellable: AnyCancellable?
     
     private unowned let coordinator: Coordinator
     private let watchlistsProvider: WatchlistsProviding
@@ -69,8 +53,12 @@ class WatchlistViewModel {
         self.watchlist = watchlist
         self.refreshRate = refreshRate
         
+        super.init(
+            stateSubject: stateSubject,
+            errorSubject: errorSubject
+        )
+        
         setupBindings()
-        fetchStockItems() // todo: it would be nice to call it when we have our watchlist obtained from the provider - but calling it there produces more problems - such as multiple timers starting / updating state of the view - generally things related to fetchStockItems
     }
     
 #if DEBUG
@@ -78,6 +66,14 @@ class WatchlistViewModel {
         print("@jgu: \(Self.self).deinit()")
     }
 #endif
+    
+    func onViewWillAppear() {
+        turnOnTimer()
+    }
+
+    func onViewWillDisappear() {
+        turnOffTimer()
+    }
     
     func getStockItemFor(index: Int) -> StockItem? {
         guard index < stockItemsSubject.value.count else { return nil }
@@ -90,13 +86,7 @@ class WatchlistViewModel {
     }
     
     func onAddButtonTapped() {
-        coordinator.execute(action: .addButtonTapped)
-        
-        // todo: and from the other VC we should do sth like this - need to add button to check
-        let exampleSymbol = "GCV"
-        watchlist.symbols.append(exampleSymbol)
-        watchlistsProvider.onUpdate(watchlist: watchlist)
-        // todo: generally we should put the item with symbol only and empty slots for bid / ask / last and timer will put values there - or we can get them right away and put everything without waiting for timer - maybe let's check it out when we actually have the viewController for adding symbols
+        coordinator.execute(action: .addButtonTapped(data: watchlist))
     }
     
     func onItemSwipedOut(at index: Int) {
@@ -120,6 +110,7 @@ private extension WatchlistViewModel {
                 ) {
                     self.watchlist = watchlistFromProvider
                     self.titleSubject.send(self.watchlist.name)
+                    self.fetchStockItems()
                 }
             }
             .store(in: &store)
@@ -133,7 +124,6 @@ private extension WatchlistViewModel {
                 // todo: even if there's some problem for fetching any of the stockItems then error will be thrown - it's a little overkill (it happened once that for some reason api didn't return items - don't know if all of them if only one - but better to minimize the error occurence - so it shows up only if we get empty array of stock items)
                 stockItemsSubject.send(stockItems)
                 stateSubject.send(.dataObtained)
-                self.setupTimer()
             } catch {
                 errorSubject.send("Unfortunatelly cannot fetch data in current moment.\n\nCheck your connection and try again.")
                 stateSubject.send(.error)
@@ -141,22 +131,22 @@ private extension WatchlistViewModel {
         }
     }
     
-    // todo: very similar to QuoteViewModel - maybeput into one place?
-    func setupTimer() {
-        Timer.publish(every: self.refreshRate, on: .main, in: .common)
+    // todo: very similar to QuoteViewModel - maybe put into one place?
+    func turnOnTimer() {
+        timerCancellable = Timer.publish(every: self.refreshRate, on: .main, in: .common)
             .autoconnect()
             .sink { [weak self] _ in
                 Task { [weak self] in
                     // todo: we could check if stock market is closed - if so then we should't make calls - this logic should be put into quotesProvider that would just return last quote and not send request until the stock is open once again
                     guard let stockItems = try? await self?.getStockItemsSimultaneously()
                         .sorted() else { return }
-                         
                     self?.stockItemsSubject.send(stockItems)
-                    self?.errorSubject.send(nil)
-                    self?.stateSubject.send(.dataObtained)
                 }
             }
-            .store(in: &store)
+    }
+    
+    func turnOffTimer() {
+        timerCancellable = nil
     }
     
     func getStockItemsSimultaneously() async throws -> [StockItem] {

@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Combine
 
-class WatchlistViewController: UIViewController {
+class WatchlistViewController: NoNavigationBackButtonTextViewController {
     private var viewModel: WatchlistViewModel
     
     private lazy var loadingView = UIActivityIndicatorView(style: .large)
@@ -62,6 +62,16 @@ class WatchlistViewController: UIViewController {
         setupConstraints()
         setupBindings()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.onViewWillAppear()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        viewModel.onViewWillDisappear()
+    }
 }
 
 extension WatchlistViewController: UITableViewDataSource, UITableViewDelegate {
@@ -85,7 +95,7 @@ extension WatchlistViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 40.0
+        return UITableView.heightForRow
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

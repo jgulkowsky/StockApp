@@ -11,16 +11,19 @@ class CoordinatorObject: Coordinator {
     private let navigationController: UINavigationController
     private let watchlistsProvider: WatchlistsProviding
     private let quotesProvider: QuotesProviding
+    private let symbolsProvider: SymbolsProviding
     private let chartDataProvider: ChartDataProviding
     
     init(navigationController: UINavigationController,
          watchlistsProvider: WatchlistsProviding,
          quotesProvider: QuotesProviding,
+         symbolsProvider: SymbolsProviding,
          chartDataProvider: ChartDataProviding
     ) {
         self.navigationController = navigationController
         self.watchlistsProvider = watchlistsProvider
         self.quotesProvider = quotesProvider
+        self.symbolsProvider = symbolsProvider
         self.chartDataProvider = chartDataProvider
     }
 
@@ -72,16 +75,26 @@ class CoordinatorObject: Coordinator {
                     )
                     navigationController.pushViewController(vc, animated: true)
                 }
-            case .addButtonTapped:
-                let vc = AddNewSymbolViewController(
-                    viewModel: AddNewSymbolViewModel(
-                        coordinator: self
+            case .addButtonTapped(let data):
+                if let watchlist = data as? Watchlist {
+                    let vc = AddNewSymbolViewController(
+                        viewModel: AddNewSymbolViewModel(
+                            coordinator: self,
+                            watchlistsProvider: watchlistsProvider,
+                            symbolsProvider: symbolsProvider,
+                            watchlist: watchlist
+                        )
                     )
-                )
-                navigationController.pushViewController(vc, animated: true)
+                    navigationController.pushViewController(vc, animated: true)
+                }
             }
         } else if currentVC is AddNewSymbolViewController {
-            
+            switch action {
+            case .itemSelected:
+                navigationController.popViewController(animated: true)
+            default:
+                break
+            }
         } else {
 #if DEBUG
             if currentVC is TestRetainCyclesViewController {

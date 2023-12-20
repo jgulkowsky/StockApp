@@ -8,16 +8,9 @@
 import Foundation
 import Combine
 
-class QuoteViewModel {
-    // todo: consider putting into one place as this is same (at least for now) as in WatchlistViewModel
-    enum State {
-        case loading
-        case error
-        case dataObtained
-    }
-    
-    var statePublisher: AnyPublisher<State, Never> {
-        stateSubject
+class QuoteViewModel: StatefulViewModel {
+    var titlePublisher: AnyPublisher<String, Never> {
+        titleSubject
             .removeDuplicates()
             .eraseToAnyPublisher()
     }
@@ -63,21 +56,16 @@ class QuoteViewModel {
             .eraseToAnyPublisher()
     }
     
-    var errorPublisher: AnyPublisher<String?, Never> {
-        errorSubject
-            .eraseToAnyPublisher()
-    }
-    
     private var stateSubject = CurrentValueSubject<State, Never>(.loading)
+    private var errorSubject = CurrentValueSubject<String?, Never>(nil)
     
+    private var titleSubject = CurrentValueSubject<String, Never>("")
     private var chartDataSubject = CurrentValueSubject<ChartData, Never>(ChartData(values: []))
     private var bidPriceSubject = CurrentValueSubject<Double?, Never>(nil)
     private var askPriceSubject = CurrentValueSubject<Double?, Never>(nil)
     private var lastPriceSubject = CurrentValueSubject<Double?, Never>(nil)
     
-    private var errorSubject = CurrentValueSubject<String?, Never>(nil)
-    
-    private var store = Set<AnyCancellable>()
+    private var timerCancellable: AnyCancellable?
     
     private unowned let coordinator: Coordinator
     private let quotesProvider: QuotesProviding
@@ -100,7 +88,12 @@ class QuoteViewModel {
         self.symbol = symbol
         self.refreshRate = refreshRate
         
-        fetchData()
+        super.init(
+            stateSubject: stateSubject,
+            errorSubject: errorSubject
+        )
+        
+        self.titleSubject.send(self.symbol)
     }
     
 #if DEBUG
@@ -108,6 +101,15 @@ class QuoteViewModel {
         print("@jgu: \(Self.self).deinit()")
     }
 #endif
+    
+    func onViewWillAppear() {
+        fetchData()
+        turnOnTimer()
+    }
+
+    func onViewWillDisappear() {
+        turnOffTimer()
+    }
 }
 
 private extension QuoteViewModel {
@@ -122,7 +124,6 @@ private extension QuoteViewModel {
                 lastPriceSubject.send(quote.lastPrice)
                 chartDataSubject.send(chartData)
                 stateSubject.send(.dataObtained)
-                self.setupTimer()
             } catch {
                 errorSubject.send("Unfortunatelly cannot fetch data in current moment.\n\nCheck your connection and try again.")
                 stateSubject.send(.error)
@@ -130,8 +131,8 @@ private extension QuoteViewModel {
         }
     }
     
-    func setupTimer() {
-        Timer.publish(every: self.refreshRate, on: .main, in: .common)
+    func turnOnTimer() {
+        timerCancellable = Timer.publish(every: self.refreshRate, on: .main, in: .common)
             .autoconnect()
             .sink { [weak self] _ in
                 Task { [weak self] in
@@ -142,10 +143,11 @@ private extension QuoteViewModel {
                     self?.bidPriceSubject.send(quote.bidPrice)
                     self?.askPriceSubject.send(quote.askPrice)
                     self?.lastPriceSubject.send(quote.lastPrice)
-                    self?.errorSubject.send(nil)
-                    self?.stateSubject.send(.dataObtained)
                 }
             }
-            .store(in: &store)
+    }
+    
+    func turnOffTimer() {
+        timerCancellable = nil
     }
 }
