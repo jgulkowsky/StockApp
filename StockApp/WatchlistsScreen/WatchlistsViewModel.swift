@@ -66,10 +66,10 @@ class WatchlistsViewModel: StatefulViewModel {
     
     func onItemSwipedOut(at index: Int) {
         var watchlists = watchlistsSubject.value
-        let removedItem = watchlists.remove(at: index)
+        let watchlist = watchlists.remove(at: index)
         watchlistsSubject.send(watchlists) // todo: generally this could be bound to the provider inner value so we don't have to update it here - maybe we could do the same for other onItemSwipedOut and other places?
         
-        watchlistsProvider.onRemove(watchlist: removedItem)
+        watchlistsProvider.onRemove(watchlist)
     }
 }
 

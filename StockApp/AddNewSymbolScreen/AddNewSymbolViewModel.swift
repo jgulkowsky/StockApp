@@ -61,8 +61,8 @@ class AddNewSymbolViewModel {
         let symbol = symbolsSubject.value[index]
         
         if !watchlist.symbols.contains(symbol) {
+            watchlistsProvider.onAdd(symbol, to: watchlist)
             watchlist.symbols.append(symbol)
-            watchlistsProvider.onUpdate(watchlist: watchlist)
         } // todo:  consider having this logic in watchlistsProvider
         
         coordinator.execute(action: .itemSelected(data: nil))
