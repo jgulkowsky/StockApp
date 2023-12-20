@@ -63,9 +63,7 @@ class AddNewSymbolViewModel {
         if !watchlist.symbols.contains(symbol) {
             watchlist.symbols.append(symbol)
             watchlistsProvider.onUpdate(watchlist: watchlist)
-        } // todo: consider having this logic in watchlistsProvider
-        
-        // todo: generally we should put the item with symbol only and empty slots for bid / ask / last and timer will put values there - or we can get them right away and put everything without waiting for timer - maybe let's check it out when we actually have the viewController for adding symbols
+        } // todo:  consider having this logic in watchlistsProvider
         
         coordinator.execute(action: .itemSelected(data: nil))
     }

@@ -131,8 +131,7 @@ private extension WatchlistViewModel {
         }
     }
     
-    // todo: we need to stop quote requests from WatchlistViewModel when we are on AddNewSymbolViewController or QuoteViewController
-    // todo: very similar to QuoteViewModel - maybeput into one place?
+    // todo: very similar to QuoteViewModel - maybe put into one place?
     func turnOnTimer() {
         timerCancellable = Timer.publish(every: self.refreshRate, on: .main, in: .common)
             .autoconnect()

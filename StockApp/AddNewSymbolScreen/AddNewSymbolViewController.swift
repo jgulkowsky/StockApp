@@ -85,7 +85,7 @@ extension AddNewSymbolViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 40.0 // todo: this should be global for all lists
+        return UITableView.heightForRow
     }
 }
 
