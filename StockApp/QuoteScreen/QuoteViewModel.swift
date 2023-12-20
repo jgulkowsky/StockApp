@@ -91,8 +91,9 @@ class QuoteViewModel {
          symbol: String,
          refreshRate: Double
     ) {
+#if DEBUG
         print("@jgu: \(Self.self).init()")
-        
+#endif
         self.coordinator = coordinator
         self.quotesProvider = quotesProvider
         self.chartDataProvider = chartDataProvider
@@ -102,9 +103,11 @@ class QuoteViewModel {
         fetchData()
     }
     
+#if DEBUG
     deinit {
         print("@jgu: \(Self.self).deinit()")
     }
+#endif
 }
 
 private extension QuoteViewModel {

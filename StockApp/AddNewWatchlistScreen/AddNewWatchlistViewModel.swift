@@ -11,6 +11,15 @@ class AddNewWatchlistViewModel {
     private unowned let coordinator: Coordinator
     
     init(coordinator: Coordinator) {
+#if DEBUG
+        print("@jgu: \(Self.self).init()")
+#endif
         self.coordinator = coordinator
     }
+    
+#if DEBUG
+    deinit {
+        print("@jgu: \(Self.self).deinit()")
+    }
+#endif
 }

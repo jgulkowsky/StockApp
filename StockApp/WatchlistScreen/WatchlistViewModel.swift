@@ -60,8 +60,9 @@ class WatchlistViewModel {
          watchlist: Watchlist,
          refreshRate: Double
     ) {
+#if DEBUG
         print("@jgu: \(Self.self).init()")
-        
+#endif
         self.coordinator = coordinator
         self.watchlistsProvider = watchlistsProvider
         self.quotesProvider = quotesProvider
@@ -72,9 +73,11 @@ class WatchlistViewModel {
         fetchStockItems() // todo: it would be nice to call it when we have our watchlist obtained from the provider - but calling it there produces more problems - such as multiple timers starting / updating state of the view - generally things related to fetchStockItems
     }
     
+#if DEBUG
     deinit {
         print("@jgu: \(Self.self).deinit()")
     }
+#endif
     
     func getStockItemFor(index: Int) -> StockItem? {
         guard index < stockItemsSubject.value.count else { return nil }
