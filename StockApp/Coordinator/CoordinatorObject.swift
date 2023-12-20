@@ -65,10 +65,15 @@ class CoordinatorObject: Coordinator {
                             refreshRate: 5
                         )
                     )
-                    navigationController.pushViewController(vc, animated: false)
+                    navigationController.pushViewController(vc, animated: true)
                 }
             case .addButtonTapped:
-                print("go to add new symbol screen")
+                let vc = AddNewSymbolViewController(
+                    viewModel: AddNewSymbolViewModel(
+                        coordinator: self
+                    )
+                )
+                navigationController.pushViewController(vc, animated: true)
             }
         } else if rootVC is AddNewSymbolViewController {
             

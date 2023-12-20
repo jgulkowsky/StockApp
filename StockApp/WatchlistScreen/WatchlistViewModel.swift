@@ -78,9 +78,7 @@ class WatchlistViewModel {
     
     func onItemTapped(at index: Int) {
         let stockItem = stockItemsSubject.value[index]
-        let symbol = stockItem.symbol
         coordinator.execute(action: .itemSelected(data: stockItem))
-        // todo: inform coordinator -> send there symbol as data (or consider sending whole stockItem so next VC don't have to load data for itself or even can but at least have sth to show without loading indicator)
     }
     
     func onAddButtonTapped() {

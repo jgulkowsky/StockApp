@@ -83,7 +83,7 @@ class QuoteViewModel {
     private unowned let coordinator: Coordinator
     private let quotesProvider: QuotesProviding
     private let chartDataProvider: ChartDataProviding
-    private let symbol: String
+    private let symbol: String // todo: consider using stockItem: StockItem so VM don't have to load data for itself or even can but at least have sth to show without loading indicator
     private let refreshRate: Double
     
     init(coordinator: Coordinator,
