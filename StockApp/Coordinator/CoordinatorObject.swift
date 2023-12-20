@@ -48,7 +48,11 @@ class CoordinatorObject: Coordinator {
             return
         }
         
-        if rootVC is WatchlistViewController {
+        if rootVC is WatchlistsViewController {
+            
+        } else if rootVC is AddNewWatchlistViewController {
+            
+        } else if rootVC is WatchlistViewController {
             switch action {
             case .itemSelected(let data):
                 if let stockItem = data as? StockItem {
@@ -66,6 +70,8 @@ class CoordinatorObject: Coordinator {
             case .addButtonTapped:
                 print("go to add new symbol screen")
             }
+        } else if rootVC is AddNewSymbolViewController {
+            
         } else if rootVC is QuoteViewController {
             // todo: here nothing - but we need to add other VCs to put here more if cases
         }

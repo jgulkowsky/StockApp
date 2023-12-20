@@ -30,11 +30,3 @@ protocol StockItemsProviding {
 protocol PersistentStorageProviding {
     func getData<T>() async throws -> T
 }
-
-// ViewModels:
-
-class WatchlistsViewModel {}
-
-class AddNewWatchlistViewModel {}
-
-class AddNewStockItemViewModel {}
