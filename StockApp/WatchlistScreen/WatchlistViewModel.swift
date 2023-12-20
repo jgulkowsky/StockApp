@@ -93,9 +93,11 @@ class WatchlistViewModel {
         coordinator.execute(action: .addButtonTapped)
         
         // todo: and from the other VC we should do sth like this - need to add button to check
-        let exampleSymbol = "GCV"
-        watchlist.symbols.append(exampleSymbol)
-        watchlistsProvider.onUpdate(watchlist: watchlist)
+        
+//        let exampleSymbol = "GCV"
+//        watchlist.symbols.append(exampleSymbol)
+//        watchlistsProvider.onUpdate(watchlist: watchlist)
+        
         // todo: generally we should put the item with symbol only and empty slots for bid / ask / last and timer will put values there - or we can get them right away and put everything without waiting for timer - maybe let's check it out when we actually have the viewController for adding symbols
     }
     

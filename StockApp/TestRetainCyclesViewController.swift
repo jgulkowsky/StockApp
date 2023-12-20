@@ -8,7 +8,7 @@
 #if DEBUG
 import UIKit
 
-class TestRetainCyclesViewController: UIViewController {
+class TestRetainCyclesViewController: NoNavigationBackButtonTextViewController {
     private unowned var coordinator: Coordinator
     
     init(coordinator: Coordinator) {

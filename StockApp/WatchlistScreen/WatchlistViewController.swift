@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Combine
 
-class WatchlistViewController: UIViewController {
+class WatchlistViewController: NoNavigationBackButtonTextViewController {
     private var viewModel: WatchlistViewModel
     
     private lazy var loadingView = UIActivityIndicatorView(style: .large)

@@ -10,7 +10,7 @@ import SnapKit
 import Combine
 import DGCharts
 
-class QuoteViewController: UIViewController {
+class QuoteViewController: NoNavigationBackButtonTextViewController {
     private var viewModel: QuoteViewModel
     
     private lazy var loadingView = UIActivityIndicatorView(style: .large)

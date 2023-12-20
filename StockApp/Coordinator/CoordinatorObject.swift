@@ -11,16 +11,19 @@ class CoordinatorObject: Coordinator {
     private let navigationController: UINavigationController
     private let watchlistsProvider: WatchlistsProviding
     private let quotesProvider: QuotesProviding
+    private let symbolsProvider: SymbolsProviding
     private let chartDataProvider: ChartDataProviding
     
     init(navigationController: UINavigationController,
          watchlistsProvider: WatchlistsProviding,
          quotesProvider: QuotesProviding,
+         symbolsProvider: SymbolsProviding,
          chartDataProvider: ChartDataProviding
     ) {
         self.navigationController = navigationController
         self.watchlistsProvider = watchlistsProvider
         self.quotesProvider = quotesProvider
+        self.symbolsProvider = symbolsProvider
         self.chartDataProvider = chartDataProvider
     }
 
@@ -75,7 +78,8 @@ class CoordinatorObject: Coordinator {
             case .addButtonTapped:
                 let vc = AddNewSymbolViewController(
                     viewModel: AddNewSymbolViewModel(
-                        coordinator: self
+                        coordinator: self,
+                        symbolsProvider: symbolsProvider
                     )
                 )
                 navigationController.pushViewController(vc, animated: true)
