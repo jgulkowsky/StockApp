@@ -7,7 +7,9 @@
 
 import Foundation
 
-struct Quote: Codable {
+// todo: prices sometimes get 0 for some reason - is it normal or we should treat it as a bug? (checkout responses in json)
+
+struct Quote: Codable, Equatable {
     let date: Date
     let bidPrice: Double
     let askPrice: Double

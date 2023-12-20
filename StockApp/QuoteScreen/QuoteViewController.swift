@@ -79,6 +79,17 @@ class QuoteViewController: NoNavigationBackButtonTextViewController {
         setupConstraints()
         setupBindings()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.onViewWillAppear()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        viewModel.onViewWillDisappear()
+    }
+
 }
 
 extension QuoteViewController: ChartViewDelegate {

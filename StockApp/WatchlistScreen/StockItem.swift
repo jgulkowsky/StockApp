@@ -19,7 +19,6 @@ extension StockItem: Comparable {
     
     static func == (lhs: StockItem, rhs: StockItem) -> Bool {
         return lhs.symbol == rhs.symbol
+            && lhs.quote == rhs.quote
     }
-    
-    
 }

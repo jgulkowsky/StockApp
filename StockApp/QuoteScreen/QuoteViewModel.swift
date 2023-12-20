@@ -77,7 +77,7 @@ class QuoteViewModel {
     
     private var errorSubject = CurrentValueSubject<String?, Never>(nil)
     
-    private var store = Set<AnyCancellable>()
+    private var timerCancellable: AnyCancellable?
     
     private unowned let coordinator: Coordinator
     private let quotesProvider: QuotesProviding
@@ -99,8 +99,6 @@ class QuoteViewModel {
         self.chartDataProvider = chartDataProvider
         self.symbol = symbol
         self.refreshRate = refreshRate
-        
-        fetchData()
     }
     
 #if DEBUG
@@ -108,6 +106,15 @@ class QuoteViewModel {
         print("@jgu: \(Self.self).deinit()")
     }
 #endif
+    
+    func onViewWillAppear() {
+        fetchData()
+        turnOnTimer()
+    }
+
+    func onViewWillDisappear() {
+        turnOffTimer()
+    }
 }
 
 private extension QuoteViewModel {
@@ -122,7 +129,6 @@ private extension QuoteViewModel {
                 lastPriceSubject.send(quote.lastPrice)
                 chartDataSubject.send(chartData)
                 stateSubject.send(.dataObtained)
-                self.setupTimer()
             } catch {
                 errorSubject.send("Unfortunatelly cannot fetch data in current moment.\n\nCheck your connection and try again.")
                 stateSubject.send(.error)
@@ -130,8 +136,8 @@ private extension QuoteViewModel {
         }
     }
     
-    func setupTimer() {
-        Timer.publish(every: self.refreshRate, on: .main, in: .common)
+    func turnOnTimer() {
+        timerCancellable = Timer.publish(every: self.refreshRate, on: .main, in: .common)
             .autoconnect()
             .sink { [weak self] _ in
                 Task { [weak self] in
@@ -142,10 +148,11 @@ private extension QuoteViewModel {
                     self?.bidPriceSubject.send(quote.bidPrice)
                     self?.askPriceSubject.send(quote.askPrice)
                     self?.lastPriceSubject.send(quote.lastPrice)
-                    self?.errorSubject.send(nil)
-                    self?.stateSubject.send(.dataObtained)
                 }
             }
-            .store(in: &store)
+    }
+    
+    func turnOffTimer() {
+        timerCancellable = nil
     }
 }
