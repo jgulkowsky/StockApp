@@ -77,19 +77,24 @@ class QuoteViewModel {
     
     private var errorSubject = CurrentValueSubject<String?, Never>(nil)
     
-    private var timer: Publishers.Autoconnect<Timer.TimerPublisher>?
     private var store = Set<AnyCancellable>()
     
+    private unowned let coordinator: Coordinator
     private let quotesProvider: QuotesProviding
     private let chartDataProvider: ChartDataProviding
-    private let symbol: String
+    private let symbol: String // todo: consider using stockItem: StockItem so VM don't have to load data for itself or even can but at least have sth to show without loading indicator
     private let refreshRate: Double
     
-    init(quotesProvider: QuotesProviding,
+    init(coordinator: Coordinator,
+         quotesProvider: QuotesProviding,
          chartDataProvider: ChartDataProviding,
          symbol: String,
          refreshRate: Double
     ) {
+#if DEBUG
+        print("@jgu: \(Self.self).init()")
+#endif
+        self.coordinator = coordinator
         self.quotesProvider = quotesProvider
         self.chartDataProvider = chartDataProvider
         self.symbol = symbol
@@ -97,6 +102,12 @@ class QuoteViewModel {
         
         fetchData()
     }
+    
+#if DEBUG
+    deinit {
+        print("@jgu: \(Self.self).deinit()")
+    }
+#endif
 }
 
 private extension QuoteViewModel {
@@ -120,19 +131,19 @@ private extension QuoteViewModel {
     }
     
     func setupTimer() {
-        self.timer = Timer.publish(every: self.refreshRate, on: .main, in: .common)
-           .autoconnect()
-        self.timer?
-            .sink { _ in
-                Task {
+        Timer.publish(every: self.refreshRate, on: .main, in: .common)
+            .autoconnect()
+            .sink { [weak self] _ in
+                Task { [weak self] in
                     // todo: we could check if stock market is closed - if so then we should't make calls - this logic should be put into quotesProvider that would just return last quote and not send request until the stock is open once again
-                    if let quote = try? await self.quotesProvider.getQuote(forSymbol: self.symbol) {
-                        self.bidPriceSubject.send(quote.bidPrice)
-                        self.askPriceSubject.send(quote.askPrice)
-                        self.lastPriceSubject.send(quote.lastPrice)
-                        self.errorSubject.send(nil)
-                        self.stateSubject.send(.dataObtained)
-                    }
+                    guard let symbol = self?.symbol else { return }
+                    guard let quote = try? await self?.quotesProvider.getQuote(forSymbol: symbol) else { return }
+                    
+                    self?.bidPriceSubject.send(quote.bidPrice)
+                    self?.askPriceSubject.send(quote.askPrice)
+                    self?.lastPriceSubject.send(quote.lastPrice)
+                    self?.errorSubject.send(nil)
+                    self?.stateSubject.send(.dataObtained)
                 }
             }
             .store(in: &store)

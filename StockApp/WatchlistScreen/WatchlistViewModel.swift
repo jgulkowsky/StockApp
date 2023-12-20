@@ -46,19 +46,24 @@ class WatchlistViewModel {
     private var titleSubject = CurrentValueSubject<String, Never>("")
     private var stockItemsSubject = CurrentValueSubject<[StockItem], Never>([])
     
-    private var timer: Publishers.Autoconnect<Timer.TimerPublisher>?
     private var store = Set<AnyCancellable>()
     
+    private unowned let coordinator: Coordinator
     private let watchlistsProvider: WatchlistsProviding
     private let quotesProvider: QuotesProviding
     private var watchlist: Watchlist
     private let refreshRate: Double
     
-    init(watchlistsProvider: WatchlistsProviding,
+    init(coordinator: Coordinator,
+         watchlistsProvider: WatchlistsProviding,
          quotesProvider: QuotesProviding,
          watchlist: Watchlist,
          refreshRate: Double
     ) {
+#if DEBUG
+        print("@jgu: \(Self.self).init()")
+#endif
+        self.coordinator = coordinator
         self.watchlistsProvider = watchlistsProvider
         self.quotesProvider = quotesProvider
         self.watchlist = watchlist
@@ -68,6 +73,12 @@ class WatchlistViewModel {
         fetchStockItems() // todo: it would be nice to call it when we have our watchlist obtained from the provider - but calling it there produces more problems - such as multiple timers starting / updating state of the view - generally things related to fetchStockItems
     }
     
+#if DEBUG
+    deinit {
+        print("@jgu: \(Self.self).deinit()")
+    }
+#endif
+    
     func getStockItemFor(index: Int) -> StockItem? {
         guard index < stockItemsSubject.value.count else { return nil }
         return stockItemsSubject.value[index]
@@ -75,12 +86,11 @@ class WatchlistViewModel {
     
     func onItemTapped(at index: Int) {
         let stockItem = stockItemsSubject.value[index]
-        let symbol = stockItem.symbol
-        // todo: inform coordinator -> send there symbol as data (or consider sending whole stockItem so next VC don't have to load data for itself or even can but at least have sth to show without loading indicator)
+        coordinator.execute(action: .itemSelected(data: stockItem))
     }
     
     func onAddButtonTapped() {
-        // todo: inform coordinator
+        coordinator.execute(action: .addButtonTapped)
         
         // todo: and from the other VC we should do sth like this - need to add button to check
         let exampleSymbol = "GCV"
@@ -103,7 +113,8 @@ class WatchlistViewModel {
 private extension WatchlistViewModel {
     func setupBindings() {
         self.watchlistsProvider.watchlists
-            .sink { watchlists in
+            .sink { [weak self] watchlists in
+                guard let `self` = self else { return }
                 if let watchlistFromProvider = watchlists.first(
                     where: { $0.id == self.watchlist.id }
                 ) {
@@ -119,6 +130,7 @@ private extension WatchlistViewModel {
             do {
                 let stockItems = try await getStockItemsSimultaneously()
                     .sorted()// todo: if there's any misspelling in any of the symbols (which should rather not happen but these are 2 APIs - one you get symbol from the second you send it to) then this will throw and error will be shown - think how you should respond - maybe symbol with empty values or just ommit the symbol as it wasn't there
+                // todo: even if there's some problem for fetching any of the stockItems then error will be thrown - it's a little overkill (it happened once that for some reason api didn't return items - don't know if all of them if only one - but better to minimize the error occurence - so it shows up only if we get empty array of stock items)
                 stockItemsSubject.send(stockItems)
                 stateSubject.send(.dataObtained)
                 self.setupTimer()
@@ -131,18 +143,17 @@ private extension WatchlistViewModel {
     
     // todo: very similar to QuoteViewModel - maybeput into one place?
     func setupTimer() {
-        self.timer = Timer.publish(every: self.refreshRate, on: .main, in: .common)
-           .autoconnect()
-        self.timer?
-            .sink { _ in
-                Task {
+        Timer.publish(every: self.refreshRate, on: .main, in: .common)
+            .autoconnect()
+            .sink { [weak self] _ in
+                Task { [weak self] in
                     // todo: we could check if stock market is closed - if so then we should't make calls - this logic should be put into quotesProvider that would just return last quote and not send request until the stock is open once again
-                    if let stockItems = try? await self.getStockItemsSimultaneously()
-                        .sorted() {
-                        self.stockItemsSubject.send(stockItems)
-                        self.errorSubject.send(nil)
-                        self.stateSubject.send(.dataObtained)
-                    }
+                    guard let stockItems = try? await self?.getStockItemsSimultaneously()
+                        .sorted() else { return }
+                         
+                    self?.stockItemsSubject.send(stockItems)
+                    self?.errorSubject.send(nil)
+                    self?.stateSubject.send(.dataObtained)
                 }
             }
             .store(in: &store)

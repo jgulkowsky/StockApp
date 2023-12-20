@@ -30,29 +30,3 @@ protocol StockItemsProviding {
 protocol PersistentStorageProviding {
     func getData<T>() async throws -> T
 }
-
-// Coordinator
-
-enum Screen {
-    case watchlists
-    case watchlist
-    case quote
-}
-
-enum Action {
-    case addButtonTapped
-    case itemSelected(data: [Any])
-}
-
-protocol Coordinator {
-    func onAppStart()
-    func execute(action: Action, onScreen screen: Screen)
-}
-
-// ViewModels:
-
-class WatchlistsViewModel {}
-
-class AddNewWatchlistViewModel {}
-
-class AddNewStockItemViewModel {}

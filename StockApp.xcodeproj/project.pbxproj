@@ -35,6 +35,16 @@
 		E32621F72B3239CC00105455 /* StockItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32621F62B3239CC00105455 /* StockItem.swift */; };
 		E32621F92B323FB800105455 /* WatchlistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32621F82B323FB800105455 /* WatchlistTableViewCell.swift */; };
 		E32621FB2B32499E00105455 /* WatchlistTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32621FA2B32499E00105455 /* WatchlistTableViewHeader.swift */; };
+		E32621FD2B3265DF00105455 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32621FC2B3265DF00105455 /* Coordinator.swift */; };
+		E32622002B326A4D00105455 /* CoordinatorObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32621FF2B326A4D00105455 /* CoordinatorObject.swift */; };
+		E32622042B326A8B00105455 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32622032B326A8B00105455 /* Action.swift */; };
+		E32622092B32702200105455 /* WatchlistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32622082B32702200105455 /* WatchlistsViewController.swift */; };
+		E326220B2B32704400105455 /* WatchlistsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E326220A2B32704400105455 /* WatchlistsViewModel.swift */; };
+		E326220D2B3270D700105455 /* AddNewWatchlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E326220C2B3270D700105455 /* AddNewWatchlistViewController.swift */; };
+		E326220F2B3270FC00105455 /* AddNewWatchlistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E326220E2B3270FC00105455 /* AddNewWatchlistViewModel.swift */; };
+		E32622112B32712E00105455 /* AddNewSymbolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32622102B32712E00105455 /* AddNewSymbolViewController.swift */; };
+		E32622132B32717200105455 /* AddNewSymbolViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32622122B32717200105455 /* AddNewSymbolViewModel.swift */; };
+		E32622152B332A8C00105455 /* TestRetainCyclesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32622142B332A8C00105455 /* TestRetainCyclesViewController.swift */; };
 		E37BC0872B2C7F590065F61A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC0862B2C7F590065F61A /* AppDelegate.swift */; };
 		E37BC0892B2C7F590065F61A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC0882B2C7F590065F61A /* SceneDelegate.swift */; };
 		E37BC0902B2C7F5A0065F61A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E37BC08F2B2C7F5A0065F61A /* Assets.xcassets */; };
@@ -89,6 +99,16 @@
 		E32621F62B3239CC00105455 /* StockItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockItem.swift; sourceTree = "<group>"; };
 		E32621F82B323FB800105455 /* WatchlistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistTableViewCell.swift; sourceTree = "<group>"; };
 		E32621FA2B32499E00105455 /* WatchlistTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistTableViewHeader.swift; sourceTree = "<group>"; };
+		E32621FC2B3265DF00105455 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		E32621FF2B326A4D00105455 /* CoordinatorObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorObject.swift; sourceTree = "<group>"; };
+		E32622032B326A8B00105455 /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
+		E32622082B32702200105455 /* WatchlistsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistsViewController.swift; sourceTree = "<group>"; };
+		E326220A2B32704400105455 /* WatchlistsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistsViewModel.swift; sourceTree = "<group>"; };
+		E326220C2B3270D700105455 /* AddNewWatchlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewWatchlistViewController.swift; sourceTree = "<group>"; };
+		E326220E2B3270FC00105455 /* AddNewWatchlistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewWatchlistViewModel.swift; sourceTree = "<group>"; };
+		E32622102B32712E00105455 /* AddNewSymbolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewSymbolViewController.swift; sourceTree = "<group>"; };
+		E32622122B32717200105455 /* AddNewSymbolViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewSymbolViewModel.swift; sourceTree = "<group>"; };
+		E32622142B332A8C00105455 /* TestRetainCyclesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRetainCyclesViewController.swift; sourceTree = "<group>"; };
 		E37BC0832B2C7F590065F61A /* StockApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E37BC0862B2C7F590065F61A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E37BC0882B2C7F590065F61A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -238,6 +258,43 @@
 			path = WatchlistsProvider;
 			sourceTree = "<group>";
 		};
+		E32621FE2B326A2F00105455 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				E32621FC2B3265DF00105455 /* Coordinator.swift */,
+				E32621FF2B326A4D00105455 /* CoordinatorObject.swift */,
+				E32622032B326A8B00105455 /* Action.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		E32622052B326FCB00105455 /* WatchlistsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				E32622082B32702200105455 /* WatchlistsViewController.swift */,
+				E326220A2B32704400105455 /* WatchlistsViewModel.swift */,
+			);
+			path = WatchlistsScreen;
+			sourceTree = "<group>";
+		};
+		E32622062B326FE800105455 /* AddNewWatchlistScreen */ = {
+			isa = PBXGroup;
+			children = (
+				E326220C2B3270D700105455 /* AddNewWatchlistViewController.swift */,
+				E326220E2B3270FC00105455 /* AddNewWatchlistViewModel.swift */,
+			);
+			path = AddNewWatchlistScreen;
+			sourceTree = "<group>";
+		};
+		E32622072B326FF300105455 /* AddNewSymbolScreen */ = {
+			isa = PBXGroup;
+			children = (
+				E32622102B32712E00105455 /* AddNewSymbolViewController.swift */,
+				E32622122B32717200105455 /* AddNewSymbolViewModel.swift */,
+			);
+			path = AddNewSymbolScreen;
+			sourceTree = "<group>";
+		};
 		E37BC07A2B2C7F590065F61A = {
 			isa = PBXGroup;
 			children = (
@@ -265,14 +322,19 @@
 				E32621CE2B310F3A00105455 /* ApiFetcher */,
 				E32621C32B31067600105455 /* Providers */,
 				E32621C02B30F17E00105455 /* Extensions */,
+				E32621FE2B326A2F00105455 /* Coordinator */,
+				E32622052B326FCB00105455 /* WatchlistsScreen */,
+				E32622062B326FE800105455 /* AddNewWatchlistScreen */,
 				E32621EC2B32028000105455 /* WatchlistScreen */,
+				E32622072B326FF300105455 /* AddNewSymbolScreen */,
 				E31F6E162B30BB9C00CB0C3B /* QuoteScreen */,
 				E37BC0862B2C7F590065F61A /* AppDelegate.swift */,
 				E37BC0882B2C7F590065F61A /* SceneDelegate.swift */,
+				E37BC0B62B2C82620065F61A /* Plan.swift */,
+				E32622142B332A8C00105455 /* TestRetainCyclesViewController.swift */,
 				E37BC08F2B2C7F5A0065F61A /* Assets.xcassets */,
 				E37BC0912B2C7F5A0065F61A /* LaunchScreen.storyboard */,
 				E37BC0942B2C7F5A0065F61A /* Info.plist */,
-				E37BC0B62B2C82620065F61A /* Plan.swift */,
 			);
 			path = StockApp;
 			sourceTree = "<group>";
@@ -433,16 +495,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				E32621F32B320B8E00105455 /* WatchlistsProviding.swift in Sources */,
+				E32622152B332A8C00105455 /* TestRetainCyclesViewController.swift in Sources */,
+				E32622042B326A8B00105455 /* Action.swift in Sources */,
 				E32621C72B31071100105455 /* QuotesProvider.swift in Sources */,
+				E32621FD2B3265DF00105455 /* Coordinator.swift in Sources */,
 				E32621E42B311F7500105455 /* QuoteDecoder.swift in Sources */,
 				E32621CA2B31092500105455 /* ChartDataProviding.swift in Sources */,
 				E37BC0B72B2C82620065F61A /* Plan.swift in Sources */,
+				E32622112B32712E00105455 /* AddNewSymbolViewController.swift in Sources */,
 				E32621E72B311F8E00105455 /* ApiDecoding.swift in Sources */,
+				E326220D2B3270D700105455 /* AddNewWatchlistViewController.swift in Sources */,
 				E32621CC2B31092F00105455 /* ChartDataProvider.swift in Sources */,
 				E37BC0872B2C7F590065F61A /* AppDelegate.swift in Sources */,
 				E32621F52B320B9700105455 /* WatchlistsProvider.swift in Sources */,
 				E32621EB2B31227500105455 /* ChartItem.swift in Sources */,
+				E32622092B32702200105455 /* WatchlistsViewController.swift in Sources */,
 				E31F6E262B30C81800CB0C3B /* Quote.swift in Sources */,
+				E32622132B32717200105455 /* AddNewSymbolViewModel.swift in Sources */,
 				E31F6E1A2B30BBBA00CB0C3B /* QuoteViewModel.swift in Sources */,
 				E32621C52B31069200105455 /* QuotesProviding.swift in Sources */,
 				E32621C22B30F19000105455 /* DateExtensions.swift in Sources */,
@@ -451,9 +520,12 @@
 				E31F6E182B30BBAE00CB0C3B /* QuoteViewController.swift in Sources */,
 				E32621F92B323FB800105455 /* WatchlistTableViewCell.swift in Sources */,
 				E32621D72B31122300105455 /* QuoteRequest.swift in Sources */,
+				E326220F2B3270FC00105455 /* AddNewWatchlistViewModel.swift in Sources */,
+				E326220B2B32704400105455 /* WatchlistsViewModel.swift in Sources */,
 				E32621D22B310F5B00105455 /* ApiFetcher.swift in Sources */,
 				E32621FB2B32499E00105455 /* WatchlistTableViewHeader.swift in Sources */,
 				E32621E22B311DFD00105455 /* MockChartDataProvider.swift in Sources */,
+				E32622002B326A4D00105455 /* CoordinatorObject.swift in Sources */,
 				E32621EE2B32029800105455 /* WatchlistViewController.swift in Sources */,
 				E32621D02B310F4D00105455 /* ApiFetching.swift in Sources */,
 				E31F6E242B30C7F000CB0C3B /* ChartData.swift in Sources */,

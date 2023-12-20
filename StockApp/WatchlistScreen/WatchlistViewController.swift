@@ -134,32 +134,38 @@ private extension WatchlistViewController {
     func setupBindings() {
         viewModel.titlePublisher
             .receive(on: RunLoop.main)
-            .sink { self.title = $0 }
+            .sink { [weak self] title in
+                self?.title = title
+            }
             .store(in: &store)
         
         viewModel.statePublisher
             .receive(on: RunLoop.main)
-            .sink { state in
-                self.loadingView.isHidden = state != .loading
-                self.errorLabel.isHidden = state != .error
-                self.tableView.isHidden = state != .dataObtained
+            .sink { [weak self] state in
+                self?.loadingView.isHidden = state != .loading
+                self?.errorLabel.isHidden = state != .error
+                self?.tableView.isHidden = state != .dataObtained
                 
                 if state == .loading {
-                    self.loadingView.startAnimating()
+                    self?.loadingView.startAnimating()
                 } else {
-                    self.loadingView.stopAnimating()
+                    self?.loadingView.stopAnimating()
                 }
             }
             .store(in: &store)
         
         viewModel.errorPublisher
             .receive(on: RunLoop.main)
-            .sink { self.errorLabel.text = $0 }
+            .sink { [weak self] error in
+                self?.errorLabel.text = error
+            }
             .store(in: &store)
         
         viewModel.stockItemsPublisher
             .receive(on: RunLoop.main)
-            .sink { _ in self.tableView.reloadData() }
+            .sink { [weak self] _ in
+                self?.tableView.reloadData()
+            }
             .store(in: &store)
     }
     

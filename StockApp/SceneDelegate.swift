@@ -8,52 +8,37 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
     var window: UIWindow?
+    
+    var coordinator: Coordinator?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        
         let window = UIWindow(windowScene: windowScene)
+    
+        let navigationController = UINavigationController()
+        
         let apiFetcher = ApiFetcher()
+        let watchlistsProvider = WatchlistsProvider()
         let quotesProvider = QuotesProvider(
             apiFetcher: apiFetcher
         )
-        
-        let quoteViewController = QuoteViewController(
-            viewModel: QuoteViewModel(
-                quotesProvider: quotesProvider,
-                chartDataProvider: ChartDataProvider(
-                    apiFetcher: apiFetcher
-                ),
-                symbol: "AAPL",
-                refreshRate: 5
-            )
+        let chartDataProvider = ChartDataProvider(
+            apiFetcher: apiFetcher
         )
         
-        let watchlist = Watchlist(
-            id: UUID(uuidString: "E358D0AA-1DDC-4551-81CD-1AF209CA2D9E")!, // todo: just for now so WatchlistsProvider has watchlist with the same id
-            name: "My First List",
-            symbols: ["AAPL", "MSFT", "GOOG"]
+        self.coordinator = CoordinatorObject(
+            navigationController: navigationController,
+            watchlistsProvider: watchlistsProvider,
+            quotesProvider: quotesProvider,
+            chartDataProvider: chartDataProvider
         )
+        self.coordinator?.onAppStart()
         
-        let watchlistViewController = WatchlistViewController(
-            viewModel: WatchlistViewModel(
-                watchlistsProvider: WatchlistsProvider(),
-                quotesProvider: quotesProvider,
-                watchlist: watchlist,
-                refreshRate: 5
-            )
-        )
-        
-        let navigationViewController = UINavigationController(
-            rootViewController: watchlistViewController
-        )
-        
-        window.rootViewController = navigationViewController
+        window.rootViewController = navigationController
         self.window = window
         window.makeKeyAndVisible()
     }
@@ -85,7 +70,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
-
 }
-
