@@ -8,8 +8,21 @@
 import Foundation
 
 class SymbolsProvider: SymbolsProviding {
+    private let apiFetcher: ApiFetching
+    
+    init(apiFetcher: ApiFetching) {
+        self.apiFetcher = apiFetcher
+    }
+    
     func getSymbols(startingWith text: String) async throws -> [String] {
-        try? await Task.sleep(nanoseconds: 1 * 1_000_000_000) // 1 seconds
-        return ["AAPL", "MSFT", "GOOG", "GOOS"]
+        let response: SymbolsResponse = try await apiFetcher.fetchData(
+            forRequest: SymbolsRequest(text),
+            andDecoder: SymbolsDecoder()
+        )
+        
+        let symbols = response.data.items
+            .map { $0.symbol }
+        
+        return symbols
     }
 }

@@ -26,7 +26,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let quotesProvider = QuotesProvider(
             apiFetcher: apiFetcher
         )
-        let symbolsProvider = SymbolsProvider()
+        let symbolsProvider = SymbolsProvider(
+            apiFetcher: apiFetcher
+        )
         let chartDataProvider = ChartDataProvider(
             apiFetcher: apiFetcher
         )
