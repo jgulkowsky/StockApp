@@ -49,16 +49,19 @@ class WatchlistViewModel {
     private var timer: Publishers.Autoconnect<Timer.TimerPublisher>?
     private var store = Set<AnyCancellable>()
     
+    private unowned let coordinator: Coordinator
     private let watchlistsProvider: WatchlistsProviding
     private let quotesProvider: QuotesProviding
     private var watchlist: Watchlist
     private let refreshRate: Double
     
-    init(watchlistsProvider: WatchlistsProviding,
+    init(coordinator: Coordinator,
+         watchlistsProvider: WatchlistsProviding,
          quotesProvider: QuotesProviding,
          watchlist: Watchlist,
          refreshRate: Double
     ) {
+        self.coordinator = coordinator
         self.watchlistsProvider = watchlistsProvider
         self.quotesProvider = quotesProvider
         self.watchlist = watchlist
@@ -76,11 +79,12 @@ class WatchlistViewModel {
     func onItemTapped(at index: Int) {
         let stockItem = stockItemsSubject.value[index]
         let symbol = stockItem.symbol
+        coordinator.execute(action: .itemSelected(data: stockItem))
         // todo: inform coordinator -> send there symbol as data (or consider sending whole stockItem so next VC don't have to load data for itself or even can but at least have sth to show without loading indicator)
     }
     
     func onAddButtonTapped() {
-        // todo: inform coordinator
+        coordinator.execute(action: .addButtonTapped)
         
         // todo: and from the other VC we should do sth like this - need to add button to check
         let exampleSymbol = "GCV"

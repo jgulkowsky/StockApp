@@ -80,16 +80,19 @@ class QuoteViewModel {
     private var timer: Publishers.Autoconnect<Timer.TimerPublisher>?
     private var store = Set<AnyCancellable>()
     
+    private unowned let coordinator: Coordinator
     private let quotesProvider: QuotesProviding
     private let chartDataProvider: ChartDataProviding
     private let symbol: String
     private let refreshRate: Double
     
-    init(quotesProvider: QuotesProviding,
+    init(coordinator: Coordinator,
+         quotesProvider: QuotesProviding,
          chartDataProvider: ChartDataProviding,
          symbol: String,
          refreshRate: Double
     ) {
+        self.coordinator = coordinator
         self.quotesProvider = quotesProvider
         self.chartDataProvider = chartDataProvider
         self.symbol = symbol
