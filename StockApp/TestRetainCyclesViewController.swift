@@ -37,7 +37,7 @@ class TestRetainCyclesViewController: NoNavigationBackButtonTextViewController {
     }
     
     @objc func addButtonTapped() {
-        coordinator.execute(action: .addButtonTapped)
+        coordinator.execute(action: .addButtonTapped(data: nil))
     }
 }
 #endif

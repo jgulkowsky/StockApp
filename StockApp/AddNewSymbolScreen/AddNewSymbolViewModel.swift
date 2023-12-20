@@ -23,16 +23,22 @@ class AddNewSymbolViewModel {
     private var store = Set<AnyCancellable>()
     
     private unowned let coordinator: Coordinator
+    private let watchlistsProvider: WatchlistsProviding
     private let symbolsProvider: SymbolsProviding
+    private var watchlist: Watchlist
     
     init(coordinator: Coordinator,
-         symbolsProvider: SymbolsProviding
+         watchlistsProvider: WatchlistsProviding,
+         symbolsProvider: SymbolsProviding,
+         watchlist: Watchlist
     ) {
 #if DEBUG
         print("@jgu: \(Self.self).init()")
 #endif
         self.coordinator = coordinator
+        self.watchlistsProvider = watchlistsProvider
         self.symbolsProvider = symbolsProvider
+        self.watchlist = watchlist
         setupBindings()
     }
     
@@ -53,7 +59,15 @@ class AddNewSymbolViewModel {
     
     func onItemTapped(at index: Int) {
         let symbol = symbolsSubject.value[index]
-        coordinator.execute(action: .itemSelected(data: symbol))
+        
+        if !watchlist.symbols.contains(symbol) {
+            watchlist.symbols.append(symbol)
+            watchlistsProvider.onUpdate(watchlist: watchlist)
+        }
+        
+        // todo: generally we should put the item with symbol only and empty slots for bid / ask / last and timer will put values there - or we can get them right away and put everything without waiting for timer - maybe let's check it out when we actually have the viewController for adding symbols
+        
+        coordinator.execute(action: .itemSelected(data: nil))
     }
 }
 

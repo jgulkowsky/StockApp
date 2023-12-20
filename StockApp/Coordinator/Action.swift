@@ -8,6 +8,6 @@
 import Foundation
 
 enum Action {
-    case addButtonTapped
-    case itemSelected(data: Any)
+    case addButtonTapped(data: Any?)
+    case itemSelected(data: Any?)
 }
