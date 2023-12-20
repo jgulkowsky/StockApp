@@ -145,6 +145,13 @@ private extension QuoteViewController {
     }
     
     func setupBindings() {
+        viewModel.titlePublisher
+            .receive(on: RunLoop.main)
+            .sink { [weak self] title in
+                self?.title = title
+            }
+            .store(in: &store)
+        
         viewModel.statePublisher
             .receive(on: RunLoop.main)
             .sink { [weak self] state in

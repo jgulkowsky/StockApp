@@ -9,6 +9,12 @@ import Foundation
 import Combine
 
 class QuoteViewModel: StatefulViewModel {
+    var titlePublisher: AnyPublisher<String, Never> {
+        titleSubject
+            .removeDuplicates()
+            .eraseToAnyPublisher()
+    }
+    
     var chartDataPublisher: AnyPublisher<ChartData, Never> {
         chartDataSubject
             .eraseToAnyPublisher()
@@ -53,6 +59,7 @@ class QuoteViewModel: StatefulViewModel {
     private var stateSubject = CurrentValueSubject<State, Never>(.loading)
     private var errorSubject = CurrentValueSubject<String?, Never>(nil)
     
+    private var titleSubject = CurrentValueSubject<String, Never>("")
     private var chartDataSubject = CurrentValueSubject<ChartData, Never>(ChartData(values: []))
     private var bidPriceSubject = CurrentValueSubject<Double?, Never>(nil)
     private var askPriceSubject = CurrentValueSubject<Double?, Never>(nil)
@@ -85,6 +92,8 @@ class QuoteViewModel: StatefulViewModel {
             stateSubject: stateSubject,
             errorSubject: errorSubject
         )
+        
+        self.titleSubject.send(self.symbol)
     }
     
 #if DEBUG
