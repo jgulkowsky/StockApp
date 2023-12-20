@@ -77,7 +77,6 @@ class QuoteViewModel {
     
     private var errorSubject = CurrentValueSubject<String?, Never>(nil)
     
-    private var timer: Publishers.Autoconnect<Timer.TimerPublisher>?
     private var store = Set<AnyCancellable>()
     
     private unowned let coordinator: Coordinator
@@ -92,6 +91,8 @@ class QuoteViewModel {
          symbol: String,
          refreshRate: Double
     ) {
+        print("@jgu: \(Self.self).init()")
+        
         self.coordinator = coordinator
         self.quotesProvider = quotesProvider
         self.chartDataProvider = chartDataProvider
@@ -99,6 +100,10 @@ class QuoteViewModel {
         self.refreshRate = refreshRate
         
         fetchData()
+    }
+    
+    deinit {
+        print("@jgu: \(Self.self).deinit()")
     }
 }
 
@@ -123,19 +128,19 @@ private extension QuoteViewModel {
     }
     
     func setupTimer() {
-        self.timer = Timer.publish(every: self.refreshRate, on: .main, in: .common)
-           .autoconnect()
-        self.timer?
-            .sink { _ in
-                Task {
+        Timer.publish(every: self.refreshRate, on: .main, in: .common)
+            .autoconnect()
+            .sink { [weak self] _ in
+                Task { [weak self] in
                     // todo: we could check if stock market is closed - if so then we should't make calls - this logic should be put into quotesProvider that would just return last quote and not send request until the stock is open once again
-                    if let quote = try? await self.quotesProvider.getQuote(forSymbol: self.symbol) {
-                        self.bidPriceSubject.send(quote.bidPrice)
-                        self.askPriceSubject.send(quote.askPrice)
-                        self.lastPriceSubject.send(quote.lastPrice)
-                        self.errorSubject.send(nil)
-                        self.stateSubject.send(.dataObtained)
-                    }
+                    guard let symbol = self?.symbol else { return }
+                    guard let quote = try? await self?.quotesProvider.getQuote(forSymbol: symbol) else { return }
+                    
+                    self?.bidPriceSubject.send(quote.bidPrice)
+                    self?.askPriceSubject.send(quote.askPrice)
+                    self?.lastPriceSubject.send(quote.lastPrice)
+                    self?.errorSubject.send(nil)
+                    self?.stateSubject.send(.dataObtained)
                 }
             }
             .store(in: &store)

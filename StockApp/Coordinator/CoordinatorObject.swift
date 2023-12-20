@@ -25,34 +25,22 @@ class CoordinatorObject: Coordinator {
     }
 
     func onAppStart() {
-        let watchlist = Watchlist(
-            id: UUID(uuidString: "E358D0AA-1DDC-4551-81CD-1AF209CA2D9E")!, // todo: just for now so WatchlistsProvider has watchlist with the same id
-            name: "My First List",
-            symbols: ["AAPL", "MSFT", "GOOG"]
-        )
-        
-        let vc = WatchlistViewController(
-            viewModel: WatchlistViewModel(
-                coordinator: self,
-                watchlistsProvider: watchlistsProvider,
-                quotesProvider: quotesProvider,
-                watchlist: watchlist,
-                refreshRate: 5
-            )
+        let vc = TestRetainCyclesViewController(
+            coordinator: self
         )
         navigationController.pushViewController(vc, animated: false)
     }
     
     func execute(action: Action) {
-        guard let rootVC = self.navigationController.viewControllers.first else {
+        guard let currentVC = self.navigationController.viewControllers.last else {
             return
         }
         
-        if rootVC is WatchlistsViewController {
+        if currentVC is WatchlistsViewController {
             
-        } else if rootVC is AddNewWatchlistViewController {
+        } else if currentVC is AddNewWatchlistViewController {
             
-        } else if rootVC is WatchlistViewController {
+        } else if currentVC is WatchlistViewController {
             switch action {
             case .itemSelected(let data):
                 if let stockItem = data as? StockItem {
@@ -75,10 +63,37 @@ class CoordinatorObject: Coordinator {
                 )
                 navigationController.pushViewController(vc, animated: true)
             }
-        } else if rootVC is AddNewSymbolViewController {
+        } else if currentVC is AddNewSymbolViewController {
             
-        } else if rootVC is QuoteViewController {
+        } else if currentVC is QuoteViewController {
             // todo: here nothing - but we need to add other VCs to put here more if cases
+        }
+        
+        // todo: when app is finished we should remove or comment out the TestRetainCyclesViewController / or use some if prepreocessors
+        
+        else if currentVC is TestRetainCyclesViewController {
+            switch action {
+            case .addButtonTapped:
+                let watchlist = Watchlist(
+                    id: UUID(uuidString: "E358D0AA-1DDC-4551-81CD-1AF209CA2D9E")!, // todo: just for now so WatchlistsProvider has watchlist with the same id
+                    name: "My First List",
+                    symbols: ["AAPL", "MSFT", "GOOG"]
+                )
+                
+                let vc = WatchlistViewController(
+                    viewModel: WatchlistViewModel(
+                        coordinator: self,
+                        watchlistsProvider: watchlistsProvider,
+                        quotesProvider: quotesProvider,
+                        watchlist: watchlist,
+                        refreshRate: 5
+                    )
+                )
+                
+                navigationController.pushViewController(vc, animated: true)
+            default:
+                break
+            }
         }
     }
 }

@@ -136,45 +136,55 @@ private extension QuoteViewController {
     func setupBindings() {
         viewModel.statePublisher
             .receive(on: RunLoop.main)
-            .sink { state in
-                self.loadingView.isHidden = state != .loading
-                self.errorLabel.isHidden = state != .error
-                self.chartView.isHidden = state != .dataObtained
-                self.bidPriceLabel.isHidden = state != .dataObtained
-                self.askPriceLabel.isHidden = state != .dataObtained
-                self.lastPriceLabel.isHidden = state != .dataObtained
+            .sink { [weak self] state in
+                self?.loadingView.isHidden = state != .loading
+                self?.errorLabel.isHidden = state != .error
+                self?.chartView.isHidden = state != .dataObtained
+                self?.bidPriceLabel.isHidden = state != .dataObtained
+                self?.askPriceLabel.isHidden = state != .dataObtained
+                self?.lastPriceLabel.isHidden = state != .dataObtained
                 
                 if state == .loading {
-                    self.loadingView.startAnimating()
+                    self?.loadingView.startAnimating()
                 } else {
-                    self.loadingView.stopAnimating()
+                    self?.loadingView.stopAnimating()
                 }
             }
             .store(in: &store)
         
         viewModel.errorPublisher
             .receive(on: RunLoop.main)
-            .sink { self.errorLabel.text = $0 }
+            .sink { [weak self] error in
+                self?.errorLabel.text = error
+            }
             .store(in: &store)
 
         viewModel.chartDataPublisher
             .receive(on: RunLoop.main)
-            .sink { self.setChartView(basedOn: $0) }
+            .sink { [weak self] chartData in
+                self?.setChartView(basedOn: chartData)
+            }
             .store(in: &store)
         
         viewModel.bidPricePublisher
             .receive(on: RunLoop.main)
-            .sink { self.bidPriceLabel.text = $0 }
+            .sink { [weak self] bidPrice in
+                self?.bidPriceLabel.text = bidPrice
+            }
             .store(in: &store)
         
         viewModel.askPricePublisher
             .receive(on: RunLoop.main)
-            .sink { self.askPriceLabel.text = $0 }
+            .sink { [weak self] askPrice in
+                self?.askPriceLabel.text = askPrice
+            }
             .store(in: &store)
         
         viewModel.lastPricePublisher
             .receive(on: RunLoop.main)
-            .sink { self.lastPriceLabel.text = $0 }
+            .sink { [weak self] lastPrice in
+                self?.lastPriceLabel.text = lastPrice
+            }
             .store(in: &store)
     }
     
