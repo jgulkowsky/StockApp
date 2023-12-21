@@ -116,8 +116,7 @@ private extension WatchlistsProvider {
     }
     
     func addSymbolToWatchlistInCoreData(_ symbol: String, _ watchlist: Watchlist) {
-        guard let watchlistEntity = getWatchlistEntites()
-            .first(where: { watchlist.id == $0.id }) else { return }
+        guard let watchlistEntity = getWatchlistEntity(withId: watchlist.id) else { return }
         
         let symbolEntity = SymbolEntity(context: viewContext)
         symbolEntity.value = symbol
@@ -127,10 +126,8 @@ private extension WatchlistsProvider {
     }
     
     func removeSymbolFromWatchlistInCoreData(_ symbol: String, _ watchlist: Watchlist) {
-        guard let watchlistEntity = getWatchlistEntites()
-            .first(where: { watchlist.id == $0.id }) else { return }
-        
-        guard let symbolEntities = watchlistEntity.symbols?.allObjects as? [SymbolEntity],
+        guard let watchlistEntity = getWatchlistEntity(withId: watchlist.id),
+              let symbolEntities = watchlistEntity.symbols?.allObjects as? [SymbolEntity],
               let symbolEntity = symbolEntities.first(where: { $0.value == symbol }) else {
                   return
               }
@@ -142,16 +139,20 @@ private extension WatchlistsProvider {
     }
     
     func deleteWatchlistFromCoreData(_ watchlist: Watchlist) {
-        guard let watchlistEntity = getWatchlistEntites()
-            .first(where: { watchlist.id == $0.id }) else { return }
+        guard let watchlistEntity = getWatchlistEntity(withId: watchlist.id) else { return }
+        
         viewContext.delete(watchlistEntity)
         // don't have to worry about symbolEntities - they will be removed with delete rule cascade in relationships
         saveToCoreData()
     }
     
-    func getWatchlistEntites() -> [WatchlistEntity] {
+    // todo: rename here and everywhere to Entities not Entites
+    func getWatchlistEntites(withId id: UUID? = nil) -> [WatchlistEntity] {
         func getRequest() -> NSFetchRequest<WatchlistEntity> {
             let request = NSFetchRequest<WatchlistEntity>(entityName: "WatchlistEntity")
+            if let id = id as? CVarArg {
+                request.predicate = NSPredicate(format: "id == %@", id)
+            }
             return request
         }
         do {
@@ -162,6 +163,10 @@ private extension WatchlistsProvider {
             print("@jgu: Error in \(#fileID).\(#function)")
             return []
         }
+    }
+    
+    func getWatchlistEntity(withId id: UUID) -> WatchlistEntity? {
+        return getWatchlistEntites(withId: id).first
     }
     
     func getSymbolEntites() -> [SymbolEntity] {
