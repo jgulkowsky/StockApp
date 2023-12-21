@@ -87,11 +87,8 @@ class WatchlistsProvider: WatchlistsProviding {
 private extension WatchlistsProvider {
     func getWatchlistsFromCoreData() -> [Watchlist] {
         let watchlistEntities = getWatchlistEntites()
-        let symbolEntities = getSymbolEntites() // todo: add predicate so we can send watchlist so it returns only entities related to this watchlist
         let watchlists = watchlistEntities.map { watchlistEntity in
-            let symbolEntities = symbolEntities.filter { symbolEntity in
-                return symbolEntity.watchlist?.id == watchlistEntity.id
-            }
+            let symbolEntities = getSymbolEntites(of: watchlistEntity)
             
             return Watchlist(
                 id: watchlistEntity.id!,
@@ -169,9 +166,10 @@ private extension WatchlistsProvider {
         return getWatchlistEntites(withId: id).first
     }
     
-    func getSymbolEntites() -> [SymbolEntity] {
+    func getSymbolEntites(of watchlistEntity: WatchlistEntity) -> [SymbolEntity] {
         func getRequest() -> NSFetchRequest<SymbolEntity> {
             let request = NSFetchRequest<SymbolEntity>(entityName: "SymbolEntity")
+            request.predicate = NSPredicate(format: "watchlist == %@", watchlistEntity)
             return request
         }
         do {
