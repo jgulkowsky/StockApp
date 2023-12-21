@@ -16,7 +16,7 @@ class AddNewSymbolViewController: NoNavigationBackButtonTextViewController {
         let searchBar = UISearchBar()
         
         searchBar.searchBarStyle = UISearchBar.Style.default
-        searchBar.placeholder = " Search for symbol..."
+        searchBar.placeholder = " Search for symbol to add..."
         searchBar.sizeToFit()
         searchBar.isTranslucent = false
         searchBar.backgroundImage = UIImage()

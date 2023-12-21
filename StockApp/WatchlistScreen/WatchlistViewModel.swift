@@ -94,9 +94,8 @@ class WatchlistViewModel: StatefulViewModel {
         let removedItem = stockItems.remove(at: index)
         stockItemsSubject.send(stockItems)
         
-        watchlist.symbols.removeAll { $0 == removedItem.symbol }
-        
-        watchlistsProvider.onUpdate(watchlist: watchlist)
+        let symbol = removedItem.symbol
+        watchlistsProvider.onRemove(symbol, from: watchlist)
     }
 }
 

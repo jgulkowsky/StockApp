@@ -10,7 +10,10 @@ import Combine
 
 protocol WatchlistsProviding {
     var watchlists: AnyPublisher<[Watchlist], Never> { get }
-    func onAdd(watchlist: Watchlist)
-    func onRemove(watchlist: Watchlist)
-    func onUpdate(watchlist: Watchlist)
+    
+    func onAdd(_ watchlist: Watchlist)
+    func onRemove(_ watchlist: Watchlist)
+    
+    func onAdd(_ symbol: String, to watchlist: Watchlist)
+    func onRemove(_ symbol: String, from watchlist: Watchlist)
 }

@@ -34,17 +34,10 @@ class CoordinatorObject: Coordinator {
         )
         navigationController.pushViewController(vc, animated: false)
 #else
-        let vc = WatchlistViewController(
-            viewModel: WatchlistViewModel(
+        let vc = WatchlistsViewController(
+            viewModel: WatchlistsViewModel(
                 coordinator: self,
-                watchlistsProvider: watchlistsProvider,
-                quotesProvider: quotesProvider,
-                watchlist: Watchlist(
-                    id: UUID(uuidString: "E358D0AA-1DDC-4551-81CD-1AF209CA2D9E")!, // todo: just for now so WatchlistsProvider has watchlist with the same id
-                    name: "My First List",
-                    symbols: ["AAPL", "MSFT", "GOOG"]
-                ),
-                refreshRate: 5
+                watchlistsProvider: watchlistsProvider
             )
         )
         navigationController.pushViewController(vc, animated: true)
@@ -57,7 +50,28 @@ class CoordinatorObject: Coordinator {
         }
         
         if currentVC is WatchlistsViewController {
-            
+            switch action {
+            case .itemSelected(let data):
+                if let watchlist = data as? Watchlist {
+                    let vc = WatchlistViewController(
+                        viewModel: WatchlistViewModel(
+                            coordinator: self,
+                            watchlistsProvider: watchlistsProvider,
+                            quotesProvider: quotesProvider,
+                            watchlist: watchlist,
+                            refreshRate: 5
+                        )
+                    )
+                    navigationController.pushViewController(vc, animated: true)
+                }
+            case .addButtonTapped:
+                let vc = AddNewWatchlistViewController(
+                    viewModel: AddNewWatchlistViewModel(
+                        coordinator: self
+                    )
+                )
+                navigationController.pushViewController(vc, animated: true)
+            }
         } else if currentVC is AddNewWatchlistViewController {
             
         } else if currentVC is WatchlistViewController {
@@ -100,17 +114,10 @@ class CoordinatorObject: Coordinator {
             if currentVC is TestRetainCyclesViewController {
                 switch action {
                 case .addButtonTapped:
-                    let vc = WatchlistViewController(
-                        viewModel: WatchlistViewModel(
+                    let vc = WatchlistsViewController(
+                        viewModel: WatchlistsViewModel(
                             coordinator: self,
-                            watchlistsProvider: watchlistsProvider,
-                            quotesProvider: quotesProvider,
-                            watchlist: Watchlist(
-                                id: UUID(uuidString: "E358D0AA-1DDC-4551-81CD-1AF209CA2D9E")!, // todo: just for now so WatchlistsProvider has watchlist with the same id
-                                name: "My First List",
-                                symbols: ["AAPL", "MSFT", "GOOG"]
-                            ),
-                            refreshRate: 5
+                            watchlistsProvider: watchlistsProvider
                         )
                     )
                     navigationController.pushViewController(vc, animated: true)

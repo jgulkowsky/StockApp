@@ -8,6 +8,8 @@
 import Foundation
 import Combine
 
+// todo: now we are experiencing a problem where we can add new symbol (which for some reason don't get quote) and we end up with error instead of seeing other symbols with their quotes and this one without quote like (symbol - - -) - this happens quite often - let's fix it
+
 class AddNewSymbolViewModel {
     var symbolsPublisher: AnyPublisher<[String], Never> {
         symbolsSubject
@@ -61,9 +63,9 @@ class AddNewSymbolViewModel {
         let symbol = symbolsSubject.value[index]
         
         if !watchlist.symbols.contains(symbol) {
+            watchlistsProvider.onAdd(symbol, to: watchlist)
             watchlist.symbols.append(symbol)
-            watchlistsProvider.onUpdate(watchlist: watchlist)
-        } // todo:  consider having this logic in watchlistsProvider
+        }
         
         coordinator.execute(action: .itemSelected(data: nil))
     }

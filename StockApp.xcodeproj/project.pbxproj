@@ -56,6 +56,10 @@
 		E326222A2B335EAE00105455 /* SymbolsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32622292B335EAE00105455 /* SymbolsResponse.swift */; };
 		E326222C2B336CC800105455 /* StatefulViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E326222B2B336CC800105455 /* StatefulViewModel.swift */; };
 		E326222E2B33749200105455 /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E326222D2B33749200105455 /* UITableViewExtensions.swift */; };
+		E32622302B33784900105455 /* WatchlistsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E326222F2B33784900105455 /* WatchlistsTableViewCell.swift */; };
+		E32622322B3379E100105455 /* Watchlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32622312B3379E100105455 /* Watchlist.swift */; };
+		E326223C2B33919900105455 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E326223B2B33919900105455 /* PersistenceController.swift */; };
+		E326223F2B3391C300105455 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E326223D2B3391C300105455 /* Model.xcdatamodeld */; };
 		E37BC0872B2C7F590065F61A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC0862B2C7F590065F61A /* AppDelegate.swift */; };
 		E37BC0892B2C7F590065F61A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC0882B2C7F590065F61A /* SceneDelegate.swift */; };
 		E37BC0902B2C7F5A0065F61A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E37BC08F2B2C7F5A0065F61A /* Assets.xcassets */; };
@@ -63,7 +67,6 @@
 		E37BC09E2B2C7F5A0065F61A /* StockAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC09D2B2C7F5A0065F61A /* StockAppTests.swift */; };
 		E37BC0A82B2C7F5B0065F61A /* StockAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC0A72B2C7F5B0065F61A /* StockAppUITests.swift */; };
 		E37BC0AA2B2C7F5B0065F61A /* StockAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC0A92B2C7F5B0065F61A /* StockAppUITestsLaunchTests.swift */; };
-		E37BC0B72B2C82620065F61A /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC0B62B2C82620065F61A /* Plan.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +134,10 @@
 		E32622292B335EAE00105455 /* SymbolsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsResponse.swift; sourceTree = "<group>"; };
 		E326222B2B336CC800105455 /* StatefulViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulViewModel.swift; sourceTree = "<group>"; };
 		E326222D2B33749200105455 /* UITableViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
+		E326222F2B33784900105455 /* WatchlistsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistsTableViewCell.swift; sourceTree = "<group>"; };
+		E32622312B3379E100105455 /* Watchlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Watchlist.swift; sourceTree = "<group>"; };
+		E326223B2B33919900105455 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		E326223E2B3391C300105455 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		E37BC0832B2C7F590065F61A /* StockApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E37BC0862B2C7F590065F61A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E37BC0882B2C7F590065F61A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -142,7 +149,6 @@
 		E37BC0A32B2C7F5B0065F61A /* StockAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StockAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E37BC0A72B2C7F5B0065F61A /* StockAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockAppUITests.swift; sourceTree = "<group>"; };
 		E37BC0A92B2C7F5B0065F61A /* StockAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		E37BC0B62B2C82620065F61A /* Plan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -301,6 +307,8 @@
 			children = (
 				E32622082B32702200105455 /* WatchlistsViewController.swift */,
 				E326220A2B32704400105455 /* WatchlistsViewModel.swift */,
+				E326222F2B33784900105455 /* WatchlistsTableViewCell.swift */,
+				E32622312B3379E100105455 /* Watchlist.swift */,
 			);
 			path = WatchlistsScreen;
 			sourceTree = "<group>";
@@ -336,6 +344,15 @@
 			path = SymbolsProvider;
 			sourceTree = "<group>";
 		};
+		E326223A2B33915600105455 /* PersistentStorage */ = {
+			isa = PBXGroup;
+			children = (
+				E326223B2B33919900105455 /* PersistenceController.swift */,
+				E326223D2B3391C300105455 /* Model.xcdatamodeld */,
+			);
+			path = PersistentStorage;
+			sourceTree = "<group>";
+		};
 		E37BC07A2B2C7F590065F61A = {
 			isa = PBXGroup;
 			children = (
@@ -361,6 +378,7 @@
 			children = (
 				E32621DE2B311BC500105455 /* Common */,
 				E32621CE2B310F3A00105455 /* ApiFetcher */,
+				E326223A2B33915600105455 /* PersistentStorage */,
 				E32621C32B31067600105455 /* Providers */,
 				E32621C02B30F17E00105455 /* Extensions */,
 				E32621FE2B326A2F00105455 /* Coordinator */,
@@ -371,7 +389,6 @@
 				E31F6E162B30BB9C00CB0C3B /* QuoteScreen */,
 				E37BC0862B2C7F590065F61A /* AppDelegate.swift */,
 				E37BC0882B2C7F590065F61A /* SceneDelegate.swift */,
-				E37BC0B62B2C82620065F61A /* Plan.swift */,
 				E32622142B332A8C00105455 /* TestRetainCyclesViewController.swift */,
 				E37BC08F2B2C7F5A0065F61A /* Assets.xcassets */,
 				E37BC0912B2C7F5A0065F61A /* LaunchScreen.storyboard */,
@@ -545,7 +562,6 @@
 				E32622172B33401300105455 /* AddNewSymbolTableViewCell.swift in Sources */,
 				E326222C2B336CC800105455 /* StatefulViewModel.swift in Sources */,
 				E32621CA2B31092500105455 /* ChartDataProviding.swift in Sources */,
-				E37BC0B72B2C82620065F61A /* Plan.swift in Sources */,
 				E32622112B32712E00105455 /* AddNewSymbolViewController.swift in Sources */,
 				E32621E72B311F8E00105455 /* ApiDecoding.swift in Sources */,
 				E326220D2B3270D700105455 /* AddNewWatchlistViewController.swift in Sources */,
@@ -557,7 +573,9 @@
 				E32621EB2B31227500105455 /* ChartItem.swift in Sources */,
 				E32622092B32702200105455 /* WatchlistsViewController.swift in Sources */,
 				E326221A2B3343A500105455 /* SymbolsProviding.swift in Sources */,
+				E32622302B33784900105455 /* WatchlistsTableViewCell.swift in Sources */,
 				E31F6E262B30C81800CB0C3B /* Quote.swift in Sources */,
+				E326223C2B33919900105455 /* PersistenceController.swift in Sources */,
 				E32622132B32717200105455 /* AddNewSymbolViewModel.swift in Sources */,
 				E31F6E1A2B30BBBA00CB0C3B /* QuoteViewModel.swift in Sources */,
 				E326222E2B33749200105455 /* UITableViewExtensions.swift in Sources */,
@@ -577,8 +595,10 @@
 				E32621FB2B32499E00105455 /* WatchlistTableViewHeader.swift in Sources */,
 				E32621E22B311DFD00105455 /* MockChartDataProvider.swift in Sources */,
 				E32622002B326A4D00105455 /* CoordinatorObject.swift in Sources */,
+				E326223F2B3391C300105455 /* Model.xcdatamodeld in Sources */,
 				E32621EE2B32029800105455 /* WatchlistViewController.swift in Sources */,
 				E32621D02B310F4D00105455 /* ApiFetching.swift in Sources */,
+				E32622322B3379E100105455 /* Watchlist.swift in Sources */,
 				E326221C2B3343AF00105455 /* SymbolsProvider.swift in Sources */,
 				E31F6E242B30C7F000CB0C3B /* ChartData.swift in Sources */,
 				E32621E02B311CCE00105455 /* ChartDataRequest.swift in Sources */,
@@ -950,6 +970,19 @@
 			productName = DGChartsDynamic;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		E326223D2B3391C300105455 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E326223E2B3391C300105455 /* Model.xcdatamodel */,
+			);
+			currentVersion = E326223E2B3391C300105455 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E37BC07B2B2C7F590065F61A /* Project object */;
 }
