@@ -21,7 +21,6 @@ class WatchlistsProvider: WatchlistsProviding {
     private var store = Set<AnyCancellable>()
     
     init() {
-        print("@jgu:: \(#function)")
         let watchlists = getWatchlistsFromCoreData()
         watchlistsSubject.send(watchlists)
         
@@ -46,13 +45,11 @@ class WatchlistsProvider: WatchlistsProviding {
     }
     
     func onAdd(_ watchlist: Watchlist) {
-        print("@jgu:: \(#function)")
         watchlistsSubject.value?.append(watchlist)
         addWatchlistToCoreData(watchlist)
     }
     
     func onRemove(_ watchlist: Watchlist) {
-        print("@jgu:: \(#function)")
         guard var watchlists = watchlistsSubject.value,
               let index = watchlists.firstIndex(where: { $0.id == watchlist.id } ) else { return }
         watchlists.remove(at: index)
@@ -61,7 +58,6 @@ class WatchlistsProvider: WatchlistsProviding {
     }
     
     func onAdd(_ symbol: String, to watchlist: Watchlist) {
-        print("@jgu:: \(#function)")
         guard var watchlists = watchlistsSubject.value,
               let index = watchlists.firstIndex(where: { $0.id == watchlist.id } ) else { return }
         
@@ -74,7 +70,6 @@ class WatchlistsProvider: WatchlistsProviding {
     }
     
     func onRemove(_ symbol: String, from watchlist: Watchlist) {
-        print("@jgu:: \(#function)")
         guard var watchlists = watchlistsSubject.value,
               let index = watchlists.firstIndex(where: { $0.id == watchlist.id } ) else { return }
         
@@ -91,7 +86,6 @@ class WatchlistsProvider: WatchlistsProviding {
 
 private extension WatchlistsProvider {
     func getWatchlistsFromCoreData() -> [Watchlist] {
-        print("@jgu:: \(#function)")
         let watchlistEntities = getWatchlistEntites()
         let symbolEntities = getSymbolEntites() // todo: add predicate so we can send watchlist so it returns only entities related to this watchlist
         let watchlists = watchlistEntities.map { watchlistEntity in
@@ -109,7 +103,6 @@ private extension WatchlistsProvider {
     }
     
     func addWatchlistToCoreData(_ watchlist: Watchlist) {
-        print("@jgu:: \(#function)")
         let watchlistEntity = WatchlistEntity(context: viewContext)
         watchlistEntity.id = watchlist.id
         watchlistEntity.name = watchlist.name
@@ -123,7 +116,6 @@ private extension WatchlistsProvider {
     }
     
     func addSymbolToWatchlistInCoreData(_ symbol: String, _ watchlist: Watchlist) {
-        print("@jgu:: \(#function)")
         guard let watchlistEntity = getWatchlistEntites()
             .first(where: { watchlist.id == $0.id }) else { return }
         
@@ -135,7 +127,6 @@ private extension WatchlistsProvider {
     }
     
     func removeSymbolFromWatchlistInCoreData(_ symbol: String, _ watchlist: Watchlist) {
-        print("@jgu:: \(#function)")
         guard let watchlistEntity = getWatchlistEntites()
             .first(where: { watchlist.id == $0.id }) else { return }
         
@@ -151,7 +142,6 @@ private extension WatchlistsProvider {
     }
     
     func deleteWatchlistFromCoreData(_ watchlist: Watchlist) {
-        print("@jgu:: \(#function)")
         guard let watchlistEntity = getWatchlistEntites()
             .first(where: { watchlist.id == $0.id }) else { return }
         viewContext.delete(watchlistEntity)
@@ -160,7 +150,6 @@ private extension WatchlistsProvider {
     }
     
     func getWatchlistEntites() -> [WatchlistEntity] {
-        print("@jgu:: \(#function)")
         func getRequest() -> NSFetchRequest<WatchlistEntity> {
             let request = NSFetchRequest<WatchlistEntity>(entityName: "WatchlistEntity")
             return request
@@ -170,13 +159,12 @@ private extension WatchlistsProvider {
             let entites = try viewContext.fetch(request)
             return entites
         } catch {
-            print("@jgu:: Error in \(#fileID).\(#function)")
+            print("@jgu: Error in \(#fileID).\(#function)")
             return []
         }
     }
     
     func getSymbolEntites() -> [SymbolEntity] {
-        print("@jgu:: \(#function)")
         func getRequest() -> NSFetchRequest<SymbolEntity> {
             let request = NSFetchRequest<SymbolEntity>(entityName: "SymbolEntity")
             return request
@@ -186,7 +174,7 @@ private extension WatchlistsProvider {
             let entites = try viewContext.fetch(request)
             return entites
         } catch {
-            print("@jgu:: Error in \(#fileID).\(#function)")
+            print("@jgu: Error in \(#fileID).\(#function)")
             return []
         }
     }
@@ -195,7 +183,7 @@ private extension WatchlistsProvider {
         do {
             try viewContext.save()
         } catch {
-            print("@jgu:: Error in \(#fileID).\(#function)")
+            print("@jgu: Error in \(#fileID).\(#function)")
         }
     }
 }
