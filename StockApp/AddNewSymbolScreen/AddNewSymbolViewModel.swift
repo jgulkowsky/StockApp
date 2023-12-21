@@ -65,7 +65,7 @@ class AddNewSymbolViewModel {
         if !watchlist.symbols.contains(symbol) {
             watchlistsProvider.onAdd(symbol, to: watchlist)
             watchlist.symbols.append(symbol)
-        } // todo:  consider having this logic in watchlistsProvider
+        }
         
         coordinator.execute(action: .itemSelected(data: nil))
     }
