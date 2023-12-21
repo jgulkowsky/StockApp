@@ -88,9 +88,9 @@ class WatchlistsProvider: WatchlistsProviding {
 
 private extension WatchlistsProvider {
     func getWatchlistsFromCoreData() -> [Watchlist] {
-        let watchlistEntities = getWatchlistEntites()
+        let watchlistEntities = getWatchlistEntities()
         let watchlists = watchlistEntities.map { watchlistEntity in
-            let symbolEntities = getSymbolEntites(of: watchlistEntity)
+            let symbolEntities = getSymbolEntities(of: watchlistEntity)
             
             return Watchlist(
                 id: watchlistEntity.id!,
@@ -145,8 +145,7 @@ private extension WatchlistsProvider {
         saveToCoreData()
     }
     
-    // todo: rename here and everywhere to Entities not Entites
-    func getWatchlistEntites(withId id: UUID? = nil) -> [WatchlistEntity] {
+    func getWatchlistEntities(withId id: UUID? = nil) -> [WatchlistEntity] {
         func getRequest() -> NSFetchRequest<WatchlistEntity> {
             let request = NSFetchRequest<WatchlistEntity>(entityName: "WatchlistEntity")
             if let id = id as? CVarArg {
@@ -156,8 +155,8 @@ private extension WatchlistsProvider {
         }
         do {
             let request = getRequest()
-            let entites = try viewContext.fetch(request)
-            return entites
+            let entities = try viewContext.fetch(request)
+            return entities
         } catch {
             print("@jgu: Error in \(#fileID).\(#function)")
             return []
@@ -165,10 +164,10 @@ private extension WatchlistsProvider {
     }
     
     func getWatchlistEntity(withId id: UUID) -> WatchlistEntity? {
-        return getWatchlistEntites(withId: id).first
+        return getWatchlistEntities(withId: id).first
     }
     
-    func getSymbolEntites(of watchlistEntity: WatchlistEntity, withValue value: String? = nil) -> [SymbolEntity] {
+    func getSymbolEntities(of watchlistEntity: WatchlistEntity, withValue value: String? = nil) -> [SymbolEntity] {
         func getRequest() -> NSFetchRequest<SymbolEntity> {
             let request = NSFetchRequest<SymbolEntity>(entityName: "SymbolEntity")
             let watchlistPredicate = NSPredicate(format: "watchlist == %@", watchlistEntity)
@@ -188,8 +187,8 @@ private extension WatchlistsProvider {
         }
         do {
             let request = getRequest()
-            let entites = try viewContext.fetch(request)
-            return entites
+            let entities = try viewContext.fetch(request)
+            return entities
         } catch {
             print("@jgu: Error in \(#fileID).\(#function)")
             return []
@@ -197,7 +196,7 @@ private extension WatchlistsProvider {
     }
     
     func getSymbolEntity(of watchlistEntity: WatchlistEntity, withValue value: String) -> SymbolEntity? {
-        return getSymbolEntites(of: watchlistEntity, withValue: value).first
+        return getSymbolEntities(of: watchlistEntity, withValue: value).first
     }
     
     func saveToCoreData() {
