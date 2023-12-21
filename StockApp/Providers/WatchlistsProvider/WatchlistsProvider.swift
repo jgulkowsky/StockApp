@@ -148,8 +148,8 @@ private extension WatchlistsProvider {
     func getWatchlistEntities(withId id: UUID? = nil) -> [WatchlistEntity] {
         func getRequest() -> NSFetchRequest<WatchlistEntity> {
             let request = NSFetchRequest<WatchlistEntity>(entityName: "WatchlistEntity")
-            if let id = id as? CVarArg {
-                request.predicate = NSPredicate(format: "id == %@", id)
+            if let id = id {
+                request.predicate = NSPredicate(format: "id == %@", id as CVarArg)
             }
             return request
         }
