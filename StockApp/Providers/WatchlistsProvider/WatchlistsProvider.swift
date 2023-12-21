@@ -46,14 +46,17 @@ class WatchlistsProvider: WatchlistsProviding {
     
     func onAdd(_ watchlist: Watchlist) {
         watchlistsSubject.value?.append(watchlist)
+        
         addWatchlistToCoreData(watchlist)
     }
     
     func onRemove(_ watchlist: Watchlist) {
         guard var watchlists = watchlistsSubject.value,
               let index = watchlists.firstIndex(where: { $0.id == watchlist.id } ) else { return }
+        
         watchlists.remove(at: index)
         watchlistsSubject.send(watchlists)
+        
         deleteWatchlistFromCoreData(watchlist)
     }
     
@@ -71,9 +74,8 @@ class WatchlistsProvider: WatchlistsProviding {
     
     func onRemove(_ symbol: String, from watchlist: Watchlist) {
         guard var watchlists = watchlistsSubject.value,
-              let index = watchlists.firstIndex(where: { $0.id == watchlist.id } ) else { return }
-        
-        guard let symbolIndex = watchlist.symbols.firstIndex(of: symbol) else { return }
+              let index = watchlists.firstIndex(where: { $0.id == watchlist.id } ),
+              let symbolIndex = watchlist.symbols.firstIndex(of: symbol) else { return }
         
         var watchlist = watchlist
         watchlist.symbols.remove(at: symbolIndex)
@@ -103,6 +105,7 @@ private extension WatchlistsProvider {
         let watchlistEntity = WatchlistEntity(context: viewContext)
         watchlistEntity.id = watchlist.id
         watchlistEntity.name = watchlist.name
+        
         watchlist.symbols.forEach { symbol in
             let symbolEntity = SymbolEntity(context: viewContext)
             symbolEntity.value = symbol
@@ -122,15 +125,13 @@ private extension WatchlistsProvider {
         saveToCoreData()
     }
     
+    
     func removeSymbolFromWatchlistInCoreData(_ symbol: String, _ watchlist: Watchlist) {
         guard let watchlistEntity = getWatchlistEntity(withId: watchlist.id),
-              let symbolEntities = watchlistEntity.symbols?.allObjects as? [SymbolEntity],
-              let symbolEntity = symbolEntities.first(where: { $0.value == symbol }) else {
-                  return
-              }
+              let symbolEntity = getSymbolEntity(of: watchlistEntity, withValue: symbol) else { return }
         
         viewContext.delete(symbolEntity)
-        watchlistEntity.removeFromSymbols(symbolEntity) // todo: not sure if needed - this reference should be nullified
+        watchlistEntity.removeFromSymbols(symbolEntity)
         
         saveToCoreData()
     }
@@ -140,6 +141,7 @@ private extension WatchlistsProvider {
         
         viewContext.delete(watchlistEntity)
         // don't have to worry about symbolEntities - they will be removed with delete rule cascade in relationships
+        
         saveToCoreData()
     }
     
@@ -166,10 +168,22 @@ private extension WatchlistsProvider {
         return getWatchlistEntites(withId: id).first
     }
     
-    func getSymbolEntites(of watchlistEntity: WatchlistEntity) -> [SymbolEntity] {
+    func getSymbolEntites(of watchlistEntity: WatchlistEntity, withValue value: String? = nil) -> [SymbolEntity] {
         func getRequest() -> NSFetchRequest<SymbolEntity> {
             let request = NSFetchRequest<SymbolEntity>(entityName: "SymbolEntity")
-            request.predicate = NSPredicate(format: "watchlist == %@", watchlistEntity)
+            let watchlistPredicate = NSPredicate(format: "watchlist == %@", watchlistEntity)
+            
+            var valuePredicate: NSPredicate?
+            if let value = value {
+                valuePredicate = NSPredicate(format: "value == %@", value)
+            }
+            
+            let compoundPredicate = NSCompoundPredicate(
+                type: .and,
+                subpredicates: [watchlistPredicate, valuePredicate].compactMap { $0 }
+            )
+            request.predicate = compoundPredicate
+            
             return request
         }
         do {
@@ -180,6 +194,10 @@ private extension WatchlistsProvider {
             print("@jgu: Error in \(#fileID).\(#function)")
             return []
         }
+    }
+    
+    func getSymbolEntity(of watchlistEntity: WatchlistEntity, withValue value: String) -> SymbolEntity? {
+        return getSymbolEntites(of: watchlistEntity, withValue: value).first
     }
     
     func saveToCoreData() {
