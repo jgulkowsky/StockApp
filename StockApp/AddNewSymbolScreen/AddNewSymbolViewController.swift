@@ -50,7 +50,6 @@ class AddNewSymbolViewController: NoNavigationBackButtonTextViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        navigationItem.backButtonDisplayMode = .minimal
         
         addViews()
         setupConstraints()
