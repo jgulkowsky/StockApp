@@ -42,6 +42,10 @@ class LabeledTextField: UIView {
         return textField
     }()
     
+    func setText(_ text: String) {
+        textField.text = text
+    }
+    
     init(label labelText: String,
          placeholder: String? = nil,
          keyboardType: UIKeyboardType? = nil,

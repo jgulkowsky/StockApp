@@ -68,6 +68,7 @@
 		E37BC0A82B2C7F5B0065F61A /* StockAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC0A72B2C7F5B0065F61A /* StockAppUITests.swift */; };
 		E37BC0AA2B2C7F5B0065F61A /* StockAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC0A92B2C7F5B0065F61A /* StockAppUITestsLaunchTests.swift */; };
 		E3B0BD2E2B3609130078557F /* LabeledTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B0BD2D2B3609130078557F /* LabeledTextfield.swift */; };
+		E3B0BD312B36379A0078557F /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B0BD302B36379A0078557F /* UIViewExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,6 +152,7 @@
 		E37BC0A72B2C7F5B0065F61A /* StockAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockAppUITests.swift; sourceTree = "<group>"; };
 		E37BC0A92B2C7F5B0065F61A /* StockAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E3B0BD2D2B3609130078557F /* LabeledTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledTextfield.swift; sourceTree = "<group>"; };
+		E3B0BD302B36379A0078557F /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +198,7 @@
 			children = (
 				E32621C12B30F19000105455 /* DateExtensions.swift */,
 				E326222D2B33749200105455 /* UITableViewExtensions.swift */,
+				E3B0BD302B36379A0078557F /* UIViewExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -255,8 +258,6 @@
 		E32621DE2B311BC500105455 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				E3B0BD2C2B3608F30078557F /* LabeledTextfield */,
-				E326221F2B334A8000105455 /* NoNavigationBackButtonTextViewController.swift */,
 				E31F6E252B30C81800CB0C3B /* Quote.swift */,
 				E326222B2B336CC800105455 /* StatefulViewModel.swift */,
 			);
@@ -379,11 +380,12 @@
 		E37BC0852B2C7F590065F61A /* StockApp */ = {
 			isa = PBXGroup;
 			children = (
+				E3B0BD2F2B36375F0078557F /* CommonUI */,
 				E32621DE2B311BC500105455 /* Common */,
+				E32621C02B30F17E00105455 /* Extensions */,
 				E32621CE2B310F3A00105455 /* ApiFetcher */,
 				E326223A2B33915600105455 /* PersistentStorage */,
 				E32621C32B31067600105455 /* Providers */,
-				E32621C02B30F17E00105455 /* Extensions */,
 				E32621FE2B326A2F00105455 /* Coordinator */,
 				E32622052B326FCB00105455 /* WatchlistsScreen */,
 				E32622062B326FE800105455 /* AddNewWatchlistScreen */,
@@ -417,12 +419,13 @@
 			path = StockAppUITests;
 			sourceTree = "<group>";
 		};
-		E3B0BD2C2B3608F30078557F /* LabeledTextfield */ = {
+		E3B0BD2F2B36375F0078557F /* CommonUI */ = {
 			isa = PBXGroup;
 			children = (
+				E326221F2B334A8000105455 /* NoNavigationBackButtonTextViewController.swift */,
 				E3B0BD2D2B3609130078557F /* LabeledTextfield.swift */,
 			);
-			path = LabeledTextfield;
+			path = CommonUI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -574,6 +577,7 @@
 				E326222C2B336CC800105455 /* StatefulViewModel.swift in Sources */,
 				E32621CA2B31092500105455 /* ChartDataProviding.swift in Sources */,
 				E32622112B32712E00105455 /* AddNewSymbolViewController.swift in Sources */,
+				E3B0BD312B36379A0078557F /* UIViewExtensions.swift in Sources */,
 				E32621E72B311F8E00105455 /* ApiDecoding.swift in Sources */,
 				E326220D2B3270D700105455 /* AddNewWatchlistViewController.swift in Sources */,
 				E32621CC2B31092F00105455 /* ChartDataProvider.swift in Sources */,
