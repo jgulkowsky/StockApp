@@ -7,6 +7,17 @@
 
 import UIKit
 
+// todo: when the app first starts watchlist screen should be presented
+// todo: when the app first starts a default watchlist should be created for the user with name: 'My first list' and symbols: AAPL, MSFT, GOOG
+// todo: make candlestick graph of nicer design
+// todo: update IEX Cloud API key just before sending app to the client
+// todo: add README.md file with instructions how to setup the project (api key / debug and release config)
+// todo: create TECHNICALDECISIONS.md file that justify usage of any architecture and design patterns - MVVM / TestRetainCyclesViewController / Coordinator / protocols - providers / api fetching / persistence / common files / think about more things
+// todo: unit tests
+// todo: darkmode
+// todo: support for both small (iPhone SE / Nexus One) and bigger screen sizes (iPad / Nexus 10)
+// todo: screen rotation support
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
