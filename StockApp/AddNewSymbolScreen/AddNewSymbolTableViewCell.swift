@@ -46,7 +46,8 @@ private extension AddNewSymbolTableViewCell {
     func setupConstraints() {
         symbolLabel.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()
-            make.leading.trailing.equalToSuperview().inset(20.0)
+            make.leading.trailing.equalToSuperview()
+                .inset(UIView.horizontalPadding)
         }
     }
 }

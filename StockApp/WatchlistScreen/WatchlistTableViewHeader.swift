@@ -67,13 +67,13 @@ private extension WatchlistTableViewHeader {
     }
     
     func setupConstraints() {
-        let horizontalPaddingLeft = 20.0
-        let horizontalPaddingRight = 40.0
-        let labelWidth = (UIScreen.main.bounds.width - horizontalPaddingLeft - horizontalPaddingRight) / 4
+        let leftPadding = UIView.horizontalPadding
+        let rightPadding = UIView.horizontalPadding + 20.0
+        let labelWidth = (UIScreen.main.bounds.width - leftPadding - rightPadding) / 4
         
         nameLabel.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()
-            make.leading.equalToSuperview().inset(horizontalPaddingLeft)
+            make.leading.equalToSuperview().inset(leftPadding)
             make.width.equalTo(labelWidth)
         }
         
@@ -92,7 +92,7 @@ private extension WatchlistTableViewHeader {
         lastPriceLabel.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()
             make.leading.equalTo(askPriceLabel.snp.trailing)
-            make.trailing.equalToSuperview().inset(horizontalPaddingRight)
+            make.trailing.equalToSuperview().inset(rightPadding)
         }
     }
 }

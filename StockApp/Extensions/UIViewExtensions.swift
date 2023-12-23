@@ -8,6 +8,8 @@
 import UIKit
 
 extension UIView {
+    static let horizontalPadding = 20.0
+    
     func shake() {
         let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
         animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
