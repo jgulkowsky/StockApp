@@ -23,25 +23,6 @@ class WatchlistsProvider: WatchlistsProviding {
     init() {
         let watchlists = getWatchlistsFromCoreData()
         watchlistsSubject.send(watchlists)
-        
-        // todo: just for setting some entities in CoreData until we have AddWatchlistViewModel functionality
-        if watchlists.isEmpty {
-            onAdd(
-                Watchlist(
-                    id: UUID(),
-                    name: "My First List",
-                    symbols: ["AAPL", "GOOG", "MSFT"]
-                )
-            )
-            
-            onAdd(
-                Watchlist(
-                    id: UUID(),
-                    name: "My Other List",
-                    symbols: ["AAPL", "GOOG"]
-                )
-            )
-        }
     }
     
     func onAdd(_ watchlist: Watchlist) {

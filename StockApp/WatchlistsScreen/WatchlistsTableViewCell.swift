@@ -47,7 +47,8 @@ private extension WatchlistsTableViewCell {
     func setupConstraints() {
         watchlistNameLabel.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()
-            make.leading.trailing.equalToSuperview().inset(20.0) // todo: this could also be global (20.0 not 40.0 as in other cell - you can treat 40.0 as 20.0 + additional space so we always have this base)
+            make.leading.trailing.equalToSuperview()
+                .inset(UIView.horizontalPadding)
         }
     }
 }

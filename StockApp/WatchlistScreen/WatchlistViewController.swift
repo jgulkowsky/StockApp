@@ -129,8 +129,10 @@ private extension WatchlistViewController {
         
         errorLabel.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).inset(20.0)
-            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).inset(20.0)
+            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
+                .inset(UIView.horizontalPadding)
+            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
+                .inset(UIView.horizontalPadding)
         }
         
         tableView.snp.makeConstraints { make in

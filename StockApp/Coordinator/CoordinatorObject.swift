@@ -67,13 +67,21 @@ class CoordinatorObject: Coordinator {
             case .addButtonTapped:
                 let vc = AddNewWatchlistViewController(
                     viewModel: AddNewWatchlistViewModel(
-                        coordinator: self
+                        coordinator: self,
+                        watchlistsProvider: watchlistsProvider
                     )
                 )
                 navigationController.pushViewController(vc, animated: true)
+            default:
+                break
             }
         } else if currentVC is AddNewWatchlistViewController {
-            
+            switch action {
+            case .inputSubmitted:
+                navigationController.popViewController(animated: true)
+            default:
+                break
+            }
         } else if currentVC is WatchlistViewController {
             switch action {
             case .itemSelected(let data):
@@ -101,6 +109,8 @@ class CoordinatorObject: Coordinator {
                     )
                     navigationController.pushViewController(vc, animated: true)
                 }
+            default:
+                break
             }
         } else if currentVC is AddNewSymbolViewController {
             switch action {
