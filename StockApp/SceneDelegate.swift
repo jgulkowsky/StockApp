@@ -9,12 +9,12 @@ import UIKit
 
 // todo: make candlestick graph of nicer design
 
+// todo: quote screen - padding between the graph and the prices / in horizontal alignment make prices in one row / prevent selection on graph
+
 // todo: add README.md file with instructions how to setup the project (api key / debug and release config)
 // todo: create TECHNICALDECISIONS.md file that justify usage of any architecture and design patterns - MVVM / TestRetainCyclesViewController / Coordinator / protocols - providers / api fetching / persistence / common files / think about more things
 // todo: unit tests
 // todo: darkmode
-// todo: watchlist screen / quote screen - viewModels should update values to have 2 decimal digits maximum
-// todo: quote screen - padding between the graph and the prices / in horizontal alignment make prices in one row / prevent selection on graph
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?

@@ -75,6 +75,7 @@
 		E39C4A0B2B3C89080045283B /* BaseTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39C4A0A2B3C89080045283B /* BaseTableViewHeader.swift */; };
 		E39C4A0D2B3C892F0045283B /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39C4A0C2B3C892F0045283B /* BaseTableViewCell.swift */; };
 		E39C4A0F2B3C8AAE0045283B /* ConstraintsSettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39C4A0E2B3C8AAE0045283B /* ConstraintsSettable.swift */; };
+		E39C4A132B3C972E0045283B /* DoubleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39C4A122B3C972E0045283B /* DoubleExtensions.swift */; };
 		E3B0BD2E2B3609130078557F /* LabeledTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B0BD2D2B3609130078557F /* LabeledTextfield.swift */; };
 		E3B0BD312B36379A0078557F /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B0BD302B36379A0078557F /* UIViewExtensions.swift */; };
 /* End PBXBuildFile section */
@@ -180,6 +181,7 @@
 		E39C4A0A2B3C89080045283B /* BaseTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewHeader.swift; sourceTree = "<group>"; };
 		E39C4A0C2B3C892F0045283B /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		E39C4A0E2B3C8AAE0045283B /* ConstraintsSettable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintsSettable.swift; sourceTree = "<group>"; };
+		E39C4A122B3C972E0045283B /* DoubleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtensions.swift; sourceTree = "<group>"; };
 		E3B0BD2D2B3609130078557F /* LabeledTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledTextfield.swift; sourceTree = "<group>"; };
 		E3B0BD302B36379A0078557F /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -228,6 +230,7 @@
 				E32621C12B30F19000105455 /* DateExtensions.swift */,
 				E326222D2B33749200105455 /* UITableViewExtensions.swift */,
 				E3B0BD302B36379A0078557F /* UIViewExtensions.swift */,
+				E39C4A122B3C972E0045283B /* DoubleExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -632,6 +635,7 @@
 				E32621F52B320B9700105455 /* WatchlistsProvider.swift in Sources */,
 				E32622262B335BA500105455 /* SymbolsData.swift in Sources */,
 				E32621EB2B31227500105455 /* ChartItem.swift in Sources */,
+				E39C4A132B3C972E0045283B /* DoubleExtensions.swift in Sources */,
 				E32622092B32702200105455 /* WatchlistsViewController.swift in Sources */,
 				E326221A2B3343A500105455 /* SymbolsProviding.swift in Sources */,
 				E32622302B33784900105455 /* WatchlistsTableViewCell.swift in Sources */,

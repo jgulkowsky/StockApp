@@ -24,7 +24,7 @@ class QuoteViewModel: StatefulViewModel {
         bidPriceSubject
             .map { value in
                 if let value = value {
-                    return "Bid Price: \(value)"
+                    return "Bid Price: \(value.to2DecPlaces())"
                 } else {
                     return "Bid Price: "
                 }
@@ -36,7 +36,7 @@ class QuoteViewModel: StatefulViewModel {
         askPriceSubject
             .map { value in
                 if let value = value {
-                    return "Ask Price: \(value)"
+                    return "Ask Price: \(value.to2DecPlaces())"
                 } else {
                     return "Ask Price: "
                 }
@@ -48,7 +48,7 @@ class QuoteViewModel: StatefulViewModel {
         lastPriceSubject
             .map { value in
                 if let value = value {
-                    return "Last Price: \(value)"
+                    return "Last Price: \(value.to2DecPlaces())"
                 } else {
                     return "Last Price: "
                 }

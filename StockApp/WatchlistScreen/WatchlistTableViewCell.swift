@@ -16,9 +16,9 @@ class WatchlistTableViewCell: BaseTableViewCell {
         didSet {
             if let stockItem = stockItem {
                 symbolLabel.text = stockItem.symbol
-                bidPriceLabel.text = "\(stockItem.quote.bidPrice)"
-                askPriceLabel.text = "\(stockItem.quote.askPrice)"
-                lastPriceLabel.text = "\(stockItem.quote.lastPrice)"
+                bidPriceLabel.text = "\(stockItem.quote.bidPrice.to2DecPlaces())"
+                askPriceLabel.text = "\(stockItem.quote.askPrice.to2DecPlaces())"
+                lastPriceLabel.text = "\(stockItem.quote.lastPrice.to2DecPlaces())"
             }
         }
     }
