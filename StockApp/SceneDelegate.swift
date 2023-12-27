@@ -7,7 +7,6 @@
 
 import UIKit
 
-// todo: some problem with Library not loaded: @rpath/DGChartsDynamic.framework/DGChartsDynamic when you open app without xcode on simulator after stop
 // todo: make candlestick graph of nicer design
 // todo: update IEX Cloud API key just before sending app to the client
 // todo: add README.md file with instructions how to setup the project (api key / debug and release config)
