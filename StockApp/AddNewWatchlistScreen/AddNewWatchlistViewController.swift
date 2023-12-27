@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Combine
 
-class AddNewWatchlistViewController: NoNavigationBackButtonTextViewController {
+class AddNewWatchlistViewController: BaseViewController {
     private var viewModel: AddNewWatchlistViewModel
     
     private lazy var watchlistNameTextField: LabeledTextField = LabeledTextField(
@@ -44,6 +44,23 @@ class AddNewWatchlistViewController: NoNavigationBackButtonTextViewController {
         setupConstraints()
         setupBindings()
     }
+    
+    override func setupConstraints() {
+        watchlistNameTextField.snp.remakeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
+                .inset(UIView.horizontalPadding)
+            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
+                .inset(UIView.horizontalPadding)
+            make.height.equalTo(30.0)
+        }
+        
+        errorLabel.snp.remakeConstraints { make in
+            make.top.equalTo(watchlistNameTextField.snp.bottom)
+            make.leading.trailing.equalTo(watchlistNameTextField)
+            make.height.equalTo(30.0)
+        }
+    }
 }
 
 extension AddNewWatchlistViewController: UITextFieldDelegate {
@@ -62,23 +79,6 @@ private extension AddNewWatchlistViewController {
     func addViews() {
         view.addSubview(watchlistNameTextField)
         view.addSubview(errorLabel)
-    }
-    
-    func setupConstraints() {
-        watchlistNameTextField.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
-                .inset(UIView.horizontalPadding)
-            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
-                .inset(UIView.horizontalPadding)
-            make.height.equalTo(30.0)
-        }
-        
-        errorLabel.snp.makeConstraints { make in
-            make.top.equalTo(watchlistNameTextField.snp.bottom)
-            make.leading.trailing.equalTo(watchlistNameTextField)
-            make.height.equalTo(30.0)
-        }
     }
     
     func setupBindings() {

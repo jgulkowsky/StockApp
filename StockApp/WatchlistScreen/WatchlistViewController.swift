@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Combine
 
-class WatchlistViewController: NoNavigationBackButtonTextViewController {
+class WatchlistViewController: BaseViewController {
     private var viewModel: WatchlistViewModel
     
     private lazy var loadingView = UIActivityIndicatorView(style: .large)
@@ -72,6 +72,28 @@ class WatchlistViewController: NoNavigationBackButtonTextViewController {
         super.viewWillDisappear(animated)
         viewModel.onViewWillDisappear()
     }
+    
+    override func setupConstraints() {
+        loadingView.snp.remakeConstraints { make in
+            make.center.equalToSuperview()
+            make.height.width.equalTo(30)
+        }
+        
+        errorLabel.snp.remakeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
+                .inset(UIView.horizontalPadding)
+            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
+                .inset(UIView.horizontalPadding)
+        }
+        
+        tableView.snp.remakeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
+            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
+        }
+    }
 }
 
 extension WatchlistViewController: UITableViewDataSource, UITableViewDelegate {
@@ -119,28 +141,6 @@ private extension WatchlistViewController {
         view.addSubview(loadingView)
         view.addSubview(errorLabel)
         view.addSubview(tableView)
-    }
-    
-    func setupConstraints() {
-        loadingView.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-            make.height.width.equalTo(30)
-        }
-        
-        errorLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
-                .inset(UIView.horizontalPadding)
-            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
-                .inset(UIView.horizontalPadding)
-        }
-        
-        tableView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
-            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
-            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
-        }
     }
     
     func setupBindings() {

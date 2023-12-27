@@ -8,23 +8,23 @@
 import UIKit
 import SnapKit
 
-class PaddedTextField: UITextField {
-    private static let insets = UIEdgeInsets.init(top: 0, left: 10.0, bottom: 0, right: 10.0)
-    
-    override func textRect(forBounds bounds: CGRect) -> CGRect {
-        return bounds.inset(by: Self.insets)
-    }
-
-    override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
-        return bounds.inset(by: Self.insets)
-    }
-
-    override func editingRect(forBounds bounds: CGRect) -> CGRect {
-        return bounds.inset(by: Self.insets)
-    }
-}
-
 class LabeledTextField: UIView {
+    class PaddedTextField: UITextField {
+        private static let insets = UIEdgeInsets.init(top: 0, left: 10.0, bottom: 0, right: 10.0)
+        
+        override func textRect(forBounds bounds: CGRect) -> CGRect {
+            return bounds.inset(by: Self.insets)
+        }
+
+        override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+            return bounds.inset(by: Self.insets)
+        }
+
+        override func editingRect(forBounds bounds: CGRect) -> CGRect {
+            return bounds.inset(by: Self.insets)
+        }
+    }
+    
     private lazy var label = {
         let label = UILabel(frame: .zero)
         label.setContentHuggingPriority(.required, for: .horizontal)
@@ -73,17 +73,22 @@ class LabeledTextField: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        setupConstraints()
+    }
+    
     private func addViews() {
         addSubview(label)
         addSubview(textField)
     }
     
     private func setupConstraints() {
-        label.snp.makeConstraints { make in
+        label.snp.remakeConstraints { make in
             make.top.leading.bottom.equalToSuperview()
         }
         
-        textField.snp.makeConstraints { make in
+        textField.snp.remakeConstraints { make in
             make.top.trailing.bottom.equalToSuperview()
             make.leading.equalTo(label.snp.trailing).offset(12.0)
         }

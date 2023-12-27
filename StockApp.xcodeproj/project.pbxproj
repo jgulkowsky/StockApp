@@ -48,7 +48,7 @@
 		E32622172B33401300105455 /* AddNewSymbolTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32622162B33401300105455 /* AddNewSymbolTableViewCell.swift */; };
 		E326221A2B3343A500105455 /* SymbolsProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32622192B3343A500105455 /* SymbolsProviding.swift */; };
 		E326221C2B3343AF00105455 /* SymbolsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E326221B2B3343AF00105455 /* SymbolsProvider.swift */; };
-		E32622202B334A8000105455 /* NoNavigationBackButtonTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E326221F2B334A8000105455 /* NoNavigationBackButtonTextViewController.swift */; };
+		E32622202B334A8000105455 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E326221F2B334A8000105455 /* BaseViewController.swift */; };
 		E32622222B33580900105455 /* SymbolsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32622212B33580900105455 /* SymbolsRequest.swift */; };
 		E32622242B335A5300105455 /* SymbolsDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32622232B335A5300105455 /* SymbolsDecoder.swift */; };
 		E32622262B335BA500105455 /* SymbolsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32622252B335BA500105455 /* SymbolsData.swift */; };
@@ -71,6 +71,7 @@
 		E39C4A012B3C33F20045283B /* AppFirstStartProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39C4A002B3C33F20045283B /* AppFirstStartProviding.swift */; };
 		E39C4A042B3C4C1C0045283B /* SnapKit-Dynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = E31F6E212B30BD9900CB0C3B /* SnapKit-Dynamic */; };
 		E39C4A052B3C4C1F0045283B /* DGChartsDynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = E31F6E2A2B30CD1900CB0C3B /* DGChartsDynamic */; };
+		E39C4A072B3C5D940045283B /* MockQuotesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39C4A062B3C5D940045283B /* MockQuotesProvider.swift */; };
 		E3B0BD2E2B3609130078557F /* LabeledTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B0BD2D2B3609130078557F /* LabeledTextfield.swift */; };
 		E3B0BD312B36379A0078557F /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B0BD302B36379A0078557F /* UIViewExtensions.swift */; };
 /* End PBXBuildFile section */
@@ -147,7 +148,7 @@
 		E32622162B33401300105455 /* AddNewSymbolTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewSymbolTableViewCell.swift; sourceTree = "<group>"; };
 		E32622192B3343A500105455 /* SymbolsProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsProviding.swift; sourceTree = "<group>"; };
 		E326221B2B3343AF00105455 /* SymbolsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsProvider.swift; sourceTree = "<group>"; };
-		E326221F2B334A8000105455 /* NoNavigationBackButtonTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoNavigationBackButtonTextViewController.swift; sourceTree = "<group>"; };
+		E326221F2B334A8000105455 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		E32622212B33580900105455 /* SymbolsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsRequest.swift; sourceTree = "<group>"; };
 		E32622232B335A5300105455 /* SymbolsDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsDecoder.swift; sourceTree = "<group>"; };
 		E32622252B335BA500105455 /* SymbolsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsData.swift; sourceTree = "<group>"; };
@@ -172,6 +173,7 @@
 		E37BC0A92B2C7F5B0065F61A /* StockAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E39C49FD2B3C33D50045283B /* AppFirstStartProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFirstStartProvider.swift; sourceTree = "<group>"; };
 		E39C4A002B3C33F20045283B /* AppFirstStartProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFirstStartProviding.swift; sourceTree = "<group>"; };
+		E39C4A062B3C5D940045283B /* MockQuotesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockQuotesProvider.swift; sourceTree = "<group>"; };
 		E3B0BD2D2B3609130078557F /* LabeledTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledTextfield.swift; sourceTree = "<group>"; };
 		E3B0BD302B36379A0078557F /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -241,6 +243,7 @@
 			children = (
 				E32621C42B31069200105455 /* QuotesProviding.swift */,
 				E32621C62B31071100105455 /* QuotesProvider.swift */,
+				E39C4A062B3C5D940045283B /* MockQuotesProvider.swift */,
 			);
 			path = QuotesProvider;
 			sourceTree = "<group>";
@@ -453,7 +456,7 @@
 		E3B0BD2F2B36375F0078557F /* CommonUI */ = {
 			isa = PBXGroup;
 			children = (
-				E326221F2B334A8000105455 /* NoNavigationBackButtonTextViewController.swift */,
+				E326221F2B334A8000105455 /* BaseViewController.swift */,
 				E3B0BD2D2B3609130078557F /* LabeledTextfield.swift */,
 			);
 			path = CommonUI;
@@ -607,6 +610,7 @@
 				E32621E42B311F7500105455 /* QuoteDecoder.swift in Sources */,
 				E32622172B33401300105455 /* AddNewSymbolTableViewCell.swift in Sources */,
 				E326222C2B336CC800105455 /* StatefulViewModel.swift in Sources */,
+				E39C4A072B3C5D940045283B /* MockQuotesProvider.swift in Sources */,
 				E32621CA2B31092500105455 /* ChartDataProviding.swift in Sources */,
 				E32622112B32712E00105455 /* AddNewSymbolViewController.swift in Sources */,
 				E3B0BD312B36379A0078557F /* UIViewExtensions.swift in Sources */,
@@ -632,7 +636,7 @@
 				E32621F72B3239CC00105455 /* StockItem.swift in Sources */,
 				E32622282B335BB800105455 /* SymbolItem.swift in Sources */,
 				E37BC0892B2C7F590065F61A /* SceneDelegate.swift in Sources */,
-				E32622202B334A8000105455 /* NoNavigationBackButtonTextViewController.swift in Sources */,
+				E32622202B334A8000105455 /* BaseViewController.swift in Sources */,
 				E31F6E182B30BBAE00CB0C3B /* QuoteViewController.swift in Sources */,
 				E32621F92B323FB800105455 /* WatchlistTableViewCell.swift in Sources */,
 				E32621D72B31122300105455 /* QuoteRequest.swift in Sources */,

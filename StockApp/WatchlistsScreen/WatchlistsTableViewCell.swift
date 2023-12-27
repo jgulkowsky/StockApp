@@ -37,6 +37,11 @@ class WatchlistsTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        setupConstraints()
+    }
 }
 
 private extension WatchlistsTableViewCell {
@@ -45,7 +50,7 @@ private extension WatchlistsTableViewCell {
     }
     
     func setupConstraints() {
-        watchlistNameLabel.snp.makeConstraints { make in
+        watchlistNameLabel.snp.remakeConstraints { make in
             make.top.bottom.equalToSuperview()
             make.leading.trailing.equalToSuperview()
                 .inset(UIView.horizontalPadding)

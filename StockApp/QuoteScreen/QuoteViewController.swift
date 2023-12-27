@@ -10,7 +10,7 @@ import SnapKit
 import Combine
 import DGCharts
 
-class QuoteViewController: NoNavigationBackButtonTextViewController {
+class QuoteViewController: BaseViewController {
     private var viewModel: QuoteViewModel
     
     private lazy var loadingView = UIActivityIndicatorView(style: .large)
@@ -89,7 +89,50 @@ class QuoteViewController: NoNavigationBackButtonTextViewController {
         super.viewWillDisappear(animated)
         viewModel.onViewWillDisappear()
     }
-
+    
+    override func setupConstraints() {
+        loadingView.snp.remakeConstraints { make in
+            make.center.equalToSuperview()
+            make.height.width.equalTo(30)
+        }
+        
+        errorLabel.snp.remakeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
+                .inset(UIView.horizontalPadding)
+            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
+                .inset(UIView.horizontalPadding)
+        }
+        
+        chartView.snp.remakeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
+                .inset(UIView.horizontalPadding)
+            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
+                .inset(UIView.horizontalPadding)
+            make.height.equalTo(self.view.frame.size.height / 2)
+        }
+        
+        bidPriceLabel.snp.remakeConstraints { make in
+            make.top.equalTo(chartView.snp.bottom)
+            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
+                .inset(UIView.horizontalPadding)
+            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
+                .inset(UIView.horizontalPadding)
+        }
+        
+        askPriceLabel.snp.remakeConstraints { make in
+            make.top.equalTo(bidPriceLabel.snp.bottom)
+            make.leading.equalTo(bidPriceLabel.snp.leading)
+            make.trailing.equalTo(bidPriceLabel.snp.trailing)
+        }
+        
+        lastPriceLabel.snp.remakeConstraints { make in
+            make.top.equalTo(askPriceLabel.snp.bottom)
+            make.leading.equalTo(bidPriceLabel.snp.leading)
+            make.trailing.equalTo(bidPriceLabel.snp.trailing)
+        }
+    }
 }
 
 extension QuoteViewController: ChartViewDelegate {
@@ -104,50 +147,6 @@ private extension QuoteViewController {
         view.addSubview(bidPriceLabel)
         view.addSubview(askPriceLabel)
         view.addSubview(lastPriceLabel)
-    }
-    
-    func setupConstraints() {
-        loadingView.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-            make.height.width.equalTo(30)
-        }
-        
-        errorLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
-                .inset(UIView.horizontalPadding)
-            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
-                .inset(UIView.horizontalPadding)
-        }
-        
-        chartView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
-                .inset(UIView.horizontalPadding)
-            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
-                .inset(UIView.horizontalPadding)
-            make.height.equalTo(self.view.frame.size.height / 2)
-        }
-        
-        bidPriceLabel.snp.makeConstraints { make in
-            make.top.equalTo(chartView.snp.bottom)
-            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
-                .inset(UIView.horizontalPadding)
-            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
-                .inset(UIView.horizontalPadding)
-        }
-        
-        askPriceLabel.snp.makeConstraints { make in
-            make.top.equalTo(bidPriceLabel.snp.bottom)
-            make.leading.equalTo(bidPriceLabel.snp.leading)
-            make.trailing.equalTo(bidPriceLabel.snp.trailing)
-        }
-        
-        lastPriceLabel.snp.makeConstraints { make in
-            make.top.equalTo(askPriceLabel.snp.bottom)
-            make.leading.equalTo(bidPriceLabel.snp.leading)
-            make.trailing.equalTo(bidPriceLabel.snp.trailing)
-        }
     }
     
     func setupBindings() {

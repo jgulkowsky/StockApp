@@ -8,13 +8,15 @@
 import UIKit
 
 // todo: make candlestick graph of nicer design
-// todo: update IEX Cloud API key just before sending app to the client
+// todo: support for both small (iPhone SE / Nexus One) and bigger screen sizes (iPad / Nexus 10)
+
 // todo: add README.md file with instructions how to setup the project (api key / debug and release config)
 // todo: create TECHNICALDECISIONS.md file that justify usage of any architecture and design patterns - MVVM / TestRetainCyclesViewController / Coordinator / protocols - providers / api fetching / persistence / common files / think about more things
 // todo: unit tests
 // todo: darkmode
-// todo: support for both small (iPhone SE / Nexus One) and bigger screen sizes (iPad / Nexus 10)
-// todo: screen rotation support
+// todo: turn off autocorrection in textfields
+// todo: watchlist screen / quote screen - viewModels should update values to have 2 decimal digits maximum
+// todo: quote screen - padding between the graph and the prices / in horizontal alignment make prices in one row / prevent selection on graph
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
@@ -36,9 +38,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         )
         
         let apiFetcher = ApiFetcher()
-        let quotesProvider = QuotesProvider(
-            apiFetcher: apiFetcher
-        )
+//        let quotesProvider = QuotesProvider(
+//            apiFetcher: apiFetcher
+//        )
+        let quotesProvider = MockQuotesProvider()
         let symbolsProvider = SymbolsProvider(
             apiFetcher: apiFetcher
         )

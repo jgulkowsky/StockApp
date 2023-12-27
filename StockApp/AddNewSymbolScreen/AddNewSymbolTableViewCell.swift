@@ -36,6 +36,11 @@ class AddNewSymbolTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        setupConstraints()
+    }
 }
 
 private extension AddNewSymbolTableViewCell {
@@ -44,7 +49,7 @@ private extension AddNewSymbolTableViewCell {
     }
     
     func setupConstraints() {
-        symbolLabel.snp.makeConstraints { make in
+        symbolLabel.snp.remakeConstraints { make in
             make.top.bottom.equalToSuperview()
             make.leading.trailing.equalToSuperview()
                 .inset(UIView.horizontalPadding)
