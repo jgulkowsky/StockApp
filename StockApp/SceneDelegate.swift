@@ -38,10 +38,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         )
         
         let apiFetcher = ApiFetcher()
-//        let quotesProvider = QuotesProvider(
-//            apiFetcher: apiFetcher
-//        )
-        let quotesProvider = MockQuotesProvider()
+        let quotesProvider = QuotesProvider(
+            apiFetcher: apiFetcher
+        )
         let symbolsProvider = SymbolsProvider(
             apiFetcher: apiFetcher
         )
