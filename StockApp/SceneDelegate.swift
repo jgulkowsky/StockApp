@@ -7,8 +7,7 @@
 
 import UIKit
 
-// todo: when the app first starts watchlist screen should be presented
-// todo: when the app first starts a default watchlist should be created for the user with name: 'My first list' and symbols: AAPL, MSFT, GOOG
+// todo: some problem with Library not loaded: @rpath/DGChartsDynamic.framework/DGChartsDynamic when you open app without xcode on simulator after stop
 // todo: make candlestick graph of nicer design
 // todo: update IEX Cloud API key just before sending app to the client
 // todo: add README.md file with instructions how to setup the project (api key / debug and release config)
@@ -32,8 +31,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
         let navigationController = UINavigationController()
         
+        let appFirstStartProvider = AppFirstStartProvider()
+        let watchlistsProvider = WatchlistsProvider(
+            appFirstStartProvider: appFirstStartProvider
+        )
+        
         let apiFetcher = ApiFetcher()
-        let watchlistsProvider = WatchlistsProvider()
         let quotesProvider = QuotesProvider(
             apiFetcher: apiFetcher
         )
@@ -46,6 +49,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         self.coordinator = CoordinatorObject(
             navigationController: navigationController,
+            appFirstStartProvider: appFirstStartProvider,
             watchlistsProvider: watchlistsProvider,
             quotesProvider: quotesProvider,
             symbolsProvider: symbolsProvider,

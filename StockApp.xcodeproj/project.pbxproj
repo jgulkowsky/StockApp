@@ -67,6 +67,8 @@
 		E37BC09E2B2C7F5A0065F61A /* StockAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC09D2B2C7F5A0065F61A /* StockAppTests.swift */; };
 		E37BC0A82B2C7F5B0065F61A /* StockAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC0A72B2C7F5B0065F61A /* StockAppUITests.swift */; };
 		E37BC0AA2B2C7F5B0065F61A /* StockAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC0A92B2C7F5B0065F61A /* StockAppUITestsLaunchTests.swift */; };
+		E39C49FE2B3C33D50045283B /* AppFirstStartProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39C49FD2B3C33D50045283B /* AppFirstStartProvider.swift */; };
+		E39C4A012B3C33F20045283B /* AppFirstStartProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39C4A002B3C33F20045283B /* AppFirstStartProviding.swift */; };
 		E3B0BD2E2B3609130078557F /* LabeledTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B0BD2D2B3609130078557F /* LabeledTextfield.swift */; };
 		E3B0BD312B36379A0078557F /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B0BD302B36379A0078557F /* UIViewExtensions.swift */; };
 /* End PBXBuildFile section */
@@ -151,6 +153,8 @@
 		E37BC0A32B2C7F5B0065F61A /* StockAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StockAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E37BC0A72B2C7F5B0065F61A /* StockAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockAppUITests.swift; sourceTree = "<group>"; };
 		E37BC0A92B2C7F5B0065F61A /* StockAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E39C49FD2B3C33D50045283B /* AppFirstStartProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFirstStartProvider.swift; sourceTree = "<group>"; };
+		E39C4A002B3C33F20045283B /* AppFirstStartProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFirstStartProviding.swift; sourceTree = "<group>"; };
 		E3B0BD2D2B3609130078557F /* LabeledTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledTextfield.swift; sourceTree = "<group>"; };
 		E3B0BD302B36379A0078557F /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -206,6 +210,7 @@
 		E32621C32B31067600105455 /* Providers */ = {
 			isa = PBXGroup;
 			children = (
+				E39C49FF2B3C33DE0045283B /* AppFirstStartProvider */,
 				E32622182B33438300105455 /* SymbolsProvider */,
 				E32621F12B320B8200105455 /* WatchlistsProvider */,
 				E32621CD2B31093300105455 /* ChartDataProvider */,
@@ -419,6 +424,15 @@
 			path = StockAppUITests;
 			sourceTree = "<group>";
 		};
+		E39C49FF2B3C33DE0045283B /* AppFirstStartProvider */ = {
+			isa = PBXGroup;
+			children = (
+				E39C49FD2B3C33D50045283B /* AppFirstStartProvider.swift */,
+				E39C4A002B3C33F20045283B /* AppFirstStartProviding.swift */,
+			);
+			path = AppFirstStartProvider;
+			sourceTree = "<group>";
+		};
 		E3B0BD2F2B36375F0078557F /* CommonUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -610,10 +624,12 @@
 				E32621FB2B32499E00105455 /* WatchlistTableViewHeader.swift in Sources */,
 				E32621E22B311DFD00105455 /* MockChartDataProvider.swift in Sources */,
 				E32622002B326A4D00105455 /* CoordinatorObject.swift in Sources */,
+				E39C4A012B3C33F20045283B /* AppFirstStartProviding.swift in Sources */,
 				E3B0BD2E2B3609130078557F /* LabeledTextfield.swift in Sources */,
 				E326223F2B3391C300105455 /* Model.xcdatamodeld in Sources */,
 				E32621EE2B32029800105455 /* WatchlistViewController.swift in Sources */,
 				E32621D02B310F4D00105455 /* ApiFetching.swift in Sources */,
+				E39C49FE2B3C33D50045283B /* AppFirstStartProvider.swift in Sources */,
 				E32622322B3379E100105455 /* Watchlist.swift in Sources */,
 				E326221C2B3343AF00105455 /* SymbolsProvider.swift in Sources */,
 				E31F6E242B30C7F000CB0C3B /* ChartData.swift in Sources */,
