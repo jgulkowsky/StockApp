@@ -32,10 +32,11 @@ class LabeledTextField: UIView {
         return label
     }()
     
-    private lazy var textField = {
+    private lazy var textField: PaddedTextField = {
         let textField = PaddedTextField(frame: .zero)
         textField.borderStyle = .none
         textField.backgroundColor = .white
+        textField.autocorrectionType = .no
         textField.layer.cornerRadius = 8
         textField.layer.borderWidth = 1.0
         textField.layer.borderColor = UIColor.gray.cgColor

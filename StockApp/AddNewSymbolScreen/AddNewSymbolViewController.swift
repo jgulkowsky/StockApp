@@ -21,6 +21,7 @@ class AddNewSymbolViewController: BaseViewController {
         searchBar.isTranslucent = false
         searchBar.backgroundImage = UIImage()
         searchBar.delegate = self
+        searchBar.autocorrectionType = .no
         
         return searchBar
     }()
