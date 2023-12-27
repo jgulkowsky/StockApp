@@ -7,15 +7,15 @@
 
 import UIKit
 
-class BaseViewController: UIViewController {
+class BaseViewController: UIViewController, ConstraintsSettable {
     // satisfies 'no back button text' requirement
     override func viewDidLoad() {
         navigationItem.backButtonDisplayMode = .minimal
     }
     
     // satisfies 'sending needs for update when device is rotated' requirement
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
         view.setNeedsUpdateConstraints()
     }
     
@@ -25,6 +25,6 @@ class BaseViewController: UIViewController {
     }
     
     func setupConstraints() {
-        fatalError("setupConstraints() should be overriden by the child UIViewController!")
+        fatalError("setupConstraints() should be overriden by \(Self.self)!")
     }
 }

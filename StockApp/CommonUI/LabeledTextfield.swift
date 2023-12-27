@@ -72,18 +72,15 @@ class LabeledTextField: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        setupConstraints()
-    }
-    
-    private func addViews() {
+}
+
+private extension LabeledTextField {
+    func addViews() {
         addSubview(label)
         addSubview(textField)
     }
     
-    private func setupConstraints() {
+    func setupConstraints() {
         label.snp.remakeConstraints { make in
             make.top.leading.bottom.equalToSuperview()
         }

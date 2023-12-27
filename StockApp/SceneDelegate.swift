@@ -8,7 +8,6 @@
 import UIKit
 
 // todo: make candlestick graph of nicer design
-// todo: support for both small (iPhone SE / Nexus One) and bigger screen sizes (iPad / Nexus 10)
 
 // todo: add README.md file with instructions how to setup the project (api key / debug and release config)
 // todo: create TECHNICALDECISIONS.md file that justify usage of any architecture and design patterns - MVVM / TestRetainCyclesViewController / Coordinator / protocols - providers / api fetching / persistence / common files / think about more things

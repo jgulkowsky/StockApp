@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class WatchlistsTableViewCell: UITableViewCell {
+class WatchlistsTableViewCell: BaseTableViewCell {
     static let id = "WatchlistsTableViewCell"
     private static let fontSize = 16.0
     
@@ -30,31 +30,26 @@ class WatchlistsTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
         accessoryType = .disclosureIndicator
-        self.addViews()
-        self.setupConstraints()
+        addViews()
+        setupConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        setupConstraints()
+    override func setupConstraints() {
+        watchlistNameLabel.snp.remakeConstraints { make in
+            make.top.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+                .inset(UIView.horizontalPadding)
+        }
     }
 }
 
 private extension WatchlistsTableViewCell {
     func addViews() {
         addSubview(watchlistNameLabel)
-    }
-    
-    func setupConstraints() {
-        watchlistNameLabel.snp.remakeConstraints { make in
-            make.top.bottom.equalToSuperview()
-            make.leading.trailing.equalToSuperview()
-                .inset(UIView.horizontalPadding)
-        }
     }
 }
 

@@ -72,6 +72,9 @@
 		E39C4A042B3C4C1C0045283B /* SnapKit-Dynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = E31F6E212B30BD9900CB0C3B /* SnapKit-Dynamic */; };
 		E39C4A052B3C4C1F0045283B /* DGChartsDynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = E31F6E2A2B30CD1900CB0C3B /* DGChartsDynamic */; };
 		E39C4A072B3C5D940045283B /* MockQuotesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39C4A062B3C5D940045283B /* MockQuotesProvider.swift */; };
+		E39C4A0B2B3C89080045283B /* BaseTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39C4A0A2B3C89080045283B /* BaseTableViewHeader.swift */; };
+		E39C4A0D2B3C892F0045283B /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39C4A0C2B3C892F0045283B /* BaseTableViewCell.swift */; };
+		E39C4A0F2B3C8AAE0045283B /* ConstraintsSettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39C4A0E2B3C8AAE0045283B /* ConstraintsSettable.swift */; };
 		E3B0BD2E2B3609130078557F /* LabeledTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B0BD2D2B3609130078557F /* LabeledTextfield.swift */; };
 		E3B0BD312B36379A0078557F /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B0BD302B36379A0078557F /* UIViewExtensions.swift */; };
 /* End PBXBuildFile section */
@@ -174,6 +177,9 @@
 		E39C49FD2B3C33D50045283B /* AppFirstStartProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFirstStartProvider.swift; sourceTree = "<group>"; };
 		E39C4A002B3C33F20045283B /* AppFirstStartProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFirstStartProviding.swift; sourceTree = "<group>"; };
 		E39C4A062B3C5D940045283B /* MockQuotesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockQuotesProvider.swift; sourceTree = "<group>"; };
+		E39C4A0A2B3C89080045283B /* BaseTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewHeader.swift; sourceTree = "<group>"; };
+		E39C4A0C2B3C892F0045283B /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		E39C4A0E2B3C8AAE0045283B /* ConstraintsSettable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintsSettable.swift; sourceTree = "<group>"; };
 		E3B0BD2D2B3609130078557F /* LabeledTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledTextfield.swift; sourceTree = "<group>"; };
 		E3B0BD302B36379A0078557F /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -458,6 +464,9 @@
 			children = (
 				E326221F2B334A8000105455 /* BaseViewController.swift */,
 				E3B0BD2D2B3609130078557F /* LabeledTextfield.swift */,
+				E39C4A0A2B3C89080045283B /* BaseTableViewHeader.swift */,
+				E39C4A0C2B3C892F0045283B /* BaseTableViewCell.swift */,
+				E39C4A0E2B3C8AAE0045283B /* ConstraintsSettable.swift */,
 			);
 			path = CommonUI;
 			sourceTree = "<group>";
@@ -610,6 +619,7 @@
 				E32621E42B311F7500105455 /* QuoteDecoder.swift in Sources */,
 				E32622172B33401300105455 /* AddNewSymbolTableViewCell.swift in Sources */,
 				E326222C2B336CC800105455 /* StatefulViewModel.swift in Sources */,
+				E39C4A0B2B3C89080045283B /* BaseTableViewHeader.swift in Sources */,
 				E39C4A072B3C5D940045283B /* MockQuotesProvider.swift in Sources */,
 				E32621CA2B31092500105455 /* ChartDataProviding.swift in Sources */,
 				E32622112B32712E00105455 /* AddNewSymbolViewController.swift in Sources */,
@@ -628,6 +638,7 @@
 				E31F6E262B30C81800CB0C3B /* Quote.swift in Sources */,
 				E326223C2B33919900105455 /* PersistenceController.swift in Sources */,
 				E32622132B32717200105455 /* AddNewSymbolViewModel.swift in Sources */,
+				E39C4A0D2B3C892F0045283B /* BaseTableViewCell.swift in Sources */,
 				E31F6E1A2B30BBBA00CB0C3B /* QuoteViewModel.swift in Sources */,
 				E326222E2B33749200105455 /* UITableViewExtensions.swift in Sources */,
 				E326222A2B335EAE00105455 /* SymbolsResponse.swift in Sources */,
@@ -640,6 +651,7 @@
 				E31F6E182B30BBAE00CB0C3B /* QuoteViewController.swift in Sources */,
 				E32621F92B323FB800105455 /* WatchlistTableViewCell.swift in Sources */,
 				E32621D72B31122300105455 /* QuoteRequest.swift in Sources */,
+				E39C4A0F2B3C8AAE0045283B /* ConstraintsSettable.swift in Sources */,
 				E326220F2B3270FC00105455 /* AddNewWatchlistViewModel.swift in Sources */,
 				E326220B2B32704400105455 /* WatchlistsViewModel.swift in Sources */,
 				E32621D22B310F5B00105455 /* ApiFetcher.swift in Sources */,

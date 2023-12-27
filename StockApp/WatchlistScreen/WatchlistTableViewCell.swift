@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class WatchlistTableViewCell: UITableViewCell {
+class WatchlistTableViewCell: BaseTableViewCell {
     static let id = "WatchlistTableViewCell"
     private static let fontSize = 16.0
     
@@ -51,29 +51,15 @@ class WatchlistTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
         accessoryType = .disclosureIndicator
-        self.addViews()
-        self.setupConstraints()
+        addViews()
+        setupConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        setupConstraints()
-    }
-}
-
-private extension WatchlistTableViewCell {
-    func addViews() {
-        addSubview(symbolLabel)
-        addSubview(bidPriceLabel)
-        addSubview(askPriceLabel)
-        addSubview(lastPriceLabel)
-    }
-    
-    func setupConstraints() {
+    override func setupConstraints() {
         let leftPadding = UIView.horizontalPadding
         let rightPadding = UIView.horizontalPadding + 20.0
         let labelWidth = (UIScreen.main.bounds.width - leftPadding - rightPadding) / 4
@@ -102,5 +88,14 @@ private extension WatchlistTableViewCell {
             make.leading.equalTo(askPriceLabel.snp.trailing)
             make.trailing.equalToSuperview().inset(rightPadding)
         }
+    }
+}
+
+private extension WatchlistTableViewCell {
+    func addViews() {
+        addSubview(symbolLabel)
+        addSubview(bidPriceLabel)
+        addSubview(askPriceLabel)
+        addSubview(lastPriceLabel)
     }
 }
