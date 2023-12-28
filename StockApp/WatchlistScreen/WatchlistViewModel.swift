@@ -129,13 +129,11 @@ private extension WatchlistViewModel {
         }
     }
     
-    // todo: very similar to QuoteViewModel - maybe put into one place?
     func turnOnTimer() {
         timerCancellable = Timer.publish(every: self.refreshRate, on: .main, in: .common)
             .autoconnect()
             .sink { [weak self] _ in
                 Task { [weak self] in
-                    // todo: we could check if stock market is closed - if so then we should't make calls - this logic should be put into quotesProvider that would just return last quote and not send request until the stock is open once again
                     guard let stockItems = try? await self?.getStockItemsSimultaneously()
                         .sorted() else { return }
                     self?.stockItemsSubject.send(stockItems)

@@ -67,7 +67,7 @@ class QuoteViewModel: StatefulViewModel {
     private unowned let coordinator: Coordinator
     private let quotesProvider: QuotesProviding
     private let chartDataProvider: ChartDataProviding
-    private let symbol: String // todo: consider using stockItem: StockItem so VM don't have to load data for itself or even can but at least have sth to show without loading indicator
+    private let symbol: String
     private let refreshRate: Double
     
     init(coordinator: Coordinator,
@@ -98,8 +98,6 @@ class QuoteViewModel: StatefulViewModel {
         print("@jgu: \(Self.self).deinit()")
     }
 #endif
-    
-    // todo: generally we don't support going into background foreground with these methods - we need to use different approach
     
     func onViewWillAppear() {
         fetchData()
@@ -140,7 +138,6 @@ private extension QuoteViewModel {
             .autoconnect()
             .sink { [weak self] _ in
                 Task { [weak self] in
-                    // todo: we could check if stock market is closed - if so then we should't make calls - this logic should be put into quotesProvider that would just return last quote and not send request until the stock is open once again
                     guard let `self` = self,
                           self.stateSubject.value != .error else { return }
                     

@@ -87,7 +87,6 @@ private extension AddNewSymbolViewModel {
                 let symbols = try await self.symbolsProvider.getSymbols(startingWith: text)
                 symbolsSubject.send(symbols)
             } catch {
-                // todo: consider having state and error too - what if we get error?
 //                errorSubject.send("Unfortunatelly cannot fetch data in current moment.\n\nCheck your connection and try again.")
 //                stateSubject.send(.error)
             }

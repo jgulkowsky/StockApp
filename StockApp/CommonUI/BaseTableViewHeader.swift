@@ -8,7 +8,6 @@
 import UIKit
 
 class BaseTableViewHeader: UITableViewHeaderFooterView, ConstraintsSettable {
-    // todo: this isn't perfect solution as it updates too often - even when timer fires so every 5 seconds
     override func layoutSubviews() {
         super.layoutSubviews()
         setupConstraints()
