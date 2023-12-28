@@ -13,7 +13,6 @@ import UIKit
 // todo: darkmode
 
 // todo: DoubleExtensions.to2DecPlaces needs also to round the value - as now it just cuts it - and lies because of this - add tests for this method and update it's body
-// todo: add Error support for AddNewSymbolViewModel - it never happened but we need to be prepared for this (maybe use StatefulviewModel with loading and error)
 
 // todo: optional things:
 // todo: prices sometimes get 0 for some reason - is it normal or we should treat it as a bug? (checkout responses in json)
@@ -25,16 +24,13 @@ import UIKit
 // todo: consider passing stockItem instead of just symbol from WatchlistViewModel into QuoteViewModel - so VM don't have to load data for itself or even can but at least have sth to show without loading indicator
 // todo: generally we don't support stareting / stopping timers when going into background foreground
 
-
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
     var coordinator: Coordinator?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
     

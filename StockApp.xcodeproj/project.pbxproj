@@ -60,6 +60,7 @@
 		E32622322B3379E100105455 /* Watchlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32622312B3379E100105455 /* Watchlist.swift */; };
 		E326223C2B33919900105455 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E326223B2B33919900105455 /* PersistenceController.swift */; };
 		E326223F2B3391C300105455 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E326223D2B3391C300105455 /* Model.xcdatamodeld */; };
+		E37045AA2B3D9F0B00D1CFC2 /* MockSymbolsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37045A92B3D9F0B00D1CFC2 /* MockSymbolsProvider.swift */; };
 		E37BC0872B2C7F590065F61A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC0862B2C7F590065F61A /* AppDelegate.swift */; };
 		E37BC0892B2C7F590065F61A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC0882B2C7F590065F61A /* SceneDelegate.swift */; };
 		E37BC0902B2C7F5A0065F61A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E37BC08F2B2C7F5A0065F61A /* Assets.xcassets */; };
@@ -164,6 +165,7 @@
 		E32622312B3379E100105455 /* Watchlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Watchlist.swift; sourceTree = "<group>"; };
 		E326223B2B33919900105455 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		E326223E2B3391C300105455 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		E37045A92B3D9F0B00D1CFC2 /* MockSymbolsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSymbolsProvider.swift; sourceTree = "<group>"; };
 		E37BC0832B2C7F590065F61A /* StockApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E37BC0862B2C7F590065F61A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E37BC0882B2C7F590065F61A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -378,6 +380,7 @@
 			children = (
 				E32622192B3343A500105455 /* SymbolsProviding.swift */,
 				E326221B2B3343AF00105455 /* SymbolsProvider.swift */,
+				E37045A92B3D9F0B00D1CFC2 /* MockSymbolsProvider.swift */,
 			);
 			path = SymbolsProvider;
 			sourceTree = "<group>";
@@ -622,6 +625,7 @@
 				E32621E42B311F7500105455 /* QuoteDecoder.swift in Sources */,
 				E32622172B33401300105455 /* AddNewSymbolTableViewCell.swift in Sources */,
 				E326222C2B336CC800105455 /* StatefulViewModel.swift in Sources */,
+				E37045AA2B3D9F0B00D1CFC2 /* MockSymbolsProvider.swift in Sources */,
 				E39C4A0B2B3C89080045283B /* BaseTableViewHeader.swift in Sources */,
 				E39C4A072B3C5D940045283B /* MockQuotesProvider.swift in Sources */,
 				E32621CA2B31092500105455 /* ChartDataProviding.swift in Sources */,

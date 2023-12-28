@@ -83,13 +83,8 @@ private extension AddNewSymbolViewModel {
     
     func fetchData(for text: String) {
         Task {
-            do {
-                let symbols = try await self.symbolsProvider.getSymbols(startingWith: text)
-                symbolsSubject.send(symbols)
-            } catch {
-//                errorSubject.send("Unfortunatelly cannot fetch data in current moment.\n\nCheck your connection and try again.")
-//                stateSubject.send(.error)
-            }
+            let symbols = try? await self.symbolsProvider.getSymbols(startingWith: text)
+            symbolsSubject.send(symbols ?? [])
         }
     }
 }
