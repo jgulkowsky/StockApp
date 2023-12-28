@@ -17,9 +17,8 @@ class QuoteViewController: BaseViewController {
     
     private lazy var errorLabel = ErrorLabel()
     
-    private static let errorRefreshButtonHeight = 40.0
     private lazy var errorRefreshButton: ErrorRefreshButton = {
-        let button = ErrorRefreshButton(height: Self.errorRefreshButtonHeight)
+        let button = ErrorRefreshButton()
         button.addTarget(self, action: #selector(errorRefreshButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -106,6 +105,7 @@ class QuoteViewController: BaseViewController {
         
         errorLabel.snp.remakeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+                .inset(ErrorLabel.paddingTop)
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
                 .inset(UIView.horizontalPadding)
             make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
@@ -114,10 +114,10 @@ class QuoteViewController: BaseViewController {
         
         errorRefreshButton.snp.remakeConstraints { make in
             make.top.equalTo(errorLabel.snp.bottom)
-                .offset(30.0)
+                .offset(ErrorRefreshButton.paddingTop)
             make.centerX.equalToSuperview()
-            make.width.equalTo(150.0)
-            make.height.equalTo(Self.errorRefreshButtonHeight)
+            make.width.equalTo(ErrorRefreshButton.width)
+            make.height.equalTo(ErrorRefreshButton.height)
         }
         
         chartView.snp.remakeConstraints { make in

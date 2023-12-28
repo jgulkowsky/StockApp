@@ -74,6 +74,7 @@ class WatchlistViewController: BaseViewController {
         
         errorLabel.snp.remakeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+                .inset(ErrorLabel.paddingTop)
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
                 .inset(UIView.horizontalPadding)
             make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)

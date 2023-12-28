@@ -8,12 +8,16 @@
 import UIKit
 
 class ErrorRefreshButton: UIButton {
-    init(height: CGFloat) {
+    static let paddingTop = 30.0
+    static let height = 40.0
+    static let width = 150.0
+    
+    init() {
         super.init(frame: .zero)
         self.setTitle("Refresh", for: .normal)
         self.backgroundColor = UIColor(named: "SolidButton")
         self.setTitleColor(UIColor.white, for: .normal)
-        self.layer.cornerRadius = height / 2
+        self.layer.cornerRadius = Self.height / 2
     }
     
     required init?(coder: NSCoder) {

@@ -8,6 +8,8 @@
 import UIKit
 
 class ErrorLabel: UILabel {
+    static let paddingTop = 15.0
+    
     init() {
         super.init(frame: .zero)
         self.lineBreakMode = .byWordWrapping
