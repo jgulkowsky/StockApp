@@ -23,6 +23,7 @@ import UIKit
 // todo: we could check if stock market is closed when fetchin quote data - if so then we should't make calls - this logic should be put into quotesProvider that would just return last quote and not send request until the stock is open once again
 // todo: consider passing stockItem instead of just symbol from WatchlistViewModel into QuoteViewModel - so VM don't have to load data for itself or even can but at least have sth to show without loading indicator
 // todo: generally we don't support stareting / stopping timers when going into background foreground
+// todo: errorLabels / loadingIndicators could be moved into BaseVC (logic for showing / hiding them too) - with use of StatefulViewModel
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
