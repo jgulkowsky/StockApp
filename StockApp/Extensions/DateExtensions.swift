@@ -7,8 +7,6 @@
 
 import Foundation
 
-// todo: all these methods are generated usingChatGPT - be aware
-
 extension Date {
     static func daysBetween(startDate: Date, andEndDate endDate: Date) -> [Date] {
         var dates: [Date] = []

@@ -10,7 +10,7 @@ import SnapKit
 import Combine
 import DGCharts
 
-class QuoteViewController: NoNavigationBackButtonTextViewController {
+class QuoteViewController: BaseViewController {
     private var viewModel: QuoteViewModel
     
     private lazy var loadingView = UIActivityIndicatorView(style: .large)
@@ -21,6 +21,17 @@ class QuoteViewController: NoNavigationBackButtonTextViewController {
         label.numberOfLines = 0
         label.textAlignment = .center
         return label
+    }()
+    
+    private static let errorRefreshButtonHeight = 40.0
+    private lazy var errorRefreshButton: UIButton = {
+        let button = UIButton(frame: .zero)
+        button.setTitle("Refresh", for: .normal)
+        button.backgroundColor = UIColor(named: "SolidButton")
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.layer.cornerRadius = Self.errorRefreshButtonHeight / 2
+        button.addTarget(self, action: #selector(errorRefreshButtonTapped), for: .touchUpInside)
+        return button
     }()
     
     private lazy var chartView: CandleStickChartView = {
@@ -62,6 +73,9 @@ class QuoteViewController: NoNavigationBackButtonTextViewController {
     
     private var store = Set<AnyCancellable>()
     
+    private static let labelsPaddingTop: Double = 20
+    private static let labelsPaddingBottom: Double = 15
+    
     init(viewModel: QuoteViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -89,7 +103,44 @@ class QuoteViewController: NoNavigationBackButtonTextViewController {
         super.viewWillDisappear(animated)
         viewModel.onViewWillDisappear()
     }
-
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        setupConstraints()
+    }
+    
+    override func setupConstraints() {
+        loadingView.snp.remakeConstraints { make in
+            make.center.equalToSuperview()
+            make.height.width.equalTo(30)
+        }
+        
+        errorLabel.snp.remakeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
+                .inset(UIView.horizontalPadding)
+            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
+                .inset(UIView.horizontalPadding)
+        }
+        
+        errorRefreshButton.snp.remakeConstraints { make in
+            make.top.equalTo(errorLabel.snp.bottom)
+                .offset(30.0)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(150.0)
+            make.height.equalTo(Self.errorRefreshButtonHeight)
+        }
+        
+        chartView.snp.remakeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
+                .inset(UIView.horizontalPadding)
+            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
+                .inset(UIView.horizontalPadding)
+        }
+        
+        setupLabelsConstraints()
+    }
 }
 
 extension QuoteViewController: ChartViewDelegate {
@@ -100,53 +151,80 @@ private extension QuoteViewController {
     func addViews() {
         view.addSubview(loadingView)
         view.addSubview(errorLabel)
+        view.addSubview(errorRefreshButton)
         view.addSubview(chartView)
         view.addSubview(bidPriceLabel)
         view.addSubview(askPriceLabel)
         view.addSubview(lastPriceLabel)
     }
     
-    func setupConstraints() {
-        loadingView.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-            make.height.width.equalTo(30)
+    func setupLabelsConstraints() {
+        if traitCollection.horizontalSizeClass == .compact {
+            setupLabelsConstraintsVertically()
+        } else {
+            setupLabelsConstraintsHorizontally()
         }
-        
-        errorLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
-                .inset(UIView.horizontalPadding)
-            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
-                .inset(UIView.horizontalPadding)
-        }
-        
-        chartView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
-                .inset(UIView.horizontalPadding)
-            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
-                .inset(UIView.horizontalPadding)
-            make.height.equalTo(self.view.frame.size.height / 2)
-        }
-        
-        bidPriceLabel.snp.makeConstraints { make in
+    }
+    
+    func setupLabelsConstraintsVertically() {
+        bidPriceLabel.snp.remakeConstraints { make in
             make.top.equalTo(chartView.snp.bottom)
+                .offset(Self.labelsPaddingTop)
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
                 .inset(UIView.horizontalPadding)
             make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
                 .inset(UIView.horizontalPadding)
         }
         
-        askPriceLabel.snp.makeConstraints { make in
+        let offsetBetweenLabels: Double = 5
+        
+        askPriceLabel.snp.remakeConstraints { make in
             make.top.equalTo(bidPriceLabel.snp.bottom)
+                .offset(offsetBetweenLabels)
             make.leading.equalTo(bidPriceLabel.snp.leading)
             make.trailing.equalTo(bidPriceLabel.snp.trailing)
         }
         
-        lastPriceLabel.snp.makeConstraints { make in
+        lastPriceLabel.snp.remakeConstraints { make in
             make.top.equalTo(askPriceLabel.snp.bottom)
+                .offset(offsetBetweenLabels)
             make.leading.equalTo(bidPriceLabel.snp.leading)
             make.trailing.equalTo(bidPriceLabel.snp.trailing)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+                .inset(Self.labelsPaddingBottom)
+        }
+    }
+    
+    func setupLabelsConstraintsHorizontally() {
+        let labelWidth = (UIScreen.main.bounds.width - 2 * UIView.horizontalPadding) / 3
+        
+        bidPriceLabel.snp.remakeConstraints { make in
+            make.top.equalTo(chartView.snp.bottom)
+                .offset(Self.labelsPaddingTop)
+            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
+                .inset(UIView.horizontalPadding)
+            make.width.equalTo(labelWidth)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+                .inset(Self.labelsPaddingBottom)
+        }
+        
+        askPriceLabel.snp.remakeConstraints { make in
+            make.top.equalTo(chartView.snp.bottom)
+                .offset(Self.labelsPaddingTop)
+            make.leading.equalTo(bidPriceLabel.snp.trailing)
+            make.width.equalTo(labelWidth)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+                .inset(Self.labelsPaddingBottom)
+        }
+        
+        lastPriceLabel.snp.remakeConstraints { make in
+            make.top.equalTo(chartView.snp.bottom)
+                .offset(Self.labelsPaddingTop)
+            make.leading.equalTo(askPriceLabel.snp.trailing)
+            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
+                .inset(UIView.horizontalPadding)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+                .inset(Self.labelsPaddingBottom)
         }
     }
     
@@ -163,6 +241,7 @@ private extension QuoteViewController {
             .sink { [weak self] state in
                 self?.loadingView.isHidden = state != .loading
                 self?.errorLabel.isHidden = state != .error
+                self?.errorRefreshButton.isHidden = state != .error
                 self?.chartView.isHidden = state != .dataObtained
                 self?.bidPriceLabel.isHidden = state != .dataObtained
                 self?.askPriceLabel.isHidden = state != .dataObtained
@@ -224,6 +303,7 @@ private extension QuoteViewController {
         let set = CandleChartDataSet(entries: entries, label: "")
         set.barSpace = 0.1
         set.drawValuesEnabled = false
+        set.highlightEnabled = false
         let data = CandleChartData(dataSet: set)
         chartView.data = data
     }
@@ -233,5 +313,9 @@ private extension QuoteViewController {
         let daysToDate = Date().distance(to: date) / (3600 * 24)
         return daysToDate
         // we need to use daysToDate mapping because when passing $0.date.timeIntervalSince1970 it is too big and the candle sticks are too small - it's a known bug in DGCharts
+    }
+    
+    @objc func errorRefreshButtonTapped() {
+        viewModel.onErrorRefreshButtonTapped()
     }
 }

@@ -9,7 +9,7 @@ import Foundation
 
 struct StockItem {
     let symbol: String
-    let quote: Quote
+    let quote: Quote?
 }
 
 extension StockItem: Comparable {

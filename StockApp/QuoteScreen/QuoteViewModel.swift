@@ -23,11 +23,10 @@ class QuoteViewModel: StatefulViewModel {
     var bidPricePublisher: AnyPublisher<String, Never> {
         bidPriceSubject
             .map { value in
-                if let value = value {
-                    return "Bid Price: \(value)"
-                } else {
-                    return "Bid Price: "
-                }
+                self.setupPricePublisherValue(
+                    withPrefix: "Bid Price:",
+                    andValue: value
+                )
             }
             .eraseToAnyPublisher()
     }
@@ -35,11 +34,10 @@ class QuoteViewModel: StatefulViewModel {
     var askPricePublisher: AnyPublisher<String, Never> {
         askPriceSubject
             .map { value in
-                if let value = value {
-                    return "Ask Price: \(value)"
-                } else {
-                    return "Ask Price: "
-                }
+                self.setupPricePublisherValue(
+                    withPrefix: "Ask Price:",
+                    andValue: value
+                )
             }
             .eraseToAnyPublisher()
     }
@@ -47,11 +45,10 @@ class QuoteViewModel: StatefulViewModel {
     var lastPricePublisher: AnyPublisher<String, Never> {
         lastPriceSubject
             .map { value in
-                if let value = value {
-                    return "Last Price: \(value)"
-                } else {
-                    return "Last Price: "
-                }
+                self.setupPricePublisherValue(
+                    withPrefix: "Last Price:",
+                    andValue: value
+                )
             }
             .eraseToAnyPublisher()
     }
@@ -70,7 +67,7 @@ class QuoteViewModel: StatefulViewModel {
     private unowned let coordinator: Coordinator
     private let quotesProvider: QuotesProviding
     private let chartDataProvider: ChartDataProviding
-    private let symbol: String // todo: consider using stockItem: StockItem so VM don't have to load data for itself or even can but at least have sth to show without loading indicator
+    private let symbol: String
     private let refreshRate: Double
     
     init(coordinator: Coordinator,
@@ -110,10 +107,15 @@ class QuoteViewModel: StatefulViewModel {
     func onViewWillDisappear() {
         turnOffTimer()
     }
+    
+    func onErrorRefreshButtonTapped() {
+        fetchData()
+    }
 }
 
 private extension QuoteViewModel {
     func fetchData() {
+        stateSubject.send(.loading)
         Task {
             do {
                 async let getQuote = self.quotesProvider.getQuote(forSymbol: symbol)
@@ -130,24 +132,35 @@ private extension QuoteViewModel {
             }
         }
     }
-    
+
     func turnOnTimer() {
         timerCancellable = Timer.publish(every: self.refreshRate, on: .main, in: .common)
             .autoconnect()
             .sink { [weak self] _ in
                 Task { [weak self] in
-                    // todo: we could check if stock market is closed - if so then we should't make calls - this logic should be put into quotesProvider that would just return last quote and not send request until the stock is open once again
-                    guard let symbol = self?.symbol else { return }
-                    guard let quote = try? await self?.quotesProvider.getQuote(forSymbol: symbol) else { return }
+                    guard let `self` = self,
+                          self.stateSubject.value != .error else { return }
                     
-                    self?.bidPriceSubject.send(quote.bidPrice)
-                    self?.askPriceSubject.send(quote.askPrice)
-                    self?.lastPriceSubject.send(quote.lastPrice)
+                    let quote = try? await self.quotesProvider.getQuote(forSymbol: self.symbol)
+                    self.bidPriceSubject.send(quote?.bidPrice)
+                    self.askPriceSubject.send(quote?.askPrice)
+                    self.lastPriceSubject.send(quote?.lastPrice)
                 }
             }
     }
     
     func turnOffTimer() {
         timerCancellable = nil
+    }
+    
+    func setupPricePublisherValue(
+        withPrefix prefix: String,
+        andValue value: Double?
+    ) -> String {
+        if let value = value {
+            return "\(prefix) \(value.to2DecPlaces())"
+        } else {
+            return "\(prefix) -"
+        }
     }
 }

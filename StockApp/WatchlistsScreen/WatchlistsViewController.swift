@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Combine
 
-class WatchlistsViewController: NoNavigationBackButtonTextViewController {
+class WatchlistsViewController: BaseViewController {
     private var viewModel: WatchlistsViewModel
     
     private lazy var loadingView = UIActivityIndicatorView(style: .large)
@@ -59,6 +59,28 @@ class WatchlistsViewController: NoNavigationBackButtonTextViewController {
         setupConstraints()
         setupBindings()
     }
+    
+    override func setupConstraints() {
+        loadingView.snp.remakeConstraints { make in
+            make.center.equalToSuperview()
+            make.height.width.equalTo(30)
+        }
+        
+        errorLabel.snp.remakeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
+                .inset(UIView.horizontalPadding)
+            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
+                .inset(UIView.horizontalPadding)
+        }
+        
+        tableView.snp.remakeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
+            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
+        }
+    }
 }
 
 extension WatchlistsViewController: UITableViewDataSource, UITableViewDelegate {
@@ -72,8 +94,8 @@ extension WatchlistsViewController: UITableViewDataSource, UITableViewDelegate {
             for: indexPath
         ) as! WatchlistsTableViewCell
         
-         cell.watchlist = viewModel.getWatchlistFor(index: indexPath.row)
-        
+        cell.watchlist = viewModel.getWatchlistFor(index: indexPath.row)
+
         return cell
     }
     
@@ -98,28 +120,6 @@ private extension WatchlistsViewController {
         view.addSubview(loadingView)
         view.addSubview(errorLabel)
         view.addSubview(tableView)
-    }
-    
-    func setupConstraints() {
-        loadingView.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-            make.height.width.equalTo(30)
-        }
-        
-        errorLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
-                .inset(UIView.horizontalPadding)
-            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
-                .inset(UIView.horizontalPadding)
-        }
-        
-        tableView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
-            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
-            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
-        }
     }
     
     func setupBindings() {

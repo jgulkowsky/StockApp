@@ -6,21 +6,27 @@
 //
 
 import UIKit
+import Combine
 
 class CoordinatorObject: Coordinator {
     private let navigationController: UINavigationController
+    private let appFirstStartProvider: AppFirstStartProviding
     private let watchlistsProvider: WatchlistsProviding
     private let quotesProvider: QuotesProviding
     private let symbolsProvider: SymbolsProviding
     private let chartDataProvider: ChartDataProviding
     
+    private var subscription: AnyCancellable?
+    
     init(navigationController: UINavigationController,
+         appFirstStartProvider: AppFirstStartProviding,
          watchlistsProvider: WatchlistsProviding,
          quotesProvider: QuotesProviding,
          symbolsProvider: SymbolsProviding,
          chartDataProvider: ChartDataProviding
     ) {
         self.navigationController = navigationController
+        self.appFirstStartProvider = appFirstStartProvider
         self.watchlistsProvider = watchlistsProvider
         self.quotesProvider = quotesProvider
         self.symbolsProvider = symbolsProvider
@@ -33,6 +39,7 @@ class CoordinatorObject: Coordinator {
             coordinator: self
         )
         navigationController.pushViewController(vc, animated: false)
+        self.appFirstStartProvider.setAppFirstStarted()
 #else
         let vc = WatchlistsViewController(
             viewModel: WatchlistsViewModel(
@@ -40,7 +47,17 @@ class CoordinatorObject: Coordinator {
                 watchlistsProvider: watchlistsProvider
             )
         )
-        navigationController.pushViewController(vc, animated: true)
+        navigationController.pushViewController(vc, animated: false)
+        
+        if appFirstStartProvider.isFirstAppStart {
+            subscription = watchlistsProvider.watchlists
+                .sink { [weak self] watchlist in
+                    guard let `self` = self else { return }
+                    self.execute(action: .itemSelected(data: watchlist[0]))
+                    self.subscription?.cancel()
+                    self.appFirstStartProvider.setAppFirstStarted()
+                }
+        }
 #endif
     }
     
@@ -62,7 +79,10 @@ class CoordinatorObject: Coordinator {
                             refreshRate: 5
                         )
                     )
-                    navigationController.pushViewController(vc, animated: true)
+                    navigationController.pushViewController(
+                        vc,
+                        animated: !appFirstStartProvider.isFirstAppStart
+                    )
                 }
             case .addButtonTapped:
                 let vc = AddNewWatchlistViewController(

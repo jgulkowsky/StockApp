@@ -20,9 +20,19 @@ class WatchlistsProvider: WatchlistsProviding {
     private let viewContext = PersistenceController.shared.viewContext
     private var store = Set<AnyCancellable>()
     
-    init() {
+    init(appFirstStartProvider: AppFirstStartProviding) {
         let watchlists = getWatchlistsFromCoreData()
         watchlistsSubject.send(watchlists)
+        
+        if appFirstStartProvider.isFirstAppStart && watchlists.isEmpty {
+            onAdd(
+                Watchlist(
+                    id: UUID(),
+                    name: "My First List",
+                    symbols: ["AAPL", "GOOG", "MSFT"]
+                )
+            )
+        }
     }
     
     func onAdd(_ watchlist: Watchlist) {

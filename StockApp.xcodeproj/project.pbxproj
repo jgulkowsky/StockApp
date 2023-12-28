@@ -48,7 +48,7 @@
 		E32622172B33401300105455 /* AddNewSymbolTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32622162B33401300105455 /* AddNewSymbolTableViewCell.swift */; };
 		E326221A2B3343A500105455 /* SymbolsProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32622192B3343A500105455 /* SymbolsProviding.swift */; };
 		E326221C2B3343AF00105455 /* SymbolsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E326221B2B3343AF00105455 /* SymbolsProvider.swift */; };
-		E32622202B334A8000105455 /* NoNavigationBackButtonTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E326221F2B334A8000105455 /* NoNavigationBackButtonTextViewController.swift */; };
+		E32622202B334A8000105455 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E326221F2B334A8000105455 /* BaseViewController.swift */; };
 		E32622222B33580900105455 /* SymbolsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32622212B33580900105455 /* SymbolsRequest.swift */; };
 		E32622242B335A5300105455 /* SymbolsDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32622232B335A5300105455 /* SymbolsDecoder.swift */; };
 		E32622262B335BA500105455 /* SymbolsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32622252B335BA500105455 /* SymbolsData.swift */; };
@@ -60,6 +60,7 @@
 		E32622322B3379E100105455 /* Watchlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32622312B3379E100105455 /* Watchlist.swift */; };
 		E326223C2B33919900105455 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E326223B2B33919900105455 /* PersistenceController.swift */; };
 		E326223F2B3391C300105455 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E326223D2B3391C300105455 /* Model.xcdatamodeld */; };
+		E37045AA2B3D9F0B00D1CFC2 /* MockSymbolsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37045A92B3D9F0B00D1CFC2 /* MockSymbolsProvider.swift */; };
 		E37BC0872B2C7F590065F61A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC0862B2C7F590065F61A /* AppDelegate.swift */; };
 		E37BC0892B2C7F590065F61A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC0882B2C7F590065F61A /* SceneDelegate.swift */; };
 		E37BC0902B2C7F5A0065F61A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E37BC08F2B2C7F5A0065F61A /* Assets.xcassets */; };
@@ -67,6 +68,15 @@
 		E37BC09E2B2C7F5A0065F61A /* StockAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC09D2B2C7F5A0065F61A /* StockAppTests.swift */; };
 		E37BC0A82B2C7F5B0065F61A /* StockAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC0A72B2C7F5B0065F61A /* StockAppUITests.swift */; };
 		E37BC0AA2B2C7F5B0065F61A /* StockAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC0A92B2C7F5B0065F61A /* StockAppUITestsLaunchTests.swift */; };
+		E39C49FE2B3C33D50045283B /* AppFirstStartProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39C49FD2B3C33D50045283B /* AppFirstStartProvider.swift */; };
+		E39C4A012B3C33F20045283B /* AppFirstStartProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39C4A002B3C33F20045283B /* AppFirstStartProviding.swift */; };
+		E39C4A042B3C4C1C0045283B /* SnapKit-Dynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = E31F6E212B30BD9900CB0C3B /* SnapKit-Dynamic */; };
+		E39C4A052B3C4C1F0045283B /* DGChartsDynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = E31F6E2A2B30CD1900CB0C3B /* DGChartsDynamic */; };
+		E39C4A072B3C5D940045283B /* MockQuotesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39C4A062B3C5D940045283B /* MockQuotesProvider.swift */; };
+		E39C4A0B2B3C89080045283B /* BaseTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39C4A0A2B3C89080045283B /* BaseTableViewHeader.swift */; };
+		E39C4A0D2B3C892F0045283B /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39C4A0C2B3C892F0045283B /* BaseTableViewCell.swift */; };
+		E39C4A0F2B3C8AAE0045283B /* ConstraintsSettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39C4A0E2B3C8AAE0045283B /* ConstraintsSettable.swift */; };
+		E39C4A132B3C972E0045283B /* DoubleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39C4A122B3C972E0045283B /* DoubleExtensions.swift */; };
 		E3B0BD2E2B3609130078557F /* LabeledTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B0BD2D2B3609130078557F /* LabeledTextfield.swift */; };
 		E3B0BD312B36379A0078557F /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B0BD302B36379A0078557F /* UIViewExtensions.swift */; };
 /* End PBXBuildFile section */
@@ -87,6 +97,21 @@
 			remoteInfo = StockApp;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E39C4A032B3C4C190045283B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E39C4A052B3C4C1F0045283B /* DGChartsDynamic in Embed Frameworks */,
+				E39C4A042B3C4C1C0045283B /* SnapKit-Dynamic in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		E31F6E172B30BBAE00CB0C3B /* QuoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteViewController.swift; sourceTree = "<group>"; };
@@ -128,7 +153,7 @@
 		E32622162B33401300105455 /* AddNewSymbolTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewSymbolTableViewCell.swift; sourceTree = "<group>"; };
 		E32622192B3343A500105455 /* SymbolsProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsProviding.swift; sourceTree = "<group>"; };
 		E326221B2B3343AF00105455 /* SymbolsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsProvider.swift; sourceTree = "<group>"; };
-		E326221F2B334A8000105455 /* NoNavigationBackButtonTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoNavigationBackButtonTextViewController.swift; sourceTree = "<group>"; };
+		E326221F2B334A8000105455 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		E32622212B33580900105455 /* SymbolsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsRequest.swift; sourceTree = "<group>"; };
 		E32622232B335A5300105455 /* SymbolsDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsDecoder.swift; sourceTree = "<group>"; };
 		E32622252B335BA500105455 /* SymbolsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsData.swift; sourceTree = "<group>"; };
@@ -140,6 +165,7 @@
 		E32622312B3379E100105455 /* Watchlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Watchlist.swift; sourceTree = "<group>"; };
 		E326223B2B33919900105455 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		E326223E2B3391C300105455 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		E37045A92B3D9F0B00D1CFC2 /* MockSymbolsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSymbolsProvider.swift; sourceTree = "<group>"; };
 		E37BC0832B2C7F590065F61A /* StockApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E37BC0862B2C7F590065F61A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E37BC0882B2C7F590065F61A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -151,6 +177,13 @@
 		E37BC0A32B2C7F5B0065F61A /* StockAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StockAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E37BC0A72B2C7F5B0065F61A /* StockAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockAppUITests.swift; sourceTree = "<group>"; };
 		E37BC0A92B2C7F5B0065F61A /* StockAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E39C49FD2B3C33D50045283B /* AppFirstStartProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFirstStartProvider.swift; sourceTree = "<group>"; };
+		E39C4A002B3C33F20045283B /* AppFirstStartProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFirstStartProviding.swift; sourceTree = "<group>"; };
+		E39C4A062B3C5D940045283B /* MockQuotesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockQuotesProvider.swift; sourceTree = "<group>"; };
+		E39C4A0A2B3C89080045283B /* BaseTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewHeader.swift; sourceTree = "<group>"; };
+		E39C4A0C2B3C892F0045283B /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		E39C4A0E2B3C8AAE0045283B /* ConstraintsSettable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintsSettable.swift; sourceTree = "<group>"; };
+		E39C4A122B3C972E0045283B /* DoubleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtensions.swift; sourceTree = "<group>"; };
 		E3B0BD2D2B3609130078557F /* LabeledTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledTextfield.swift; sourceTree = "<group>"; };
 		E3B0BD302B36379A0078557F /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -199,6 +232,7 @@
 				E32621C12B30F19000105455 /* DateExtensions.swift */,
 				E326222D2B33749200105455 /* UITableViewExtensions.swift */,
 				E3B0BD302B36379A0078557F /* UIViewExtensions.swift */,
+				E39C4A122B3C972E0045283B /* DoubleExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -206,6 +240,7 @@
 		E32621C32B31067600105455 /* Providers */ = {
 			isa = PBXGroup;
 			children = (
+				E39C49FF2B3C33DE0045283B /* AppFirstStartProvider */,
 				E32622182B33438300105455 /* SymbolsProvider */,
 				E32621F12B320B8200105455 /* WatchlistsProvider */,
 				E32621CD2B31093300105455 /* ChartDataProvider */,
@@ -219,6 +254,7 @@
 			children = (
 				E32621C42B31069200105455 /* QuotesProviding.swift */,
 				E32621C62B31071100105455 /* QuotesProvider.swift */,
+				E39C4A062B3C5D940045283B /* MockQuotesProvider.swift */,
 			);
 			path = QuotesProvider;
 			sourceTree = "<group>";
@@ -344,6 +380,7 @@
 			children = (
 				E32622192B3343A500105455 /* SymbolsProviding.swift */,
 				E326221B2B3343AF00105455 /* SymbolsProvider.swift */,
+				E37045A92B3D9F0B00D1CFC2 /* MockSymbolsProvider.swift */,
 			);
 			path = SymbolsProvider;
 			sourceTree = "<group>";
@@ -419,11 +456,23 @@
 			path = StockAppUITests;
 			sourceTree = "<group>";
 		};
+		E39C49FF2B3C33DE0045283B /* AppFirstStartProvider */ = {
+			isa = PBXGroup;
+			children = (
+				E39C49FD2B3C33D50045283B /* AppFirstStartProvider.swift */,
+				E39C4A002B3C33F20045283B /* AppFirstStartProviding.swift */,
+			);
+			path = AppFirstStartProvider;
+			sourceTree = "<group>";
+		};
 		E3B0BD2F2B36375F0078557F /* CommonUI */ = {
 			isa = PBXGroup;
 			children = (
-				E326221F2B334A8000105455 /* NoNavigationBackButtonTextViewController.swift */,
+				E326221F2B334A8000105455 /* BaseViewController.swift */,
 				E3B0BD2D2B3609130078557F /* LabeledTextfield.swift */,
+				E39C4A0A2B3C89080045283B /* BaseTableViewHeader.swift */,
+				E39C4A0C2B3C892F0045283B /* BaseTableViewCell.swift */,
+				E39C4A0E2B3C8AAE0045283B /* ConstraintsSettable.swift */,
 			);
 			path = CommonUI;
 			sourceTree = "<group>";
@@ -438,6 +487,7 @@
 				E37BC07F2B2C7F590065F61A /* Sources */,
 				E37BC0802B2C7F590065F61A /* Frameworks */,
 				E37BC0812B2C7F590065F61A /* Resources */,
+				E39C4A032B3C4C190045283B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -575,6 +625,9 @@
 				E32621E42B311F7500105455 /* QuoteDecoder.swift in Sources */,
 				E32622172B33401300105455 /* AddNewSymbolTableViewCell.swift in Sources */,
 				E326222C2B336CC800105455 /* StatefulViewModel.swift in Sources */,
+				E37045AA2B3D9F0B00D1CFC2 /* MockSymbolsProvider.swift in Sources */,
+				E39C4A0B2B3C89080045283B /* BaseTableViewHeader.swift in Sources */,
+				E39C4A072B3C5D940045283B /* MockQuotesProvider.swift in Sources */,
 				E32621CA2B31092500105455 /* ChartDataProviding.swift in Sources */,
 				E32622112B32712E00105455 /* AddNewSymbolViewController.swift in Sources */,
 				E3B0BD312B36379A0078557F /* UIViewExtensions.swift in Sources */,
@@ -586,12 +639,14 @@
 				E32621F52B320B9700105455 /* WatchlistsProvider.swift in Sources */,
 				E32622262B335BA500105455 /* SymbolsData.swift in Sources */,
 				E32621EB2B31227500105455 /* ChartItem.swift in Sources */,
+				E39C4A132B3C972E0045283B /* DoubleExtensions.swift in Sources */,
 				E32622092B32702200105455 /* WatchlistsViewController.swift in Sources */,
 				E326221A2B3343A500105455 /* SymbolsProviding.swift in Sources */,
 				E32622302B33784900105455 /* WatchlistsTableViewCell.swift in Sources */,
 				E31F6E262B30C81800CB0C3B /* Quote.swift in Sources */,
 				E326223C2B33919900105455 /* PersistenceController.swift in Sources */,
 				E32622132B32717200105455 /* AddNewSymbolViewModel.swift in Sources */,
+				E39C4A0D2B3C892F0045283B /* BaseTableViewCell.swift in Sources */,
 				E31F6E1A2B30BBBA00CB0C3B /* QuoteViewModel.swift in Sources */,
 				E326222E2B33749200105455 /* UITableViewExtensions.swift in Sources */,
 				E326222A2B335EAE00105455 /* SymbolsResponse.swift in Sources */,
@@ -600,20 +655,23 @@
 				E32621F72B3239CC00105455 /* StockItem.swift in Sources */,
 				E32622282B335BB800105455 /* SymbolItem.swift in Sources */,
 				E37BC0892B2C7F590065F61A /* SceneDelegate.swift in Sources */,
-				E32622202B334A8000105455 /* NoNavigationBackButtonTextViewController.swift in Sources */,
+				E32622202B334A8000105455 /* BaseViewController.swift in Sources */,
 				E31F6E182B30BBAE00CB0C3B /* QuoteViewController.swift in Sources */,
 				E32621F92B323FB800105455 /* WatchlistTableViewCell.swift in Sources */,
 				E32621D72B31122300105455 /* QuoteRequest.swift in Sources */,
+				E39C4A0F2B3C8AAE0045283B /* ConstraintsSettable.swift in Sources */,
 				E326220F2B3270FC00105455 /* AddNewWatchlistViewModel.swift in Sources */,
 				E326220B2B32704400105455 /* WatchlistsViewModel.swift in Sources */,
 				E32621D22B310F5B00105455 /* ApiFetcher.swift in Sources */,
 				E32621FB2B32499E00105455 /* WatchlistTableViewHeader.swift in Sources */,
 				E32621E22B311DFD00105455 /* MockChartDataProvider.swift in Sources */,
 				E32622002B326A4D00105455 /* CoordinatorObject.swift in Sources */,
+				E39C4A012B3C33F20045283B /* AppFirstStartProviding.swift in Sources */,
 				E3B0BD2E2B3609130078557F /* LabeledTextfield.swift in Sources */,
 				E326223F2B3391C300105455 /* Model.xcdatamodeld in Sources */,
 				E32621EE2B32029800105455 /* WatchlistViewController.swift in Sources */,
 				E32621D02B310F4D00105455 /* ApiFetching.swift in Sources */,
+				E39C49FE2B3C33D50045283B /* AppFirstStartProvider.swift in Sources */,
 				E32622322B3379E100105455 /* Watchlist.swift in Sources */,
 				E326221C2B3343AF00105455 /* SymbolsProvider.swift in Sources */,
 				E31F6E242B30C7F000CB0C3B /* ChartData.swift in Sources */,

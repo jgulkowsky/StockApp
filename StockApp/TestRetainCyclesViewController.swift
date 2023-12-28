@@ -8,7 +8,7 @@
 #if DEBUG
 import UIKit
 
-class TestRetainCyclesViewController: NoNavigationBackButtonTextViewController {
+class TestRetainCyclesViewController: BaseViewController {
     private unowned var coordinator: Coordinator
     
     init(coordinator: Coordinator) {
@@ -39,5 +39,7 @@ class TestRetainCyclesViewController: NoNavigationBackButtonTextViewController {
     @objc func addButtonTapped() {
         coordinator.execute(action: .addButtonTapped(data: nil))
     }
+    
+    override func setupConstraints() {}
 }
 #endif

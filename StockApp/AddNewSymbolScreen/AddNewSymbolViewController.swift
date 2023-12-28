@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Combine
 
-class AddNewSymbolViewController: NoNavigationBackButtonTextViewController {
+class AddNewSymbolViewController: BaseViewController {
     private var viewModel: AddNewSymbolViewModel
     
     private lazy var searchBar: UISearchBar = {
@@ -21,6 +21,7 @@ class AddNewSymbolViewController: NoNavigationBackButtonTextViewController {
         searchBar.isTranslucent = false
         searchBar.backgroundImage = UIImage()
         searchBar.delegate = self
+        searchBar.autocorrectionType = .no
         
         return searchBar
     }()
@@ -54,6 +55,15 @@ class AddNewSymbolViewController: NoNavigationBackButtonTextViewController {
         addViews()
         setupConstraints()
         setupBindings()
+    }
+    
+    override func setupConstraints() {
+        tableView.snp.remakeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
+            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
+        }
     }
 }
 
@@ -92,15 +102,6 @@ private extension AddNewSymbolViewController {
     func addViews() {
         navigationItem.titleView = searchBar
         view.addSubview(tableView)
-    }
-    
-    func setupConstraints() {
-        tableView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
-            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
-            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
-        }
     }
     
     func setupBindings() {

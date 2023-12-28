@@ -22,3 +22,4 @@ class QuotesProvider: QuotesProviding {
         return quote
     }
 }
+

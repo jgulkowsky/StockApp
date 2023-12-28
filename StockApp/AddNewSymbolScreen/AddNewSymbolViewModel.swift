@@ -8,8 +8,6 @@
 import Foundation
 import Combine
 
-// todo: now we are experiencing a problem where we can add new symbol (which for some reason don't get quote) and we end up with error instead of seeing other symbols with their quotes and this one without quote like (symbol - - -) - this happens quite often - let's fix it
-
 class AddNewSymbolViewModel {
     var symbolsPublisher: AnyPublisher<[String], Never> {
         symbolsSubject
@@ -85,14 +83,8 @@ private extension AddNewSymbolViewModel {
     
     func fetchData(for text: String) {
         Task {
-            do {
-                let symbols = try await self.symbolsProvider.getSymbols(startingWith: text)
-                symbolsSubject.send(symbols)
-            } catch {
-                // todo: consider having state and error too - what if we get error?
-//                errorSubject.send("Unfortunatelly cannot fetch data in current moment.\n\nCheck your connection and try again.")
-//                stateSubject.send(.error)
-            }
+            let symbols = try? await self.symbolsProvider.getSymbols(startingWith: text)
+            symbolsSubject.send(symbols ?? [])
         }
     }
 }
