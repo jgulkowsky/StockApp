@@ -13,14 +13,8 @@ class WatchlistsViewController: BaseViewController {
     private var viewModel: WatchlistsViewModel
     
     private lazy var loadingView = UIActivityIndicatorView(style: .large)
-    
-    private lazy var errorLabel: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.lineBreakMode = .byWordWrapping
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        return label
-    }()
+
+    private lazy var errorLabel = ErrorLabel()
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
@@ -46,7 +40,6 @@ class WatchlistsViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         title = "Watchlists"
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(
@@ -63,11 +56,11 @@ class WatchlistsViewController: BaseViewController {
     override func setupConstraints() {
         loadingView.snp.remakeConstraints { make in
             make.center.equalToSuperview()
-            make.height.width.equalTo(30)
         }
         
         errorLabel.snp.remakeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+                .inset(ErrorLabel.paddingTop)
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
                 .inset(UIView.horizontalPadding)
             make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)

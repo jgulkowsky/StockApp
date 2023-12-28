@@ -15,21 +15,10 @@ class QuoteViewController: BaseViewController {
     
     private lazy var loadingView = UIActivityIndicatorView(style: .large)
     
-    private lazy var errorLabel: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.lineBreakMode = .byWordWrapping
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        return label
-    }()
+    private lazy var errorLabel = ErrorLabel()
     
-    private static let errorRefreshButtonHeight = 40.0
-    private lazy var errorRefreshButton: UIButton = {
-        let button = UIButton(frame: .zero)
-        button.setTitle("Refresh", for: .normal)
-        button.backgroundColor = UIColor(named: "SolidButton")
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.layer.cornerRadius = Self.errorRefreshButtonHeight / 2
+    private lazy var errorRefreshButton: ErrorRefreshButton = {
+        let button = ErrorRefreshButton()
         button.addTarget(self, action: #selector(errorRefreshButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -87,7 +76,6 @@ class QuoteViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         
         addViews()
         setupConstraints()
@@ -112,11 +100,11 @@ class QuoteViewController: BaseViewController {
     override func setupConstraints() {
         loadingView.snp.remakeConstraints { make in
             make.center.equalToSuperview()
-            make.height.width.equalTo(30)
         }
         
         errorLabel.snp.remakeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+                .inset(ErrorLabel.paddingTop)
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
                 .inset(UIView.horizontalPadding)
             make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
@@ -125,10 +113,10 @@ class QuoteViewController: BaseViewController {
         
         errorRefreshButton.snp.remakeConstraints { make in
             make.top.equalTo(errorLabel.snp.bottom)
-                .offset(30.0)
+                .offset(ErrorRefreshButton.paddingTop)
             make.centerX.equalToSuperview()
-            make.width.equalTo(150.0)
-            make.height.equalTo(Self.errorRefreshButtonHeight)
+            make.width.equalTo(ErrorRefreshButton.width)
+            make.height.equalTo(ErrorRefreshButton.height)
         }
         
         chartView.snp.remakeConstraints { make in

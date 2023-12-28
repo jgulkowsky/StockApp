@@ -10,7 +10,7 @@ import UIKit
 // todo: add README.md file with instructions how to setup the project (api key / debug and release config)
 // todo: create TECHNICALDECISIONS.md file that justify usage of any architecture and design patterns - MVVM / TestRetainCyclesViewController / Coordinator / protocols - providers / api fetching / persistence / common files / think about more things
 // todo: unit tests
-// todo: darkmode
+// todo: add padding to the tableView in AddNewSymbolVC (both for horizontal and vertical orientation) as sometimes values on the bottom will not be available because are under the keyboard / or at least add button for collapsing the keyboard
 
 // todo: DoubleExtensions.to2DecPlaces needs also to round the value - as now it just cuts it - and lies because of this - add tests for this method and update it's body
 
@@ -23,6 +23,7 @@ import UIKit
 // todo: we could check if stock market is closed when fetchin quote data - if so then we should't make calls - this logic should be put into quotesProvider that would just return last quote and not send request until the stock is open once again
 // todo: consider passing stockItem instead of just symbol from WatchlistViewModel into QuoteViewModel - so VM don't have to load data for itself or even can but at least have sth to show without loading indicator
 // todo: generally we don't support stareting / stopping timers when going into background foreground
+// todo: errorLabels / loadingIndicators could be moved into BaseVC (logic for showing / hiding them too) - with use of StatefulViewModel
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?

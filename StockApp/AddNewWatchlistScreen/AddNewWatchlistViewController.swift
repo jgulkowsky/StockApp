@@ -18,11 +18,7 @@ class AddNewWatchlistViewController: BaseViewController {
         delegate: self
     )
     
-    private lazy var errorLabel: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.textColor = .red
-        return label
-    }()
+    private lazy var errorLabel = ErrorLabel()
     
     private var store = Set<AnyCancellable>()
     
@@ -37,7 +33,6 @@ class AddNewWatchlistViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         title = "Add new watchlist"
         
         addViews()
@@ -57,6 +52,7 @@ class AddNewWatchlistViewController: BaseViewController {
         
         errorLabel.snp.remakeConstraints { make in
             make.top.equalTo(watchlistNameTextField.snp.bottom)
+                .offset(15.0)
             make.leading.trailing.equalTo(watchlistNameTextField)
             make.height.equalTo(30.0)
         }
