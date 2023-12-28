@@ -10,6 +10,7 @@ import UIKit
 class BaseViewController: UIViewController, ConstraintsSettable {
     // satisfies 'no back button text' requirement
     override func viewDidLoad() {
+        view.backgroundColor = UIColor(named: "Background")
         navigationItem.backButtonDisplayMode = .minimal
     }
     

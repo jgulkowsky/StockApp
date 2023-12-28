@@ -14,13 +14,7 @@ class WatchlistViewController: BaseViewController {
     
     private lazy var loadingView = UIActivityIndicatorView(style: .large)
     
-    private lazy var errorLabel: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.lineBreakMode = .byWordWrapping
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        return label
-    }()
+    private lazy var errorLabel = ErrorLabel()
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
@@ -50,7 +44,6 @@ class WatchlistViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .add,

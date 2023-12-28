@@ -10,7 +10,7 @@ import UIKit
 // todo: add README.md file with instructions how to setup the project (api key / debug and release config)
 // todo: create TECHNICALDECISIONS.md file that justify usage of any architecture and design patterns - MVVM / TestRetainCyclesViewController / Coordinator / protocols - providers / api fetching / persistence / common files / think about more things
 // todo: unit tests
-// todo: darkmode
+// todo: add padding to the tableView in AddNewSymbolVC (both for horizontal and vertical orientation) as sometimes values on the bottom will not be available because are under the keyboard / or at least add button for collapsing the keyboard
 
 // todo: DoubleExtensions.to2DecPlaces needs also to round the value - as now it just cuts it - and lies because of this - add tests for this method and update it's body
 

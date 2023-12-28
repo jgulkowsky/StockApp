@@ -15,21 +15,11 @@ class QuoteViewController: BaseViewController {
     
     private lazy var loadingView = UIActivityIndicatorView(style: .large)
     
-    private lazy var errorLabel: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.lineBreakMode = .byWordWrapping
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        return label
-    }()
+    private lazy var errorLabel = ErrorLabel()
     
     private static let errorRefreshButtonHeight = 40.0
-    private lazy var errorRefreshButton: UIButton = {
-        let button = UIButton(frame: .zero)
-        button.setTitle("Refresh", for: .normal)
-        button.backgroundColor = UIColor(named: "SolidButton")
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.layer.cornerRadius = Self.errorRefreshButtonHeight / 2
+    private lazy var errorRefreshButton: ErrorRefreshButton = {
+        let button = ErrorRefreshButton(height: Self.errorRefreshButtonHeight)
         button.addTarget(self, action: #selector(errorRefreshButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -87,7 +77,6 @@ class QuoteViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         
         addViews()
         setupConstraints()

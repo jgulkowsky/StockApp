@@ -27,7 +27,6 @@ class TestRetainCyclesViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .add,
