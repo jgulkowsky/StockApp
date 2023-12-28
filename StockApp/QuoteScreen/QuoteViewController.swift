@@ -23,6 +23,17 @@ class QuoteViewController: BaseViewController {
         return label
     }()
     
+    private static let errorRefreshButtonHeight = 40.0
+    private lazy var errorRefreshButton: UIButton = {
+        let button = UIButton(frame: .zero)
+        button.setTitle("Refresh", for: .normal)
+        button.backgroundColor = UIColor(named: "SolidButton")
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.layer.cornerRadius = Self.errorRefreshButtonHeight / 2
+        button.addTarget(self, action: #selector(errorRefreshButtonTapped), for: .touchUpInside)
+        return button
+    }()
+    
     private lazy var chartView: CandleStickChartView = {
         class XAxisValueFormatter: AxisValueFormatter {
             lazy private var dateFormatter: DateFormatter = {
@@ -112,6 +123,14 @@ class QuoteViewController: BaseViewController {
                 .inset(UIView.horizontalPadding)
         }
         
+        errorRefreshButton.snp.remakeConstraints { make in
+            make.top.equalTo(errorLabel.snp.bottom)
+                .offset(30.0)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(150.0)
+            make.height.equalTo(Self.errorRefreshButtonHeight)
+        }
+        
         chartView.snp.remakeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
@@ -132,6 +151,7 @@ private extension QuoteViewController {
     func addViews() {
         view.addSubview(loadingView)
         view.addSubview(errorLabel)
+        view.addSubview(errorRefreshButton)
         view.addSubview(chartView)
         view.addSubview(bidPriceLabel)
         view.addSubview(askPriceLabel)
@@ -221,6 +241,7 @@ private extension QuoteViewController {
             .sink { [weak self] state in
                 self?.loadingView.isHidden = state != .loading
                 self?.errorLabel.isHidden = state != .error
+                self?.errorRefreshButton.isHidden = state != .error
                 self?.chartView.isHidden = state != .dataObtained
                 self?.bidPriceLabel.isHidden = state != .dataObtained
                 self?.askPriceLabel.isHidden = state != .dataObtained
@@ -292,5 +313,9 @@ private extension QuoteViewController {
         let daysToDate = Date().distance(to: date) / (3600 * 24)
         return daysToDate
         // we need to use daysToDate mapping because when passing $0.date.timeIntervalSince1970 it is too big and the candle sticks are too small - it's a known bug in DGCharts
+    }
+    
+    @objc func errorRefreshButtonTapped() {
+        viewModel.onErrorRefreshButtonTapped()
     }
 }

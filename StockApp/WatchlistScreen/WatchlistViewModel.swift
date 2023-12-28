@@ -119,8 +119,7 @@ private extension WatchlistViewModel {
         Task {
             do {
                 let stockItems = try await getStockItemsSimultaneously()
-                    .sorted()// todo: if there's any misspelling in any of the symbols (which should rather not happen but these are 2 APIs - one you get symbol from the second you send it to) then this will throw and error will be shown - think how you should respond - maybe symbol with empty values or just ommit the symbol as it wasn't there
-                // todo: even if there's some problem for fetching any of the stockItems then error will be thrown - it's a little overkill (it happened once that for some reason api didn't return items - don't know if all of them if only one - but better to minimize the error occurence - so it shows up only if we get empty array of stock items)
+                    .sorted()
                 stockItemsSubject.send(stockItems)
                 stateSubject.send(.dataObtained)
             } catch {
@@ -149,7 +148,7 @@ private extension WatchlistViewModel {
     }
     
     func getStockItemsSimultaneously() async throws -> [StockItem] {
-        let stockItems = try await withThrowingTaskGroup(
+        let stockItems = await withTaskGroup(
             of: StockItem.self,
             returning: [StockItem].self
         ) { taskGroup in
@@ -157,12 +156,12 @@ private extension WatchlistViewModel {
                 taskGroup.addTask {
                     return StockItem(
                         symbol: symbol,
-                        quote: try await self.quotesProvider.getQuote(forSymbol: symbol)
+                        quote: try? await self.quotesProvider.getQuote(forSymbol: symbol)
                     )
                 }
             }
 
-            return try await taskGroup.reduce(into: [StockItem]()) { list, stockItem in
+            return await taskGroup.reduce(into: [StockItem]()) { list, stockItem in
                 list.append(stockItem)
             }
         }

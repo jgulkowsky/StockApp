@@ -19,8 +19,6 @@ extension ApiRequest {
         } else {
             fatalError("Add API_TOKEN into scheme/run/arguments/environment variables")
             // we will get this fatal error when tried to open app without xcode - directly from simulator - for now I don't think it's important for us to be able to run without xcode so leaving it as it is
-            
-            // todo: add info to README.md what are the steps to follow to make this project working
         }
     }
 }
