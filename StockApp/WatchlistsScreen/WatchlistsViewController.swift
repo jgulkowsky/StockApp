@@ -56,7 +56,6 @@ class WatchlistsViewController: BaseViewController {
     override func setupConstraints() {
         loadingView.snp.remakeConstraints { make in
             make.center.equalToSuperview()
-            make.height.width.equalTo(30)
         }
         
         errorLabel.snp.remakeConstraints { make in
