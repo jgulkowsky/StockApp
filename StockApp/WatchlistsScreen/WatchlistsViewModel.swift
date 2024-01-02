@@ -56,7 +56,7 @@ class WatchlistsViewModel: StatefulViewModel {
     }
     
     func onItemTapped(at index: Int) {
-        let watchlist = watchlistsSubject.value[index]
+        guard let watchlist = getWatchlistFor(index: index) else { return }
         coordinator.execute(action: .itemSelected(data: watchlist))
     }
     
@@ -66,6 +66,8 @@ class WatchlistsViewModel: StatefulViewModel {
     
     func onItemSwipedOut(at index: Int) {
         var watchlists = watchlistsSubject.value
+        guard getWatchlistFor(index: index) != nil else { return }
+        
         let watchlist = watchlists.remove(at: index)
         watchlistsSubject.send(watchlists)
         
