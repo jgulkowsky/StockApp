@@ -27,16 +27,23 @@ class AddNewWatchlistViewModel {
     private unowned let coordinator: Coordinator
     private let watchlistsProvider: WatchlistsProviding
     
+    private let emptyNameError: String
+    private let watchlistAlreadyExistsError: String
+    
     private var watchlists: [Watchlist]?
     
     init(coordinator: Coordinator,
-         watchlistsProvider: WatchlistsProviding
+         watchlistsProvider: WatchlistsProviding,
+         emptyNameError: String = "Watchlist name can't be empty!",
+         watchlistAlreadyExistsError: String = "Watchlist with this name already exists!"
     ) {
 #if DEBUG
         print("@jgu: \(Self.self).init()")
 #endif
         self.coordinator = coordinator
         self.watchlistsProvider = watchlistsProvider
+        self.emptyNameError = emptyNameError
+        self.watchlistAlreadyExistsError = watchlistAlreadyExistsError
         setupBindings()
     }
     
@@ -44,21 +51,21 @@ class AddNewWatchlistViewModel {
         errorSubject.send(nil)
     }
     
-    func onSearchTextSubmitted(searchText: String?) {
-        guard let searchText = searchText,
+    func onTextFieldSubmitted(text: String?) {
+        guard let text = text,
               let watchlists = watchlists else { return }
         
         let watchlistNames = watchlists.map { $0.name }
-        let trimmedName = searchText.trimmingCharacters(in: .whitespaces)
+        let trimmedName = text.trimmingCharacters(in: .whitespaces)
         
         watchlistTextSubject.send(trimmedName)
         
         guard !trimmedName.isEmpty else {
-            errorSubject.send("Watchlist name can't be empty!")
+            errorSubject.send(emptyNameError)
             return
         }
         guard !watchlistNames.contains(where: { $0 == trimmedName }) else {
-            errorSubject.send("Watchlist with this name already exists!")
+            errorSubject.send(watchlistAlreadyExistsError)
             return
         }
         
