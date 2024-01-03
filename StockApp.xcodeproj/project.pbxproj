@@ -71,6 +71,9 @@
 		E37045C02B45861200D1CFC2 /* AddNewSymbolViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37045BF2B45861200D1CFC2 /* AddNewSymbolViewModelTests.swift */; };
 		E37045C22B4586BE00D1CFC2 /* MockSymbolsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37045C12B4586BE00D1CFC2 /* MockSymbolsProvider.swift */; };
 		E37045C52B45ABC900D1CFC2 /* XCTestCaseExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37045C42B45ABC900D1CFC2 /* XCTestCaseExtensions.swift */; };
+		E37045C72B45C28D00D1CFC2 /* QuoteViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37045C62B45C28D00D1CFC2 /* QuoteViewModelTests.swift */; };
+		E37045C92B45C33B00D1CFC2 /* MockQuotesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37045C82B45C33B00D1CFC2 /* MockQuotesProvider.swift */; };
+		E37045CB2B45C34700D1CFC2 /* MockChartDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37045CA2B45C34700D1CFC2 /* MockChartDataProvider.swift */; };
 		E37BC0872B2C7F590065F61A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC0862B2C7F590065F61A /* AppDelegate.swift */; };
 		E37BC0892B2C7F590065F61A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC0882B2C7F590065F61A /* SceneDelegate.swift */; };
 		E37BC0902B2C7F5A0065F61A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E37BC08F2B2C7F5A0065F61A /* Assets.xcassets */; };
@@ -78,6 +81,8 @@
 		E37BC09E2B2C7F5A0065F61A /* DoubleExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC09D2B2C7F5A0065F61A /* DoubleExtensionsTests.swift */; };
 		E37BC0A82B2C7F5B0065F61A /* StockAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC0A72B2C7F5B0065F61A /* StockAppUITests.swift */; };
 		E37BC0AA2B2C7F5B0065F61A /* StockAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC0A92B2C7F5B0065F61A /* StockAppUITestsLaunchTests.swift */; };
+		E39A7F942B45F8DC006DCCC9 /* ChartDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39A7F932B45F8DC006DCCC9 /* ChartDataExtensions.swift */; };
+		E39A7F962B45F901006DCCC9 /* ChartItemExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39A7F952B45F901006DCCC9 /* ChartItemExtensions.swift */; };
 		E39C49FE2B3C33D50045283B /* AppFirstStartProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39C49FD2B3C33D50045283B /* AppFirstStartProvider.swift */; };
 		E39C4A012B3C33F20045283B /* AppFirstStartProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39C4A002B3C33F20045283B /* AppFirstStartProviding.swift */; };
 		E39C4A042B3C4C1C0045283B /* SnapKit-Dynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = E31F6E212B30BD9900CB0C3B /* SnapKit-Dynamic */; };
@@ -186,6 +191,9 @@
 		E37045BF2B45861200D1CFC2 /* AddNewSymbolViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewSymbolViewModelTests.swift; sourceTree = "<group>"; };
 		E37045C12B4586BE00D1CFC2 /* MockSymbolsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSymbolsProvider.swift; sourceTree = "<group>"; };
 		E37045C42B45ABC900D1CFC2 /* XCTestCaseExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCaseExtensions.swift; sourceTree = "<group>"; };
+		E37045C62B45C28D00D1CFC2 /* QuoteViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteViewModelTests.swift; sourceTree = "<group>"; };
+		E37045C82B45C33B00D1CFC2 /* MockQuotesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockQuotesProvider.swift; sourceTree = "<group>"; };
+		E37045CA2B45C34700D1CFC2 /* MockChartDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockChartDataProvider.swift; sourceTree = "<group>"; };
 		E37BC0832B2C7F590065F61A /* StockApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E37BC0862B2C7F590065F61A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E37BC0882B2C7F590065F61A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -197,6 +205,8 @@
 		E37BC0A32B2C7F5B0065F61A /* StockAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StockAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E37BC0A72B2C7F5B0065F61A /* StockAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockAppUITests.swift; sourceTree = "<group>"; };
 		E37BC0A92B2C7F5B0065F61A /* StockAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E39A7F932B45F8DC006DCCC9 /* ChartDataExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartDataExtensions.swift; sourceTree = "<group>"; };
+		E39A7F952B45F901006DCCC9 /* ChartItemExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartItemExtensions.swift; sourceTree = "<group>"; };
 		E39C49FD2B3C33D50045283B /* AppFirstStartProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFirstStartProvider.swift; sourceTree = "<group>"; };
 		E39C4A002B3C33F20045283B /* AppFirstStartProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFirstStartProviding.swift; sourceTree = "<group>"; };
 		E39C4A062B3C5D940045283B /* MockQuotesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockQuotesProvider.swift; sourceTree = "<group>"; };
@@ -420,6 +430,8 @@
 				E37045B42B4438B600D1CFC2 /* MockCoordinator.swift */,
 				E37045B62B4438C100D1CFC2 /* MockWatchlistsProvider.swift */,
 				E37045C12B4586BE00D1CFC2 /* MockSymbolsProvider.swift */,
+				E37045C82B45C33B00D1CFC2 /* MockQuotesProvider.swift */,
+				E37045CA2B45C34700D1CFC2 /* MockChartDataProvider.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -428,6 +440,8 @@
 			isa = PBXGroup;
 			children = (
 				E37045C42B45ABC900D1CFC2 /* XCTestCaseExtensions.swift */,
+				E39A7F932B45F8DC006DCCC9 /* ChartDataExtensions.swift */,
+				E39A7F952B45F901006DCCC9 /* ChartItemExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -487,6 +501,7 @@
 				E37045B12B44322400D1CFC2 /* WatchlistsViewModelTests.swift */,
 				E37045BA2B4477EE00D1CFC2 /* AddNewWatchlistViewModelTests.swift */,
 				E37045BF2B45861200D1CFC2 /* AddNewSymbolViewModelTests.swift */,
+				E37045C62B45C28D00D1CFC2 /* QuoteViewModelTests.swift */,
 			);
 			path = StockAppTests;
 			sourceTree = "<group>";
@@ -735,14 +750,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				E37BC09E2B2C7F5A0065F61A /* DoubleExtensionsTests.swift in Sources */,
+				E39A7F962B45F901006DCCC9 /* ChartItemExtensions.swift in Sources */,
+				E37045C72B45C28D00D1CFC2 /* QuoteViewModelTests.swift in Sources */,
 				E37045B22B44322400D1CFC2 /* WatchlistsViewModelTests.swift in Sources */,
 				E37045C22B4586BE00D1CFC2 /* MockSymbolsProvider.swift in Sources */,
 				E37045C52B45ABC900D1CFC2 /* XCTestCaseExtensions.swift in Sources */,
+				E37045C92B45C33B00D1CFC2 /* MockQuotesProvider.swift in Sources */,
+				E39A7F942B45F8DC006DCCC9 /* ChartDataExtensions.swift in Sources */,
 				E37045B52B4438B600D1CFC2 /* MockCoordinator.swift in Sources */,
 				E37045B02B40D00300D1CFC2 /* DateExtensionsTests.swift in Sources */,
 				E37045C02B45861200D1CFC2 /* AddNewSymbolViewModelTests.swift in Sources */,
 				E37045B72B4438C100D1CFC2 /* MockWatchlistsProvider.swift in Sources */,
 				E37045BB2B4477EE00D1CFC2 /* AddNewWatchlistViewModelTests.swift in Sources */,
+				E37045CB2B45C34700D1CFC2 /* MockChartDataProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
