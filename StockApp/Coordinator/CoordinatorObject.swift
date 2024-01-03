@@ -124,7 +124,8 @@ class CoordinatorObject: Coordinator {
                             coordinator: self,
                             watchlistsProvider: watchlistsProvider,
                             symbolsProvider: symbolsProvider,
-                            watchlist: watchlist
+                            watchlist: watchlist,
+                            searchTextDebounceMillis: 500
                         )
                     )
                     navigationController.pushViewController(vc, animated: true)

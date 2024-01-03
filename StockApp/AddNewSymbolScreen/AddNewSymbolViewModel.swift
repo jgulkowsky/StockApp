@@ -26,11 +26,13 @@ class AddNewSymbolViewModel {
     private let watchlistsProvider: WatchlistsProviding
     private let symbolsProvider: SymbolsProviding
     private var watchlist: Watchlist
+    private let searchTextDebounceMillis: Int
     
     init(coordinator: Coordinator,
          watchlistsProvider: WatchlistsProviding,
          symbolsProvider: SymbolsProviding,
-         watchlist: Watchlist
+         watchlist: Watchlist,
+         searchTextDebounceMillis: Int
     ) {
 #if DEBUG
         print("@jgu: \(Self.self).init()")
@@ -39,6 +41,7 @@ class AddNewSymbolViewModel {
         self.watchlistsProvider = watchlistsProvider
         self.symbolsProvider = symbolsProvider
         self.watchlist = watchlist
+        self.searchTextDebounceMillis = searchTextDebounceMillis
         setupBindings()
     }
     
@@ -58,7 +61,7 @@ class AddNewSymbolViewModel {
     }
     
     func onItemTapped(at index: Int) {
-        let symbol = symbolsSubject.value[index]
+        guard let symbol = getSymbolFor(index: index) else { return }
         
         if !watchlist.symbols.contains(symbol) {
             watchlistsProvider.onAdd(symbol, to: watchlist)
@@ -72,7 +75,7 @@ class AddNewSymbolViewModel {
 private extension AddNewSymbolViewModel {
     func setupBindings() {
         self.searchTextSubject
-            .debounce(for: .milliseconds(500), scheduler: DispatchQueue.main)
+            .debounce(for: .milliseconds(self.searchTextDebounceMillis), scheduler: DispatchQueue.main)
             .removeDuplicates()
             .compactMap { $0 }
             .sink { [weak self] searchText in

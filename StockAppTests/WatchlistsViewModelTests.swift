@@ -207,18 +207,6 @@ private extension WatchlistsViewModelTests {
         return items
     }
     
-    func getIndexAndNumberOfItems_whereIndexIsSmallerThanNumberOfItems() -> (Int, Int) {
-        let index = Int.random(in: 0..<5)
-        let numberOfItems = index + Int.random(in: 1..<5)
-        return (index, numberOfItems)
-    }
-    
-    func getIndexAndNumberOfItems_whereIndexIsGreaterThanOrEqualToNumberOfItems() -> (Int, Int) {
-        let index = Int.random(in: 0..<5)
-        let numberOfItems = max(index - Int.random(in: 0..<5), 0)
-        return (index, numberOfItems)
-    }
-    
     func setupVariables(with items: [Watchlist]? = nil) {
         self.coordinator = MockCoordinator()
         self.watchlistsProvider = MockWatchlistsProvider()
