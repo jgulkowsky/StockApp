@@ -83,6 +83,7 @@
 		E37BC0AA2B2C7F5B0065F61A /* StockAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC0A92B2C7F5B0065F61A /* StockAppUITestsLaunchTests.swift */; };
 		E39A7F942B45F8DC006DCCC9 /* ChartDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39A7F932B45F8DC006DCCC9 /* ChartDataExtensions.swift */; };
 		E39A7F962B45F901006DCCC9 /* ChartItemExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39A7F952B45F901006DCCC9 /* ChartItemExtensions.swift */; };
+		E39A7F982B460AF0006DCCC9 /* WatchlistViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39A7F972B460AF0006DCCC9 /* WatchlistViewModelTests.swift */; };
 		E39C49FE2B3C33D50045283B /* AppFirstStartProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39C49FD2B3C33D50045283B /* AppFirstStartProvider.swift */; };
 		E39C4A012B3C33F20045283B /* AppFirstStartProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39C4A002B3C33F20045283B /* AppFirstStartProviding.swift */; };
 		E39C4A042B3C4C1C0045283B /* SnapKit-Dynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = E31F6E212B30BD9900CB0C3B /* SnapKit-Dynamic */; };
@@ -207,6 +208,7 @@
 		E37BC0A92B2C7F5B0065F61A /* StockAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E39A7F932B45F8DC006DCCC9 /* ChartDataExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartDataExtensions.swift; sourceTree = "<group>"; };
 		E39A7F952B45F901006DCCC9 /* ChartItemExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartItemExtensions.swift; sourceTree = "<group>"; };
+		E39A7F972B460AF0006DCCC9 /* WatchlistViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistViewModelTests.swift; sourceTree = "<group>"; };
 		E39C49FD2B3C33D50045283B /* AppFirstStartProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFirstStartProvider.swift; sourceTree = "<group>"; };
 		E39C4A002B3C33F20045283B /* AppFirstStartProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFirstStartProviding.swift; sourceTree = "<group>"; };
 		E39C4A062B3C5D940045283B /* MockQuotesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockQuotesProvider.swift; sourceTree = "<group>"; };
@@ -502,6 +504,7 @@
 				E37045BA2B4477EE00D1CFC2 /* AddNewWatchlistViewModelTests.swift */,
 				E37045BF2B45861200D1CFC2 /* AddNewSymbolViewModelTests.swift */,
 				E37045C62B45C28D00D1CFC2 /* QuoteViewModelTests.swift */,
+				E39A7F972B460AF0006DCCC9 /* WatchlistViewModelTests.swift */,
 			);
 			path = StockAppTests;
 			sourceTree = "<group>";
@@ -757,6 +760,7 @@
 				E37045C52B45ABC900D1CFC2 /* XCTestCaseExtensions.swift in Sources */,
 				E37045C92B45C33B00D1CFC2 /* MockQuotesProvider.swift in Sources */,
 				E39A7F942B45F8DC006DCCC9 /* ChartDataExtensions.swift in Sources */,
+				E39A7F982B460AF0006DCCC9 /* WatchlistViewModelTests.swift in Sources */,
 				E37045B52B4438B600D1CFC2 /* MockCoordinator.swift in Sources */,
 				E37045B02B40D00300D1CFC2 /* DateExtensionsTests.swift in Sources */,
 				E37045C02B45861200D1CFC2 /* AddNewSymbolViewModelTests.swift in Sources */,

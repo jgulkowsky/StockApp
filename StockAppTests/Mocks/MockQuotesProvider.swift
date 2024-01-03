@@ -35,7 +35,15 @@ class MockQuotesProvider: QuotesProviding {
         if shouldThrow {
             throw MockQuotesProviderError.any
         }
-    
-        return quoteToReturn!
+        
+        if let quoteToReturn = quoteToReturn {
+            return quoteToReturn
+        }
+
+        let bidPrice = Double.random(in: 80.0...100.0)
+        let askPrice = Double.random(in: bidPrice...110.0)
+        let lastPrice = Double.random(in: bidPrice...askPrice)
+        let quote: Quote = Quote(date: .now, bidPrice: bidPrice, askPrice: askPrice, lastPrice: lastPrice)
+        return quote
     }
 }
