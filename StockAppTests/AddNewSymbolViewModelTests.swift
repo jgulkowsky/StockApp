@@ -17,7 +17,6 @@ final class AddNewSymbolViewModelTests: XCTestCase {
     private var symbolsProvider: MockSymbolsProvider?
     
     override func setUp() {
-        print("@jgu: setUp")
         self.coordinator = MockCoordinator()
         self.watchlistsProvider = MockWatchlistsProvider()
         self.symbolsProvider = MockSymbolsProvider()
@@ -32,7 +31,6 @@ final class AddNewSymbolViewModelTests: XCTestCase {
     }
     
     override func tearDown() {
-        print("@jgu: tearDown")
         self.coordinator = nil
         self.watchlistsProvider = nil
         self.symbolsProvider = nil
@@ -40,13 +38,13 @@ final class AddNewSymbolViewModelTests: XCTestCase {
         self.store.removeAll()
     }
     
-    func test_givenThatIndexIsSmallerThanNumberOfSymbolsInPublisher_whenGetSymbolForIndexIsCalled_thenSymbolShouldBeReturned() throws {
+    func test_givenThatIndexIsSmallerThanNumberOfSymbolsReturned_whenGetSymbolForIndexIsCalled_thenSymbolShouldBeReturned() throws {
         // given
         let (index, numberOfItems) = getIndexAndNumberOfItems_whereIndexIsSmallerThanNumberOfItems()
         let symbolsFromProvider = self.symbolsProvider!.setupSymbolsToReturn(in: numberOfItems)
         
-        // we need call onSearchTextChanged and wait for the publisher to have values in it
-        call_onSearchTextChanged_andWaitForSymbolsPublisherToEmitNonEmptyArray(with: "some text")
+        self.viewModel!.onSearchTextChanged(to: "some text")
+        wait(for: 0.1)
         
         // when
         let symbol = self.viewModel!.getSymbolFor(index: index)
@@ -55,13 +53,13 @@ final class AddNewSymbolViewModelTests: XCTestCase {
         XCTAssertEqual(symbol, symbolsFromProvider[index])
     }
     
-    func test_givenThatIndexIsGreaterThanOrEqualToNumberOfSymbolsInPublisher_whenGetSymbolForIndexIsCalled_thenNilShouldBeReturned() throws {
+    func test_givenThatIndexIsGreaterThanOrEqualToNumberOfSymbolsReturned_whenGetSymbolForIndexIsCalled_thenNilShouldBeReturned() throws {
         // given
         let (index, numberOfItems) = getIndexAndNumberOfItems_whereIndexIsGreaterThanOrEqualToNumberOfItems()
         _ = self.symbolsProvider!.setupSymbolsToReturn(in: numberOfItems)
         
-        // we need call onSearchTextChanged and wait for the publisher to have values in it
-        call_onSearchTextChanged_andWaitForSymbolsPublisherToEmitNonEmptyArray(with: "some text")
+        self.viewModel!.onSearchTextChanged(to: "some text")
+        wait(for: 0.1)
         
         // when
         let symbol = self.viewModel!.getSymbolFor(index: index)
@@ -75,16 +73,18 @@ final class AddNewSymbolViewModelTests: XCTestCase {
         let symbolsFromProvider = self.symbolsProvider!.setupSymbolsToReturn(in: 10)
         
         // when
-        var symbolsEmittedFromPublisher = [String]()
-        call_onSearchTextChanged_andWaitForSymbolsPublisherToEmitNonEmptyArray(
-            with: "some string it doesn't matter",
-            whenPublisherEmits: { symbols in
-                symbolsEmittedFromPublisher = symbols
-            }
-        )
+        self.viewModel!.onSearchTextChanged(to: "some text")
         
         // then
-        XCTAssertEqual(symbolsEmittedFromPublisher, symbolsFromProvider)
+        let expectation = XCTestExpectation(description: UUID().description)
+        self.viewModel!.symbolsPublisher
+            .filter { !$0.isEmpty }
+            .sink { symbols in
+                XCTAssertEqual(symbols, symbolsFromProvider)
+                expectation.fulfill()
+            }
+            .store(in: &store)
+        wait(for: [expectation], timeout: 0.1)
     }
     
     func test_givenThatSymbolsProviderWillProvideListOfXSymbols_whenOnSearchTextChangedIsCalled_thenSymbolsCountShouldBeEqualToXWhenSymbolsPublisherEmitsTheseSymbols() throws {
@@ -93,9 +93,8 @@ final class AddNewSymbolViewModelTests: XCTestCase {
         _ = self.symbolsProvider!.setupSymbolsToReturn(in: numberOfSymbols)
         
         // when
-        call_onSearchTextChanged_andWaitForSymbolsPublisherToEmitNonEmptyArray(
-            with: "some string it doesn't matter"
-        )
+        self.viewModel!.onSearchTextChanged(to: "some text")
+        wait(for: 0.1)
         
         // then
         XCTAssertEqual(self.viewModel!.symbolsCount, numberOfSymbols)
@@ -107,22 +106,21 @@ final class AddNewSymbolViewModelTests: XCTestCase {
         let text = "String X"
         
         // when
-        call_onSearchTextChanged_andWaitForSymbolsPublisherToEmitNonEmptyArray(
-            with: text
-        ) // symbolsProvider method is called symbolsPublisher emits but this is a nice handler
+        self.viewModel!.onSearchTextChanged(to: text)
+        wait(for: 0.1)
         
         // then
         XCTAssertTrue(self.symbolsProvider!.getSymbolsCalled)
         XCTAssertEqual(self.symbolsProvider!.getSymbolsText, text)
     }
     
-    func test_givenThatIndexIsGreaterThanOrEqualToNumberOfSymbolsInPublisher_whenOnItemTappedAtIndexIsCalled_thenWatchlistsProviderOnAddSymbolToWatchlistIsNotCalled_andCoordinatorDoesNotExecuteAnyAction() throws {
+    func test_givenThatIndexIsGreaterThanOrEqualToNumberOfSymbolsReturned_whenOnItemTappedAtIndexIsCalled_thenWatchlistsProviderOnAddSymbolToWatchlistIsNotCalled_andCoordinatorDoesNotExecuteAnyAction() throws {
         // given
         let (index, numberOfItems) = getIndexAndNumberOfItems_whereIndexIsGreaterThanOrEqualToNumberOfItems()
         _ = self.symbolsProvider!.setupSymbolsToReturn(in: numberOfItems)
 
-        // we need call onSearchTextChanged and wait for the publisher to have values in it
-        call_onSearchTextChanged_andWaitForSymbolsPublisherToEmitNonEmptyArray(with: "some text")
+        self.viewModel!.onSearchTextChanged(to: "some text")
+        wait(for: 0.1)
 
         // when
         self.viewModel!.onItemTapped(at: index)
@@ -147,8 +145,8 @@ final class AddNewSymbolViewModelTests: XCTestCase {
             searchTextDebounceMillis: 0 // generally be careful with changing this as this can affect timeouts in tests - normal value used in app is 500 millis
         )
 
-        // we need call onSearchTextChanged and wait for the publisher to have values in it
-        call_onSearchTextChanged_andWaitForSymbolsPublisherToEmitNonEmptyArray(with: "some text")
+        self.viewModel!.onSearchTextChanged(to: "some text")
+        wait(for: 0.1)
 
         // when
         self.viewModel!.onItemTapped(at: index)
@@ -172,8 +170,8 @@ final class AddNewSymbolViewModelTests: XCTestCase {
         let symbols = self.symbolsProvider!.setupSymbolsToReturn(in: numberOfItems)
         let symbol = symbols[index]
 
-        // we need call onSearchTextChanged and wait for the publisher to have values in it
-        call_onSearchTextChanged_andWaitForSymbolsPublisherToEmitNonEmptyArray(with: "some text")
+        self.viewModel!.onSearchTextChanged(to: "some text")
+        wait(for: 0.1)
 
         // when
         self.viewModel!.onItemTapped(at: index)
@@ -190,25 +188,5 @@ final class AddNewSymbolViewModelTests: XCTestCase {
         default:
             XCTFail()
         }
-    }
-}
-
-private extension AddNewSymbolViewModelTests {
-    func call_onSearchTextChanged_andWaitForSymbolsPublisherToEmitNonEmptyArray(
-        with text: String,
-        whenPublisherEmits callback: (([String]) -> Void)? = nil)
-    {
-        let expectation = XCTestExpectation(description: "expectation")
-        self.viewModel!.symbolsPublisher
-            .filter { !$0.isEmpty } // as at init we get [] here
-            .sink { symbols in
-                callback?(symbols)
-                expectation.fulfill()
-            }
-            .store(in: &store)
-        
-        self.viewModel!.onSearchTextChanged(to: text)
-        
-        wait(for: [expectation], timeout: 0.1)
     }
 }

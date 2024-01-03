@@ -53,7 +53,7 @@ final class WatchlistsViewModelTests: XCTestCase {
         // when
         
         // then
-        let expectation = expectation(description: "expectation")
+        let expectation = XCTestExpectation(description: UUID().description)
         self.viewModel!.statePublisher
             .dropFirst() // as it's .loading initially
             .sink {
@@ -169,7 +169,7 @@ final class WatchlistsViewModelTests: XCTestCase {
         self.viewModel!.onItemSwipedOut(at: index)
         
         // then
-        let expectation = expectation(description: "expectation")
+        let expectation = XCTestExpectation(description: UUID().description)
         self.viewModel!.watchlistsPublisher
             .sink {
                 var items = items

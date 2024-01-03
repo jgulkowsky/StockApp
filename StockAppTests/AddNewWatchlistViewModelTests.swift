@@ -210,7 +210,7 @@ final class AddNewWatchlistViewModelTests: XCTestCase {
         )
         let text = duplicatedListName
         self.viewModel!.onTextFieldSubmitted(text: text)
-        let expectation = expectation(description: "expectation")
+        let expectation = XCTestExpectation(description: UUID().description)
         self.viewModel!.errorPublisher
             .first()
             .sink {
