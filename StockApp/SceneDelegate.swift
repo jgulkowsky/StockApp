@@ -11,17 +11,6 @@ import UIKit
 // todo: create TECHNICALDECISIONS.md file that justify usage of any architecture and design patterns - MVVM / TestRetainCyclesViewController / Coordinator / protocols - providers / api fetching / persistence / common files / think about more things
 // todo: add padding to the tableView in AddNewSymbolVC (both for horizontal and vertical orientation) as sometimes values on the bottom will not be available because are under the keyboard / or at least add button for collapsing the keyboard
 
-// todo: optional things:
-// todo: prices sometimes get 0 for some reason - is it normal or we should treat it as a bug? (checkout responses in json)
-// todo: in future we should move api token into our own backend so it cannot be stolen from the device - now it's not safe
-// todo: WatchlistViewModel and QuoteViewModel have similar method turnOnTimer() - maybe it could be put into one place?
-// todo: BaseTableViewHeader and BaseTableViewCell use layoutSubviews method for updating the constraints - this isn't perfect solution as it updates too often - when timer fires so every 5 seconds
-// todo: checkout methods in DateExtensions - all of them were generated usingChatGPT - be aware - maybe you won't end up using them at all - then just remove them - but if not then add tests for them
-// todo: we could check if stock market is closed when fetchin quote data - if so then we should't make calls - this logic should be put into quotesProvider that would just return last quote and not send request until the stock is open once again
-// todo: consider passing stockItem instead of just symbol from WatchlistViewModel into QuoteViewModel - so VM don't have to load data for itself or even can but at least have sth to show without loading indicator
-// todo: generally we don't support stareting / stopping timers when going into background foreground
-// todo: errorLabels / loadingIndicators could be moved into BaseVC (logic for showing / hiding them too) - with use of StatefulViewModel
-
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
