@@ -1,16 +1,43 @@
 //
 //  MockChartDataProvider.swift
-//  StockApp
+//  StockAppTests
 //
-//  Created by Jan Gulkowski on 19/12/2023.
+//  Created by Jan Gulkowski on 03/01/2024.
 //
 
 import Foundation
+@testable import StockApp
 
 class MockChartDataProvider: ChartDataProviding {
+    enum MockChartDataProviderError: Error {
+        case any
+    }
+    
+    // setters
+    var delayInMillis: UInt64?
+    var shouldThrow = false
+    var chartDataToReturn: ChartData?
+    
+    // getters
+    var getChartDataForSymbolCalled = false
+    var getChartDataForSymbolSymbol: String?
+    
     func getChartData(forSymbol symbol: String) async throws -> ChartData {
-        try? await Task.sleep(nanoseconds: 2 * 1_000_000_000) // 2 seconds
-//        let dates = Date.last30Days()
+        getChartDataForSymbolCalled = true
+        getChartDataForSymbolSymbol = symbol
+        
+        if let delayInMillis = delayInMillis {
+            try? await Task.sleep(nanoseconds: delayInMillis)
+        }
+        
+        if shouldThrow {
+            throw MockChartDataProviderError.any
+        }
+        
+        if let chartDataToReturn = chartDataToReturn {
+            return chartDataToReturn
+        }
+        
         let dates = Date.daysBetween(
             startDate: Date(timeIntervalSince1970: 1698796800), // 1st of November
             andEndDate: Date(timeIntervalSince1970: 1701388800) // 1st of December
