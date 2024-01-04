@@ -84,6 +84,11 @@
 		E39A7F942B45F8DC006DCCC9 /* ChartDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39A7F932B45F8DC006DCCC9 /* ChartDataExtensions.swift */; };
 		E39A7F962B45F901006DCCC9 /* ChartItemExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39A7F952B45F901006DCCC9 /* ChartItemExtensions.swift */; };
 		E39A7F982B460AF0006DCCC9 /* WatchlistViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39A7F972B460AF0006DCCC9 /* WatchlistViewModelTests.swift */; };
+		E39A7F9B2B46E5A7006DCCC9 /* WatchlistsCoreDataProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39A7F9A2B46E5A7006DCCC9 /* WatchlistsCoreDataProviding.swift */; };
+		E39A7F9D2B46E5BE006DCCC9 /* WatchlistsCoreDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39A7F9C2B46E5BE006DCCC9 /* WatchlistsCoreDataProvider.swift */; };
+		E39A7F9F2B46E658006DCCC9 /* WatchlistsProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39A7F9E2B46E658006DCCC9 /* WatchlistsProviderTests.swift */; };
+		E39A7FA12B46E6B9006DCCC9 /* MockWatchlistsCoreDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39A7FA02B46E6B9006DCCC9 /* MockWatchlistsCoreDataProvider.swift */; };
+		E39A7FA32B46E877006DCCC9 /* MockAppFirstStartProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39A7FA22B46E877006DCCC9 /* MockAppFirstStartProvider.swift */; };
 		E39C49FE2B3C33D50045283B /* AppFirstStartProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39C49FD2B3C33D50045283B /* AppFirstStartProvider.swift */; };
 		E39C4A012B3C33F20045283B /* AppFirstStartProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39C4A002B3C33F20045283B /* AppFirstStartProviding.swift */; };
 		E39C4A042B3C4C1C0045283B /* SnapKit-Dynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = E31F6E212B30BD9900CB0C3B /* SnapKit-Dynamic */; };
@@ -209,6 +214,11 @@
 		E39A7F932B45F8DC006DCCC9 /* ChartDataExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartDataExtensions.swift; sourceTree = "<group>"; };
 		E39A7F952B45F901006DCCC9 /* ChartItemExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartItemExtensions.swift; sourceTree = "<group>"; };
 		E39A7F972B460AF0006DCCC9 /* WatchlistViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistViewModelTests.swift; sourceTree = "<group>"; };
+		E39A7F9A2B46E5A7006DCCC9 /* WatchlistsCoreDataProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistsCoreDataProviding.swift; sourceTree = "<group>"; };
+		E39A7F9C2B46E5BE006DCCC9 /* WatchlistsCoreDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistsCoreDataProvider.swift; sourceTree = "<group>"; };
+		E39A7F9E2B46E658006DCCC9 /* WatchlistsProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistsProviderTests.swift; sourceTree = "<group>"; };
+		E39A7FA02B46E6B9006DCCC9 /* MockWatchlistsCoreDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockWatchlistsCoreDataProvider.swift; sourceTree = "<group>"; };
+		E39A7FA22B46E877006DCCC9 /* MockAppFirstStartProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAppFirstStartProvider.swift; sourceTree = "<group>"; };
 		E39C49FD2B3C33D50045283B /* AppFirstStartProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFirstStartProvider.swift; sourceTree = "<group>"; };
 		E39C4A002B3C33F20045283B /* AppFirstStartProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFirstStartProviding.swift; sourceTree = "<group>"; };
 		E39C4A062B3C5D940045283B /* MockQuotesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockQuotesProvider.swift; sourceTree = "<group>"; };
@@ -420,6 +430,7 @@
 		E326223A2B33915600105455 /* PersistentStorage */ = {
 			isa = PBXGroup;
 			children = (
+				E39A7F992B46E59A006DCCC9 /* Watchlists */,
 				E326223B2B33919900105455 /* PersistenceController.swift */,
 				E326223D2B3391C300105455 /* Model.xcdatamodeld */,
 			);
@@ -434,6 +445,8 @@
 				E37045C12B4586BE00D1CFC2 /* MockSymbolsProvider.swift */,
 				E37045C82B45C33B00D1CFC2 /* MockQuotesProvider.swift */,
 				E37045CA2B45C34700D1CFC2 /* MockChartDataProvider.swift */,
+				E39A7FA02B46E6B9006DCCC9 /* MockWatchlistsCoreDataProvider.swift */,
+				E39A7FA22B46E877006DCCC9 /* MockAppFirstStartProvider.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -505,6 +518,7 @@
 				E37045BF2B45861200D1CFC2 /* AddNewSymbolViewModelTests.swift */,
 				E37045C62B45C28D00D1CFC2 /* QuoteViewModelTests.swift */,
 				E39A7F972B460AF0006DCCC9 /* WatchlistViewModelTests.swift */,
+				E39A7F9E2B46E658006DCCC9 /* WatchlistsProviderTests.swift */,
 			);
 			path = StockAppTests;
 			sourceTree = "<group>";
@@ -516,6 +530,15 @@
 				E37BC0A92B2C7F5B0065F61A /* StockAppUITestsLaunchTests.swift */,
 			);
 			path = StockAppUITests;
+			sourceTree = "<group>";
+		};
+		E39A7F992B46E59A006DCCC9 /* Watchlists */ = {
+			isa = PBXGroup;
+			children = (
+				E39A7F9A2B46E5A7006DCCC9 /* WatchlistsCoreDataProviding.swift */,
+				E39A7F9C2B46E5BE006DCCC9 /* WatchlistsCoreDataProvider.swift */,
+			);
+			path = Watchlists;
 			sourceTree = "<group>";
 		};
 		E39C49FF2B3C33DE0045283B /* AppFirstStartProvider */ = {
@@ -692,6 +715,7 @@
 				E37045AA2B3D9F0B00D1CFC2 /* MockSymbolsProvider.swift in Sources */,
 				E39C4A0B2B3C89080045283B /* BaseTableViewHeader.swift in Sources */,
 				E39C4A072B3C5D940045283B /* MockQuotesProvider.swift in Sources */,
+				E39A7F9D2B46E5BE006DCCC9 /* WatchlistsCoreDataProvider.swift in Sources */,
 				E32621CA2B31092500105455 /* ChartDataProviding.swift in Sources */,
 				E32622112B32712E00105455 /* AddNewSymbolViewController.swift in Sources */,
 				E3B0BD312B36379A0078557F /* UIViewExtensions.swift in Sources */,
@@ -711,6 +735,7 @@
 				E31F6E262B30C81800CB0C3B /* Quote.swift in Sources */,
 				E326223C2B33919900105455 /* PersistenceController.swift in Sources */,
 				E32622132B32717200105455 /* AddNewSymbolViewModel.swift in Sources */,
+				E39A7F9B2B46E5A7006DCCC9 /* WatchlistsCoreDataProviding.swift in Sources */,
 				E39C4A0D2B3C892F0045283B /* BaseTableViewCell.swift in Sources */,
 				E31F6E1A2B30BBBA00CB0C3B /* QuoteViewModel.swift in Sources */,
 				E326222E2B33749200105455 /* UITableViewExtensions.swift in Sources */,
@@ -754,6 +779,7 @@
 			files = (
 				E37BC09E2B2C7F5A0065F61A /* DoubleExtensionsTests.swift in Sources */,
 				E39A7F962B45F901006DCCC9 /* ChartItemExtensions.swift in Sources */,
+				E39A7FA12B46E6B9006DCCC9 /* MockWatchlistsCoreDataProvider.swift in Sources */,
 				E37045C72B45C28D00D1CFC2 /* QuoteViewModelTests.swift in Sources */,
 				E37045B22B44322400D1CFC2 /* WatchlistsViewModelTests.swift in Sources */,
 				E37045C22B4586BE00D1CFC2 /* MockSymbolsProvider.swift in Sources */,
@@ -763,7 +789,9 @@
 				E39A7F982B460AF0006DCCC9 /* WatchlistViewModelTests.swift in Sources */,
 				E37045B52B4438B600D1CFC2 /* MockCoordinator.swift in Sources */,
 				E37045B02B40D00300D1CFC2 /* DateExtensionsTests.swift in Sources */,
+				E39A7FA32B46E877006DCCC9 /* MockAppFirstStartProvider.swift in Sources */,
 				E37045C02B45861200D1CFC2 /* AddNewSymbolViewModelTests.swift in Sources */,
+				E39A7F9F2B46E658006DCCC9 /* WatchlistsProviderTests.swift in Sources */,
 				E37045B72B4438C100D1CFC2 /* MockWatchlistsProvider.swift in Sources */,
 				E37045BB2B4477EE00D1CFC2 /* AddNewWatchlistViewModelTests.swift in Sources */,
 				E37045CB2B45C34700D1CFC2 /* MockChartDataProvider.swift in Sources */,

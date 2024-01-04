@@ -35,7 +35,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let navigationController = UINavigationController()
         
         let appFirstStartProvider = AppFirstStartProvider()
+        let watchlistsCoreDataProvider = WatchlistsCoreDataProvider()
         let watchlistsProvider = WatchlistsProvider(
+            coreDataProvider: watchlistsCoreDataProvider,
             appFirstStartProvider: appFirstStartProvider
         )
         
