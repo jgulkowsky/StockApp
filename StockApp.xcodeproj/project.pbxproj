@@ -100,6 +100,7 @@
 		E39C4A132B3C972E0045283B /* DoubleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39C4A122B3C972E0045283B /* DoubleExtensions.swift */; };
 		E3B0BD2E2B3609130078557F /* LabeledTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B0BD2D2B3609130078557F /* LabeledTextfield.swift */; };
 		E3B0BD312B36379A0078557F /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B0BD302B36379A0078557F /* UIViewExtensions.swift */; };
+		E3E7F1812B485FCC002C2163 /* StockAppLogic in Frameworks */ = {isa = PBXBuildFile; productRef = E3E7F1802B485FCC002C2163 /* StockAppLogic */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -237,6 +238,7 @@
 			files = (
 				E31F6E2B2B30CD1900CB0C3B /* DGChartsDynamic in Frameworks */,
 				E31F6E222B30BD9900CB0C3B /* SnapKit-Dynamic in Frameworks */,
+				E3E7F1812B485FCC002C2163 /* StockAppLogic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -584,6 +586,7 @@
 			packageProductDependencies = (
 				E31F6E212B30BD9900CB0C3B /* SnapKit-Dynamic */,
 				E31F6E2A2B30CD1900CB0C3B /* DGChartsDynamic */,
+				E3E7F1802B485FCC002C2163 /* StockAppLogic */,
 			);
 			productName = StockApp;
 			productReference = E37BC0832B2C7F590065F61A /* StockApp.app */;
@@ -660,6 +663,7 @@
 			packageReferences = (
 				E31F6E1E2B30BD9900CB0C3B /* XCRemoteSwiftPackageReference "SnapKit" */,
 				E31F6E272B30CD1900CB0C3B /* XCRemoteSwiftPackageReference "Charts" */,
+				E3E7F17F2B485FCC002C2163 /* XCRemoteSwiftPackageReference "StockAppLogic" */,
 			);
 			productRefGroup = E37BC0842B2C7F590065F61A /* Products */;
 			projectDirPath = "";
@@ -1138,6 +1142,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		E3E7F17F2B485FCC002C2163 /* XCRemoteSwiftPackageReference "StockAppLogic" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jgulkowsky/StockAppLogic.git";
+			requirement = {
+				branch = "feature/add-files-from-monolitic-project";
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1150,6 +1162,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E31F6E272B30CD1900CB0C3B /* XCRemoteSwiftPackageReference "Charts" */;
 			productName = DGChartsDynamic;
+		};
+		E3E7F1802B485FCC002C2163 /* StockAppLogic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E3E7F17F2B485FCC002C2163 /* XCRemoteSwiftPackageReference "StockAppLogic" */;
+			productName = StockAppLogic;
 		};
 /* End XCSwiftPackageProductDependency section */
 
