@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/jgulkowsky/StockAppLogic.git",
       "state" : {
-        "branch" : "feature/add-files-from-monolitic-project",
-        "revision" : "dd83b24dbd523b6b4470dbcb75196060cbe3e705"
+        "revision" : "a0e93f532892371414855f8b5e60813cfbac17e6",
+        "version" : "1.0.0"
       }
     }
   ],

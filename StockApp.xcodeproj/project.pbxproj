@@ -802,8 +802,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jgulkowsky/StockAppLogic.git";
 			requirement = {
-				branch = "feature/add-files-from-monolitic-project";
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
