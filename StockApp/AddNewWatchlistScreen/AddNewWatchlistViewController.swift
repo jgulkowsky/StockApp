@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import Combine
+import StockAppLogic
 
 class AddNewWatchlistViewController: BaseViewController {
     private var viewModel: AddNewWatchlistViewModel

@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import StockAppLogic
 
 class CoordinatorObject: Coordinator {
     private let navigationController: UINavigationController

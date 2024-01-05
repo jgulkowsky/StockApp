@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SnapKit/SnapKit.git",
       "state" : {
-        "branch" : "develop",
-        "revision" : "4d52cc3768ec5d345827b063dfa59e98a929965d"
+        "revision" : "f222cbdf325885926566172f6f5f06af95473158",
+        "version" : "5.6.0"
       }
     },
     {
@@ -24,7 +24,7 @@
       "location" : "https://github.com/jgulkowsky/StockAppLogic.git",
       "state" : {
         "branch" : "feature/add-files-from-monolitic-project",
-        "revision" : "7e815c9b8eb503a4e88ad66ac61cc634638493bd"
+        "revision" : "2e589a1f22c4911f9cad294e9dd60d6bb6b35df5"
       }
     }
   ],

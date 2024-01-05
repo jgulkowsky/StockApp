@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import StockAppLogic
 
 class WatchlistsCoreDataProvider: WatchlistsCoreDataProviding {
     private let viewContext = PersistenceController.shared.viewContext
