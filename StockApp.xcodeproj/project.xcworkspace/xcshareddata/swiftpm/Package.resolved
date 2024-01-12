@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/jgulkowsky/StockAppLogic.git",
       "state" : {
-        "revision" : "a0e93f532892371414855f8b5e60813cfbac17e6",
-        "version" : "1.0.0"
+        "branch" : "develop",
+        "revision" : "ff6daee2059682aa9c19dcfe16f91253f50fe1b8"
       }
     }
   ],

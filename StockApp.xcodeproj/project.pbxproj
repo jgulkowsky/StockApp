@@ -22,8 +22,6 @@
 		E32622202B334A8000105455 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E326221F2B334A8000105455 /* BaseViewController.swift */; };
 		E326222E2B33749200105455 /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E326222D2B33749200105455 /* UITableViewExtensions.swift */; };
 		E32622302B33784900105455 /* WatchlistsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E326222F2B33784900105455 /* WatchlistsTableViewCell.swift */; };
-		E326223C2B33919900105455 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E326223B2B33919900105455 /* PersistenceController.swift */; };
-		E326223F2B3391C300105455 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E326223D2B3391C300105455 /* Model.xcdatamodeld */; };
 		E37045AC2B3DDCDE00D1CFC2 /* ErrorLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37045AB2B3DDCDE00D1CFC2 /* ErrorLabel.swift */; };
 		E37045AE2B3DDE5300D1CFC2 /* ErrorRefreshButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37045AD2B3DDE5300D1CFC2 /* ErrorRefreshButton.swift */; };
 		E37BC0872B2C7F590065F61A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC0862B2C7F590065F61A /* AppDelegate.swift */; };
@@ -32,7 +30,6 @@
 		E37BC0932B2C7F5A0065F61A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E37BC0912B2C7F5A0065F61A /* LaunchScreen.storyboard */; };
 		E37BC0A82B2C7F5B0065F61A /* StockAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC0A72B2C7F5B0065F61A /* StockAppUITests.swift */; };
 		E37BC0AA2B2C7F5B0065F61A /* StockAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC0A92B2C7F5B0065F61A /* StockAppUITestsLaunchTests.swift */; };
-		E39A7F9D2B46E5BE006DCCC9 /* WatchlistsCoreDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39A7F9C2B46E5BE006DCCC9 /* WatchlistsCoreDataProvider.swift */; };
 		E39C4A042B3C4C1C0045283B /* SnapKit-Dynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = E31F6E212B30BD9900CB0C3B /* SnapKit-Dynamic */; };
 		E39C4A052B3C4C1F0045283B /* DGChartsDynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = E31F6E2A2B30CD1900CB0C3B /* DGChartsDynamic */; };
 		E39C4A0B2B3C89080045283B /* BaseTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39C4A0A2B3C89080045283B /* BaseTableViewHeader.swift */; };
@@ -89,8 +86,6 @@
 		E326221F2B334A8000105455 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		E326222D2B33749200105455 /* UITableViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
 		E326222F2B33784900105455 /* WatchlistsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistsTableViewCell.swift; sourceTree = "<group>"; };
-		E326223B2B33919900105455 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
-		E326223E2B3391C300105455 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		E37045AB2B3DDCDE00D1CFC2 /* ErrorLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLabel.swift; sourceTree = "<group>"; };
 		E37045AD2B3DDE5300D1CFC2 /* ErrorRefreshButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorRefreshButton.swift; sourceTree = "<group>"; };
 		E37BC0832B2C7F590065F61A /* StockApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,7 +98,6 @@
 		E37BC0A32B2C7F5B0065F61A /* StockAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StockAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E37BC0A72B2C7F5B0065F61A /* StockAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockAppUITests.swift; sourceTree = "<group>"; };
 		E37BC0A92B2C7F5B0065F61A /* StockAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		E39A7F9C2B46E5BE006DCCC9 /* WatchlistsCoreDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistsCoreDataProvider.swift; sourceTree = "<group>"; };
 		E39C4A0A2B3C89080045283B /* BaseTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewHeader.swift; sourceTree = "<group>"; };
 		E39C4A0C2B3C892F0045283B /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		E39C4A0E2B3C8AAE0045283B /* ConstraintsSettable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintsSettable.swift; sourceTree = "<group>"; };
@@ -200,16 +194,6 @@
 			path = AddNewSymbolScreen;
 			sourceTree = "<group>";
 		};
-		E326223A2B33915600105455 /* PersistentStorage */ = {
-			isa = PBXGroup;
-			children = (
-				E39A7F992B46E59A006DCCC9 /* Watchlists */,
-				E326223B2B33919900105455 /* PersistenceController.swift */,
-				E326223D2B3391C300105455 /* Model.xcdatamodeld */,
-			);
-			path = PersistentStorage;
-			sourceTree = "<group>";
-		};
 		E37BC07A2B2C7F590065F61A = {
 			isa = PBXGroup;
 			children = (
@@ -234,7 +218,6 @@
 			children = (
 				E3B0BD2F2B36375F0078557F /* CommonUI */,
 				E32621C02B30F17E00105455 /* Extensions */,
-				E326223A2B33915600105455 /* PersistentStorage */,
 				E32621FE2B326A2F00105455 /* Coordinator */,
 				E32622052B326FCB00105455 /* WatchlistsScreen */,
 				E32622062B326FE800105455 /* AddNewWatchlistScreen */,
@@ -258,14 +241,6 @@
 				E37BC0A92B2C7F5B0065F61A /* StockAppUITestsLaunchTests.swift */,
 			);
 			path = StockAppUITests;
-			sourceTree = "<group>";
-		};
-		E39A7F992B46E59A006DCCC9 /* Watchlists */ = {
-			isa = PBXGroup;
-			children = (
-				E39A7F9C2B46E5BE006DCCC9 /* WatchlistsCoreDataProvider.swift */,
-			);
-			path = Watchlists;
 			sourceTree = "<group>";
 		};
 		E3B0BD2F2B36375F0078557F /* CommonUI */ = {
@@ -426,7 +401,6 @@
 				E32622152B332A8C00105455 /* TestRetainCyclesViewController.swift in Sources */,
 				E32622172B33401300105455 /* AddNewSymbolTableViewCell.swift in Sources */,
 				E39C4A0B2B3C89080045283B /* BaseTableViewHeader.swift in Sources */,
-				E39A7F9D2B46E5BE006DCCC9 /* WatchlistsCoreDataProvider.swift in Sources */,
 				E32622112B32712E00105455 /* AddNewSymbolViewController.swift in Sources */,
 				E3B0BD312B36379A0078557F /* UIViewExtensions.swift in Sources */,
 				E326220D2B3270D700105455 /* AddNewWatchlistViewController.swift in Sources */,
@@ -434,7 +408,6 @@
 				E37045AC2B3DDCDE00D1CFC2 /* ErrorLabel.swift in Sources */,
 				E32622092B32702200105455 /* WatchlistsViewController.swift in Sources */,
 				E32622302B33784900105455 /* WatchlistsTableViewCell.swift in Sources */,
-				E326223C2B33919900105455 /* PersistenceController.swift in Sources */,
 				E39C4A0D2B3C892F0045283B /* BaseTableViewCell.swift in Sources */,
 				E326222E2B33749200105455 /* UITableViewExtensions.swift in Sources */,
 				E37045AE2B3DDE5300D1CFC2 /* ErrorRefreshButton.swift in Sources */,
@@ -446,7 +419,6 @@
 				E32621FB2B32499E00105455 /* WatchlistTableViewHeader.swift in Sources */,
 				E32622002B326A4D00105455 /* CoordinatorObject.swift in Sources */,
 				E3B0BD2E2B3609130078557F /* LabeledTextfield.swift in Sources */,
-				E326223F2B3391C300105455 /* Model.xcdatamodeld in Sources */,
 				E32621EE2B32029800105455 /* WatchlistViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -802,8 +774,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jgulkowsky/StockAppLogic.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				branch = develop;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -825,19 +797,6 @@
 			productName = StockAppLogic;
 		};
 /* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		E326223D2B3391C300105455 /* Model.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				E326223E2B3391C300105455 /* Model.xcdatamodel */,
-			);
-			currentVersion = E326223E2B3391C300105455 /* Model.xcdatamodel */;
-			path = Model.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = E37BC07B2B2C7F590065F61A /* Project object */;
 }

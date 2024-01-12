@@ -62,7 +62,7 @@ class AddNewWatchlistViewController: BaseViewController {
 
 extension AddNewWatchlistViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        viewModel.onTextFieldFocused(initialText: textField.text)
+        viewModel.onTextFieldFocused()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
