@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import StockAppLogic
 
 class WatchlistTableViewCell: BaseTableViewCell {
     static let id = "WatchlistTableViewCell"

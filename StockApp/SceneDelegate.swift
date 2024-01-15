@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import StockAppLogic
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
@@ -23,7 +24,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let watchlistsCoreDataProvider = WatchlistsCoreDataProvider()
         let watchlistsProvider = WatchlistsProvider(
             coreDataProvider: watchlistsCoreDataProvider,
-            appFirstStartProvider: appFirstStartProvider
+            appFirstStartProvider: appFirstStartProvider,
+            initialList: Watchlist(id: UUID(), name: "My First List", symbols: ["AAPL", "GOOG", "MSFT"])
+
         )
         
         let apiFetcher = ApiFetcher()
