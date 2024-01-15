@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import Combine
+import StockAppLogic
 
 class AddNewSymbolViewController: BaseViewController {
     private var viewModel: AddNewSymbolViewModel

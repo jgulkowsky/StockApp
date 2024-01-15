@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import Combine
 import DGCharts
+import StockAppLogic
 
 class QuoteViewController: BaseViewController {
     private var viewModel: QuoteViewModel
@@ -279,7 +280,7 @@ private extension QuoteViewController {
             .store(in: &store)
     }
     
-    func setChartView(basedOn chartData: ChartData) {
+    func setChartView(basedOn chartData: StockAppLogic.ChartData) {
         let entries = chartData.values.map {
             return CandleChartDataEntry(
                 x: getDaysFromNow(to: $0.date),
