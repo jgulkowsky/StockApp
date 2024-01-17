@@ -30,12 +30,12 @@
 		E37BC0932B2C7F5A0065F61A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E37BC0912B2C7F5A0065F61A /* LaunchScreen.storyboard */; };
 		E37BC0A82B2C7F5B0065F61A /* StockAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC0A72B2C7F5B0065F61A /* StockAppUITests.swift */; };
 		E37BC0AA2B2C7F5B0065F61A /* StockAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC0A92B2C7F5B0065F61A /* StockAppUITestsLaunchTests.swift */; };
+		E3856B7A2B57D660009EDBB5 /* SolidTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3856B792B57D660009EDBB5 /* SolidTextField.swift */; };
 		E39C4A042B3C4C1C0045283B /* SnapKit-Dynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = E31F6E212B30BD9900CB0C3B /* SnapKit-Dynamic */; };
 		E39C4A052B3C4C1F0045283B /* DGChartsDynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = E31F6E2A2B30CD1900CB0C3B /* DGChartsDynamic */; };
 		E39C4A0B2B3C89080045283B /* BaseTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39C4A0A2B3C89080045283B /* BaseTableViewHeader.swift */; };
 		E39C4A0D2B3C892F0045283B /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39C4A0C2B3C892F0045283B /* BaseTableViewCell.swift */; };
 		E39C4A0F2B3C8AAE0045283B /* ConstraintsSettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39C4A0E2B3C8AAE0045283B /* ConstraintsSettable.swift */; };
-		E3B0BD2E2B3609130078557F /* LabeledTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B0BD2D2B3609130078557F /* LabeledTextfield.swift */; };
 		E3B0BD312B36379A0078557F /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B0BD302B36379A0078557F /* UIViewExtensions.swift */; };
 		E3E7F1812B485FCC002C2163 /* StockAppLogic in Frameworks */ = {isa = PBXBuildFile; productRef = E3E7F1802B485FCC002C2163 /* StockAppLogic */; };
 /* End PBXBuildFile section */
@@ -98,10 +98,10 @@
 		E37BC0A32B2C7F5B0065F61A /* StockAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StockAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E37BC0A72B2C7F5B0065F61A /* StockAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockAppUITests.swift; sourceTree = "<group>"; };
 		E37BC0A92B2C7F5B0065F61A /* StockAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E3856B792B57D660009EDBB5 /* SolidTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolidTextField.swift; sourceTree = "<group>"; };
 		E39C4A0A2B3C89080045283B /* BaseTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewHeader.swift; sourceTree = "<group>"; };
 		E39C4A0C2B3C892F0045283B /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		E39C4A0E2B3C8AAE0045283B /* ConstraintsSettable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintsSettable.swift; sourceTree = "<group>"; };
-		E3B0BD2D2B3609130078557F /* LabeledTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledTextfield.swift; sourceTree = "<group>"; };
 		E3B0BD302B36379A0078557F /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -247,12 +247,12 @@
 			isa = PBXGroup;
 			children = (
 				E326221F2B334A8000105455 /* BaseViewController.swift */,
-				E3B0BD2D2B3609130078557F /* LabeledTextfield.swift */,
 				E39C4A0A2B3C89080045283B /* BaseTableViewHeader.swift */,
 				E39C4A0C2B3C892F0045283B /* BaseTableViewCell.swift */,
 				E39C4A0E2B3C8AAE0045283B /* ConstraintsSettable.swift */,
 				E37045AB2B3DDCDE00D1CFC2 /* ErrorLabel.swift */,
 				E37045AD2B3DDE5300D1CFC2 /* ErrorRefreshButton.swift */,
+				E3856B792B57D660009EDBB5 /* SolidTextField.swift */,
 			);
 			path = CommonUI;
 			sourceTree = "<group>";
@@ -409,6 +409,7 @@
 				E32622092B32702200105455 /* WatchlistsViewController.swift in Sources */,
 				E32622302B33784900105455 /* WatchlistsTableViewCell.swift in Sources */,
 				E39C4A0D2B3C892F0045283B /* BaseTableViewCell.swift in Sources */,
+				E3856B7A2B57D660009EDBB5 /* SolidTextField.swift in Sources */,
 				E326222E2B33749200105455 /* UITableViewExtensions.swift in Sources */,
 				E37045AE2B3DDE5300D1CFC2 /* ErrorRefreshButton.swift in Sources */,
 				E37BC0892B2C7F590065F61A /* SceneDelegate.swift in Sources */,
@@ -418,7 +419,6 @@
 				E39C4A0F2B3C8AAE0045283B /* ConstraintsSettable.swift in Sources */,
 				E32621FB2B32499E00105455 /* WatchlistTableViewHeader.swift in Sources */,
 				E32622002B326A4D00105455 /* CoordinatorObject.swift in Sources */,
-				E3B0BD2E2B3609130078557F /* LabeledTextfield.swift in Sources */,
 				E32621EE2B32029800105455 /* WatchlistViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -13,9 +13,8 @@ import StockAppLogic
 class AddNewWatchlistViewController: BaseViewController {
     private var viewModel: AddNewWatchlistViewModel
     
-    private lazy var watchlistNameTextField: LabeledTextField = LabeledTextField(
-        label: "Watchlist name:",
-        placeholder: "e.g. tech stocks",
+    private lazy var watchlistNameTextField = SolidTextField(
+        placeholder: "Just give it any name you like...",
         delegate: self
     )
     
