@@ -32,6 +32,7 @@
 		E37BC0AA2B2C7F5B0065F61A /* StockAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37BC0A92B2C7F5B0065F61A /* StockAppUITestsLaunchTests.swift */; };
 		E3856B7A2B57D660009EDBB5 /* SolidTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3856B792B57D660009EDBB5 /* SolidTextField.swift */; };
 		E3856B7C2B57E1AF009EDBB5 /* PaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3856B7B2B57E1AF009EDBB5 /* PaddedTextField.swift */; };
+		E3856B7E2B57F2A2009EDBB5 /* UITextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3856B7D2B57F2A2009EDBB5 /* UITextFieldExtensions.swift */; };
 		E39C4A042B3C4C1C0045283B /* SnapKit-Dynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = E31F6E212B30BD9900CB0C3B /* SnapKit-Dynamic */; };
 		E39C4A052B3C4C1F0045283B /* DGChartsDynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = E31F6E2A2B30CD1900CB0C3B /* DGChartsDynamic */; };
 		E39C4A0B2B3C89080045283B /* BaseTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39C4A0A2B3C89080045283B /* BaseTableViewHeader.swift */; };
@@ -101,6 +102,7 @@
 		E37BC0A92B2C7F5B0065F61A /* StockAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E3856B792B57D660009EDBB5 /* SolidTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolidTextField.swift; sourceTree = "<group>"; };
 		E3856B7B2B57E1AF009EDBB5 /* PaddedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddedTextField.swift; sourceTree = "<group>"; };
+		E3856B7D2B57F2A2009EDBB5 /* UITextFieldExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtensions.swift; sourceTree = "<group>"; };
 		E39C4A0A2B3C89080045283B /* BaseTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewHeader.swift; sourceTree = "<group>"; };
 		E39C4A0C2B3C892F0045283B /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		E39C4A0E2B3C8AAE0045283B /* ConstraintsSettable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintsSettable.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 			children = (
 				E326222D2B33749200105455 /* UITableViewExtensions.swift */,
 				E3B0BD302B36379A0078557F /* UIViewExtensions.swift */,
+				E3856B7D2B57F2A2009EDBB5 /* UITextFieldExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -422,6 +425,7 @@
 				E39C4A0F2B3C8AAE0045283B /* ConstraintsSettable.swift in Sources */,
 				E32621FB2B32499E00105455 /* WatchlistTableViewHeader.swift in Sources */,
 				E32622002B326A4D00105455 /* CoordinatorObject.swift in Sources */,
+				E3856B7E2B57F2A2009EDBB5 /* UITextFieldExtensions.swift in Sources */,
 				E32621EE2B32029800105455 /* WatchlistViewController.swift in Sources */,
 				E3856B7C2B57E1AF009EDBB5 /* PaddedTextField.swift in Sources */,
 			);

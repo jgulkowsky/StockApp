@@ -8,8 +8,8 @@
 import UIKit
 
 class SolidTextField: PaddedTextField {
-    init() {
-        super.init(frame: .zero)
+    override init(insets: UIEdgeInsets? = nil) {
+        super.init(insets: insets)
         self.borderStyle = .none
         self.layer.cornerRadius = 7
         self.backgroundColor = .systemGray6
