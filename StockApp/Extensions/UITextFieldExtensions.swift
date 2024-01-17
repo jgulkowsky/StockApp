@@ -8,6 +8,9 @@
 import UIKit
 
 extension UITextField {
+    static let height = 35.0
+    static let paddingTop = 5.0
+    
     func setIcon(_ iconName: String) {
         let containerSize = 30.0
         let iconSize = 20.0

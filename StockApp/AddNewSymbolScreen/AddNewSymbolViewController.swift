@@ -56,15 +56,20 @@ class AddNewSymbolViewController: BaseViewController {
         setupBindings()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        searchBarTextField.becomeFirstResponder()
+    }
+    
     override func setupConstraints() {
         searchBarTextField.snp.remakeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-                .inset(5.0) // todo: maybe constant? as every view need to have this top constraint under the large title
+                .inset(UITextField.paddingTop)
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
                 .inset(UIView.horizontalPadding)
             make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
                 .inset(UIView.horizontalPadding)
-            make.height.equalTo(35.0)
+            make.height.equalTo(UITextField.height)
         }
         
         tableView.snp.remakeConstraints { make in

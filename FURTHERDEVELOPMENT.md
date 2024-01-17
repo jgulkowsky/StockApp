@@ -8,3 +8,9 @@ Ideas for further development:
 - generally we don't support starting / stopping timers when going into background foreground
 - errorLabels / loadingIndicators could be moved into BaseVC (logic for showing / hiding them too) - with use of StatefulViewModel
 - add padding to the tableView in AddNewSymbolVC (both for horizontal and vertical orientation) as sometimes values on the bottom will not be available because are under the keyboard / or at least add button for collapsing the keyboard
+- [AddNewSymbolViewController] we could use textFieldDidBeginEditing and create viewModel.onTextFieldFocused() which will check if the text is empty (after trimming) and remove it if so (as in AddNewWatchlistViewModel) - this is to be done in both UIKit and SwiftUI
+- [AddNewSymbolViewController] would be nice to have info that the list is empty after typing too long string
+- [WatchlistsViewController / WatchlistViewController] - it would be nice to be possible to edit the name for the watchlist
+- [WatchlistsViewController / WatchlistViewController] - in both views you should add info when lists are empty - as it looks bad without it (especially in WatchlistViewController with empty header) - just some information that your list is empty to add sth click on + button
+- add support for differrent languages 
+- add support for changing time of the graph / swipes on it / bottom buttons like 1d 3d 5d 7d 1m 3m etc
