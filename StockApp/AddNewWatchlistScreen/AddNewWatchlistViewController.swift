@@ -13,10 +13,13 @@ import StockAppLogic
 class AddNewWatchlistViewController: BaseViewController {
     private var viewModel: AddNewWatchlistViewModel
     
-    private lazy var watchlistNameTextField = SolidTextField(
-        placeholder: "Just give it any name you like...",
-        delegate: self
-    )
+    private lazy var watchlistNameTextField: SolidTextField = {
+        let textField = SolidTextField()
+        textField.delegate = self
+        textField.placeholder = "Just give it any name you like..."
+        textField.autocorrectionType = .no
+        return textField
+    }()
     
     private lazy var errorLabel = ErrorLabel()
     
@@ -43,11 +46,12 @@ class AddNewWatchlistViewController: BaseViewController {
     override func setupConstraints() {
         watchlistNameTextField.snp.remakeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+                .inset(5.0) // todo: maybe constant? as every view need to have this top constraint under the large title
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
                 .inset(UIView.horizontalPadding)
             make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
                 .inset(UIView.horizontalPadding)
-            make.height.equalTo(30.0)
+            make.height.equalTo(35.0)
         }
         
         errorLabel.snp.remakeConstraints { make in
@@ -81,7 +85,7 @@ private extension AddNewWatchlistViewController {
         viewModel.watchlistTextPublisher
             .receive(on: RunLoop.main)
             .sink { [weak self] text in
-                self?.watchlistNameTextField.setText(text)
+                self?.watchlistNameTextField.text = text
             }
             .store(in: &store)
         
