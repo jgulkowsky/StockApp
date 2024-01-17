@@ -69,9 +69,9 @@ extension AddNewWatchlistViewController: UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder();
+        textField.resignFirstResponder()
         viewModel.onTextFieldSubmitted(text: textField.text)
-        return true;
+        return true
     }
 }
 
