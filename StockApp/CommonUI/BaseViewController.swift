@@ -8,10 +8,11 @@
 import UIKit
 
 class BaseViewController: UIViewController, ConstraintsSettable {
-    // satisfies 'no back button text' requirement
+    // satisfies 'no back button text' requirement and large title requirement
     override func viewDidLoad() {
         view.backgroundColor = UIColor(named: "Background")
         navigationItem.backButtonDisplayMode = .minimal
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     // satisfies 'sending needs for update when device is rotated' requirement
